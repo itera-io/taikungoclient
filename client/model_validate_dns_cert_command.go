@@ -40,8 +40,6 @@ type ValidateDnsCertCommand struct {
 	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	GcpProject NullableString `json:"gcpProject,omitempty"`
 	GcpServiceAccountJson NullableString `json:"gcpServiceAccountJson,omitempty"`
-	CaCert NullableString `json:"caCert,omitempty"`
-	CaKey NullableString `json:"caKey,omitempty"`
 	AuthMethod NullableString `json:"authMethod,omitempty"`
 	AuthVariant NullableString `json:"authVariant,omitempty"`
 	AwsRoleArn NullableString `json:"awsRoleArn,omitempty"`
@@ -50,8 +48,7 @@ type ValidateDnsCertCommand struct {
 	PdnsApiKey NullableString `json:"pdnsApiKey,omitempty"`
 	PdnsServerId NullableString `json:"pdnsServerId,omitempty"`
 	DnsCredentialId NullableInt32 `json:"dnsCredentialId,omitempty"`
-	CertificateCredentialId NullableInt32 `json:"certificateCredentialId,omitempty"`
-	CustomCertificateAuthorityId NullableInt32 `json:"customCertificateAuthorityId,omitempty"`
+	CertificateProfileId NullableInt32 `json:"certificateProfileId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -884,90 +881,6 @@ func (o *ValidateDnsCertCommand) UnsetGcpServiceAccountJson() {
 	o.GcpServiceAccountJson.Unset()
 }
 
-// GetCaCert returns the CaCert field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ValidateDnsCertCommand) GetCaCert() string {
-	if o == nil || IsNil(o.CaCert.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.CaCert.Get()
-}
-
-// GetCaCertOk returns a tuple with the CaCert field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ValidateDnsCertCommand) GetCaCertOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CaCert.Get(), o.CaCert.IsSet()
-}
-
-// HasCaCert returns a boolean if a field has been set.
-func (o *ValidateDnsCertCommand) HasCaCert() bool {
-	if o != nil && o.CaCert.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCaCert gets a reference to the given NullableString and assigns it to the CaCert field.
-func (o *ValidateDnsCertCommand) SetCaCert(v string) {
-	o.CaCert.Set(&v)
-}
-// SetCaCertNil sets the value for CaCert to be an explicit nil
-func (o *ValidateDnsCertCommand) SetCaCertNil() {
-	o.CaCert.Set(nil)
-}
-
-// UnsetCaCert ensures that no value is present for CaCert, not even an explicit nil
-func (o *ValidateDnsCertCommand) UnsetCaCert() {
-	o.CaCert.Unset()
-}
-
-// GetCaKey returns the CaKey field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ValidateDnsCertCommand) GetCaKey() string {
-	if o == nil || IsNil(o.CaKey.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.CaKey.Get()
-}
-
-// GetCaKeyOk returns a tuple with the CaKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ValidateDnsCertCommand) GetCaKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CaKey.Get(), o.CaKey.IsSet()
-}
-
-// HasCaKey returns a boolean if a field has been set.
-func (o *ValidateDnsCertCommand) HasCaKey() bool {
-	if o != nil && o.CaKey.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCaKey gets a reference to the given NullableString and assigns it to the CaKey field.
-func (o *ValidateDnsCertCommand) SetCaKey(v string) {
-	o.CaKey.Set(&v)
-}
-// SetCaKeyNil sets the value for CaKey to be an explicit nil
-func (o *ValidateDnsCertCommand) SetCaKeyNil() {
-	o.CaKey.Set(nil)
-}
-
-// UnsetCaKey ensures that no value is present for CaKey, not even an explicit nil
-func (o *ValidateDnsCertCommand) UnsetCaKey() {
-	o.CaKey.Unset()
-}
-
 // GetAuthMethod returns the AuthMethod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ValidateDnsCertCommand) GetAuthMethod() string {
 	if o == nil || IsNil(o.AuthMethod.Get()) {
@@ -1304,88 +1217,46 @@ func (o *ValidateDnsCertCommand) UnsetDnsCredentialId() {
 	o.DnsCredentialId.Unset()
 }
 
-// GetCertificateCredentialId returns the CertificateCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ValidateDnsCertCommand) GetCertificateCredentialId() int32 {
-	if o == nil || IsNil(o.CertificateCredentialId.Get()) {
+// GetCertificateProfileId returns the CertificateProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ValidateDnsCertCommand) GetCertificateProfileId() int32 {
+	if o == nil || IsNil(o.CertificateProfileId.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CertificateCredentialId.Get()
+	return *o.CertificateProfileId.Get()
 }
 
-// GetCertificateCredentialIdOk returns a tuple with the CertificateCredentialId field value if set, nil otherwise
+// GetCertificateProfileIdOk returns a tuple with the CertificateProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ValidateDnsCertCommand) GetCertificateCredentialIdOk() (*int32, bool) {
+func (o *ValidateDnsCertCommand) GetCertificateProfileIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CertificateCredentialId.Get(), o.CertificateCredentialId.IsSet()
+	return o.CertificateProfileId.Get(), o.CertificateProfileId.IsSet()
 }
 
-// HasCertificateCredentialId returns a boolean if a field has been set.
-func (o *ValidateDnsCertCommand) HasCertificateCredentialId() bool {
-	if o != nil && o.CertificateCredentialId.IsSet() {
+// HasCertificateProfileId returns a boolean if a field has been set.
+func (o *ValidateDnsCertCommand) HasCertificateProfileId() bool {
+	if o != nil && o.CertificateProfileId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCertificateCredentialId gets a reference to the given NullableInt32 and assigns it to the CertificateCredentialId field.
-func (o *ValidateDnsCertCommand) SetCertificateCredentialId(v int32) {
-	o.CertificateCredentialId.Set(&v)
+// SetCertificateProfileId gets a reference to the given NullableInt32 and assigns it to the CertificateProfileId field.
+func (o *ValidateDnsCertCommand) SetCertificateProfileId(v int32) {
+	o.CertificateProfileId.Set(&v)
 }
-// SetCertificateCredentialIdNil sets the value for CertificateCredentialId to be an explicit nil
-func (o *ValidateDnsCertCommand) SetCertificateCredentialIdNil() {
-	o.CertificateCredentialId.Set(nil)
-}
-
-// UnsetCertificateCredentialId ensures that no value is present for CertificateCredentialId, not even an explicit nil
-func (o *ValidateDnsCertCommand) UnsetCertificateCredentialId() {
-	o.CertificateCredentialId.Unset()
+// SetCertificateProfileIdNil sets the value for CertificateProfileId to be an explicit nil
+func (o *ValidateDnsCertCommand) SetCertificateProfileIdNil() {
+	o.CertificateProfileId.Set(nil)
 }
 
-// GetCustomCertificateAuthorityId returns the CustomCertificateAuthorityId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ValidateDnsCertCommand) GetCustomCertificateAuthorityId() int32 {
-	if o == nil || IsNil(o.CustomCertificateAuthorityId.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.CustomCertificateAuthorityId.Get()
-}
-
-// GetCustomCertificateAuthorityIdOk returns a tuple with the CustomCertificateAuthorityId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ValidateDnsCertCommand) GetCustomCertificateAuthorityIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CustomCertificateAuthorityId.Get(), o.CustomCertificateAuthorityId.IsSet()
-}
-
-// HasCustomCertificateAuthorityId returns a boolean if a field has been set.
-func (o *ValidateDnsCertCommand) HasCustomCertificateAuthorityId() bool {
-	if o != nil && o.CustomCertificateAuthorityId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomCertificateAuthorityId gets a reference to the given NullableInt32 and assigns it to the CustomCertificateAuthorityId field.
-func (o *ValidateDnsCertCommand) SetCustomCertificateAuthorityId(v int32) {
-	o.CustomCertificateAuthorityId.Set(&v)
-}
-// SetCustomCertificateAuthorityIdNil sets the value for CustomCertificateAuthorityId to be an explicit nil
-func (o *ValidateDnsCertCommand) SetCustomCertificateAuthorityIdNil() {
-	o.CustomCertificateAuthorityId.Set(nil)
-}
-
-// UnsetCustomCertificateAuthorityId ensures that no value is present for CustomCertificateAuthorityId, not even an explicit nil
-func (o *ValidateDnsCertCommand) UnsetCustomCertificateAuthorityId() {
-	o.CustomCertificateAuthorityId.Unset()
+// UnsetCertificateProfileId ensures that no value is present for CertificateProfileId, not even an explicit nil
+func (o *ValidateDnsCertCommand) UnsetCertificateProfileId() {
+	o.CertificateProfileId.Unset()
 }
 
 func (o ValidateDnsCertCommand) MarshalJSON() ([]byte, error) {
@@ -1458,12 +1329,6 @@ func (o ValidateDnsCertCommand) ToMap() (map[string]interface{}, error) {
 	if o.GcpServiceAccountJson.IsSet() {
 		toSerialize["gcpServiceAccountJson"] = o.GcpServiceAccountJson.Get()
 	}
-	if o.CaCert.IsSet() {
-		toSerialize["caCert"] = o.CaCert.Get()
-	}
-	if o.CaKey.IsSet() {
-		toSerialize["caKey"] = o.CaKey.Get()
-	}
 	if o.AuthMethod.IsSet() {
 		toSerialize["authMethod"] = o.AuthMethod.Get()
 	}
@@ -1488,11 +1353,8 @@ func (o ValidateDnsCertCommand) ToMap() (map[string]interface{}, error) {
 	if o.DnsCredentialId.IsSet() {
 		toSerialize["dnsCredentialId"] = o.DnsCredentialId.Get()
 	}
-	if o.CertificateCredentialId.IsSet() {
-		toSerialize["certificateCredentialId"] = o.CertificateCredentialId.Get()
-	}
-	if o.CustomCertificateAuthorityId.IsSet() {
-		toSerialize["customCertificateAuthorityId"] = o.CustomCertificateAuthorityId.Get()
+	if o.CertificateProfileId.IsSet() {
+		toSerialize["certificateProfileId"] = o.CertificateProfileId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1536,8 +1398,6 @@ func (o *ValidateDnsCertCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "azureClientSecret")
 		delete(additionalProperties, "gcpProject")
 		delete(additionalProperties, "gcpServiceAccountJson")
-		delete(additionalProperties, "caCert")
-		delete(additionalProperties, "caKey")
 		delete(additionalProperties, "authMethod")
 		delete(additionalProperties, "authVariant")
 		delete(additionalProperties, "awsRoleArn")
@@ -1546,8 +1406,7 @@ func (o *ValidateDnsCertCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "pdnsApiKey")
 		delete(additionalProperties, "pdnsServerId")
 		delete(additionalProperties, "dnsCredentialId")
-		delete(additionalProperties, "certificateCredentialId")
-		delete(additionalProperties, "customCertificateAuthorityId")
+		delete(additionalProperties, "certificateProfileId")
 		o.AdditionalProperties = additionalProperties
 	}
 

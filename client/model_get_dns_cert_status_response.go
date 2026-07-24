@@ -23,6 +23,7 @@ type GetDnsCertStatusResponse struct {
 	CertManagerEnabled *bool `json:"certManagerEnabled,omitempty"`
 	ExternalDnsEnabled *bool `json:"externalDnsEnabled,omitempty"`
 	TrustManagerEnabled *bool `json:"trustManagerEnabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 	DnsProvider NullableString `json:"dnsProvider,omitempty"`
 	CertIssuerType NullableString `json:"certIssuerType,omitempty"`
 	Domain NullableString `json:"domain,omitempty"`
@@ -41,6 +42,8 @@ type GetDnsCertStatusResponse struct {
 	Synced *bool `json:"synced,omitempty"`
 	DnsCredentialId NullableInt32 `json:"dnsCredentialId,omitempty"`
 	DnsCredentialName NullableString `json:"dnsCredentialName,omitempty"`
+	CertificateProfileId NullableInt32 `json:"certificateProfileId,omitempty"`
+	CertificateProfileName NullableString `json:"certificateProfileName,omitempty"`
 	ProjectStatus *ProjectStatus `json:"projectStatus,omitempty"`
 	FailureReason NullableString `json:"failureReason,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -159,6 +162,38 @@ func (o *GetDnsCertStatusResponse) HasTrustManagerEnabled() bool {
 // SetTrustManagerEnabled gets a reference to the given bool and assigns it to the TrustManagerEnabled field.
 func (o *GetDnsCertStatusResponse) SetTrustManagerEnabled(v bool) {
 	o.TrustManagerEnabled = &v
+}
+
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *GetDnsCertStatusResponse) SetEnabled(v bool) {
+	o.Enabled = &v
 }
 
 // GetDnsProvider returns the DnsProvider field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -807,6 +842,90 @@ func (o *GetDnsCertStatusResponse) UnsetDnsCredentialName() {
 	o.DnsCredentialName.Unset()
 }
 
+// GetCertificateProfileId returns the CertificateProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDnsCertStatusResponse) GetCertificateProfileId() int32 {
+	if o == nil || IsNil(o.CertificateProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CertificateProfileId.Get()
+}
+
+// GetCertificateProfileIdOk returns a tuple with the CertificateProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetDnsCertStatusResponse) GetCertificateProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CertificateProfileId.Get(), o.CertificateProfileId.IsSet()
+}
+
+// HasCertificateProfileId returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasCertificateProfileId() bool {
+	if o != nil && o.CertificateProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateProfileId gets a reference to the given NullableInt32 and assigns it to the CertificateProfileId field.
+func (o *GetDnsCertStatusResponse) SetCertificateProfileId(v int32) {
+	o.CertificateProfileId.Set(&v)
+}
+// SetCertificateProfileIdNil sets the value for CertificateProfileId to be an explicit nil
+func (o *GetDnsCertStatusResponse) SetCertificateProfileIdNil() {
+	o.CertificateProfileId.Set(nil)
+}
+
+// UnsetCertificateProfileId ensures that no value is present for CertificateProfileId, not even an explicit nil
+func (o *GetDnsCertStatusResponse) UnsetCertificateProfileId() {
+	o.CertificateProfileId.Unset()
+}
+
+// GetCertificateProfileName returns the CertificateProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDnsCertStatusResponse) GetCertificateProfileName() string {
+	if o == nil || IsNil(o.CertificateProfileName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CertificateProfileName.Get()
+}
+
+// GetCertificateProfileNameOk returns a tuple with the CertificateProfileName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetDnsCertStatusResponse) GetCertificateProfileNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CertificateProfileName.Get(), o.CertificateProfileName.IsSet()
+}
+
+// HasCertificateProfileName returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasCertificateProfileName() bool {
+	if o != nil && o.CertificateProfileName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateProfileName gets a reference to the given NullableString and assigns it to the CertificateProfileName field.
+func (o *GetDnsCertStatusResponse) SetCertificateProfileName(v string) {
+	o.CertificateProfileName.Set(&v)
+}
+// SetCertificateProfileNameNil sets the value for CertificateProfileName to be an explicit nil
+func (o *GetDnsCertStatusResponse) SetCertificateProfileNameNil() {
+	o.CertificateProfileName.Set(nil)
+}
+
+// UnsetCertificateProfileName ensures that no value is present for CertificateProfileName, not even an explicit nil
+func (o *GetDnsCertStatusResponse) UnsetCertificateProfileName() {
+	o.CertificateProfileName.Unset()
+}
+
 // GetProjectStatus returns the ProjectStatus field value if set, zero value otherwise.
 func (o *GetDnsCertStatusResponse) GetProjectStatus() ProjectStatus {
 	if o == nil || IsNil(o.ProjectStatus) {
@@ -900,6 +1019,9 @@ func (o GetDnsCertStatusResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TrustManagerEnabled) {
 		toSerialize["trustManagerEnabled"] = o.TrustManagerEnabled
 	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	if o.DnsProvider.IsSet() {
 		toSerialize["dnsProvider"] = o.DnsProvider.Get()
 	}
@@ -954,6 +1076,12 @@ func (o GetDnsCertStatusResponse) ToMap() (map[string]interface{}, error) {
 	if o.DnsCredentialName.IsSet() {
 		toSerialize["dnsCredentialName"] = o.DnsCredentialName.Get()
 	}
+	if o.CertificateProfileId.IsSet() {
+		toSerialize["certificateProfileId"] = o.CertificateProfileId.Get()
+	}
+	if o.CertificateProfileName.IsSet() {
+		toSerialize["certificateProfileName"] = o.CertificateProfileName.Get()
+	}
 	if !IsNil(o.ProjectStatus) {
 		toSerialize["projectStatus"] = o.ProjectStatus
 	}
@@ -985,6 +1113,7 @@ func (o *GetDnsCertStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "certManagerEnabled")
 		delete(additionalProperties, "externalDnsEnabled")
 		delete(additionalProperties, "trustManagerEnabled")
+		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "dnsProvider")
 		delete(additionalProperties, "certIssuerType")
 		delete(additionalProperties, "domain")
@@ -1003,6 +1132,8 @@ func (o *GetDnsCertStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "synced")
 		delete(additionalProperties, "dnsCredentialId")
 		delete(additionalProperties, "dnsCredentialName")
+		delete(additionalProperties, "certificateProfileId")
+		delete(additionalProperties, "certificateProfileName")
 		delete(additionalProperties, "projectStatus")
 		delete(additionalProperties, "failureReason")
 		o.AdditionalProperties = additionalProperties

@@ -15,12 +15,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the CertificateCredentialValidateCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CertificateCredentialValidateCommand{}
+// checks if the CertificateProfileValidateCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateProfileValidateCommand{}
 
-// CertificateCredentialValidateCommand struct for CertificateCredentialValidateCommand
-type CertificateCredentialValidateCommand struct {
-	CertificateCredentialId NullableInt32 `json:"certificateCredentialId,omitempty"`
+// CertificateProfileValidateCommand struct for CertificateProfileValidateCommand
+type CertificateProfileValidateCommand struct {
+	CertificateProfileId NullableInt32 `json:"certificateProfileId,omitempty"`
 	Kind NullableString `json:"kind,omitempty"`
 	CertPem NullableString `json:"certPem,omitempty"`
 	KeyPem NullableString `json:"keyPem,omitempty"`
@@ -28,69 +28,69 @@ type CertificateCredentialValidateCommand struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _CertificateCredentialValidateCommand CertificateCredentialValidateCommand
+type _CertificateProfileValidateCommand CertificateProfileValidateCommand
 
-// NewCertificateCredentialValidateCommand instantiates a new CertificateCredentialValidateCommand object
+// NewCertificateProfileValidateCommand instantiates a new CertificateProfileValidateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateCredentialValidateCommand() *CertificateCredentialValidateCommand {
-	this := CertificateCredentialValidateCommand{}
+func NewCertificateProfileValidateCommand() *CertificateProfileValidateCommand {
+	this := CertificateProfileValidateCommand{}
 	return &this
 }
 
-// NewCertificateCredentialValidateCommandWithDefaults instantiates a new CertificateCredentialValidateCommand object
+// NewCertificateProfileValidateCommandWithDefaults instantiates a new CertificateProfileValidateCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCertificateCredentialValidateCommandWithDefaults() *CertificateCredentialValidateCommand {
-	this := CertificateCredentialValidateCommand{}
+func NewCertificateProfileValidateCommandWithDefaults() *CertificateProfileValidateCommand {
+	this := CertificateProfileValidateCommand{}
 	return &this
 }
 
-// GetCertificateCredentialId returns the CertificateCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialValidateCommand) GetCertificateCredentialId() int32 {
-	if o == nil || IsNil(o.CertificateCredentialId.Get()) {
+// GetCertificateProfileId returns the CertificateProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileValidateCommand) GetCertificateProfileId() int32 {
+	if o == nil || IsNil(o.CertificateProfileId.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CertificateCredentialId.Get()
+	return *o.CertificateProfileId.Get()
 }
 
-// GetCertificateCredentialIdOk returns a tuple with the CertificateCredentialId field value if set, nil otherwise
+// GetCertificateProfileIdOk returns a tuple with the CertificateProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialValidateCommand) GetCertificateCredentialIdOk() (*int32, bool) {
+func (o *CertificateProfileValidateCommand) GetCertificateProfileIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CertificateCredentialId.Get(), o.CertificateCredentialId.IsSet()
+	return o.CertificateProfileId.Get(), o.CertificateProfileId.IsSet()
 }
 
-// HasCertificateCredentialId returns a boolean if a field has been set.
-func (o *CertificateCredentialValidateCommand) HasCertificateCredentialId() bool {
-	if o != nil && o.CertificateCredentialId.IsSet() {
+// HasCertificateProfileId returns a boolean if a field has been set.
+func (o *CertificateProfileValidateCommand) HasCertificateProfileId() bool {
+	if o != nil && o.CertificateProfileId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCertificateCredentialId gets a reference to the given NullableInt32 and assigns it to the CertificateCredentialId field.
-func (o *CertificateCredentialValidateCommand) SetCertificateCredentialId(v int32) {
-	o.CertificateCredentialId.Set(&v)
+// SetCertificateProfileId gets a reference to the given NullableInt32 and assigns it to the CertificateProfileId field.
+func (o *CertificateProfileValidateCommand) SetCertificateProfileId(v int32) {
+	o.CertificateProfileId.Set(&v)
 }
-// SetCertificateCredentialIdNil sets the value for CertificateCredentialId to be an explicit nil
-func (o *CertificateCredentialValidateCommand) SetCertificateCredentialIdNil() {
-	o.CertificateCredentialId.Set(nil)
+// SetCertificateProfileIdNil sets the value for CertificateProfileId to be an explicit nil
+func (o *CertificateProfileValidateCommand) SetCertificateProfileIdNil() {
+	o.CertificateProfileId.Set(nil)
 }
 
-// UnsetCertificateCredentialId ensures that no value is present for CertificateCredentialId, not even an explicit nil
-func (o *CertificateCredentialValidateCommand) UnsetCertificateCredentialId() {
-	o.CertificateCredentialId.Unset()
+// UnsetCertificateProfileId ensures that no value is present for CertificateProfileId, not even an explicit nil
+func (o *CertificateProfileValidateCommand) UnsetCertificateProfileId() {
+	o.CertificateProfileId.Unset()
 }
 
 // GetKind returns the Kind field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialValidateCommand) GetKind() string {
+func (o *CertificateProfileValidateCommand) GetKind() string {
 	if o == nil || IsNil(o.Kind.Get()) {
 		var ret string
 		return ret
@@ -101,7 +101,7 @@ func (o *CertificateCredentialValidateCommand) GetKind() string {
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialValidateCommand) GetKindOk() (*string, bool) {
+func (o *CertificateProfileValidateCommand) GetKindOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,7 +109,7 @@ func (o *CertificateCredentialValidateCommand) GetKindOk() (*string, bool) {
 }
 
 // HasKind returns a boolean if a field has been set.
-func (o *CertificateCredentialValidateCommand) HasKind() bool {
+func (o *CertificateProfileValidateCommand) HasKind() bool {
 	if o != nil && o.Kind.IsSet() {
 		return true
 	}
@@ -118,21 +118,21 @@ func (o *CertificateCredentialValidateCommand) HasKind() bool {
 }
 
 // SetKind gets a reference to the given NullableString and assigns it to the Kind field.
-func (o *CertificateCredentialValidateCommand) SetKind(v string) {
+func (o *CertificateProfileValidateCommand) SetKind(v string) {
 	o.Kind.Set(&v)
 }
 // SetKindNil sets the value for Kind to be an explicit nil
-func (o *CertificateCredentialValidateCommand) SetKindNil() {
+func (o *CertificateProfileValidateCommand) SetKindNil() {
 	o.Kind.Set(nil)
 }
 
 // UnsetKind ensures that no value is present for Kind, not even an explicit nil
-func (o *CertificateCredentialValidateCommand) UnsetKind() {
+func (o *CertificateProfileValidateCommand) UnsetKind() {
 	o.Kind.Unset()
 }
 
 // GetCertPem returns the CertPem field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialValidateCommand) GetCertPem() string {
+func (o *CertificateProfileValidateCommand) GetCertPem() string {
 	if o == nil || IsNil(o.CertPem.Get()) {
 		var ret string
 		return ret
@@ -143,7 +143,7 @@ func (o *CertificateCredentialValidateCommand) GetCertPem() string {
 // GetCertPemOk returns a tuple with the CertPem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialValidateCommand) GetCertPemOk() (*string, bool) {
+func (o *CertificateProfileValidateCommand) GetCertPemOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -151,7 +151,7 @@ func (o *CertificateCredentialValidateCommand) GetCertPemOk() (*string, bool) {
 }
 
 // HasCertPem returns a boolean if a field has been set.
-func (o *CertificateCredentialValidateCommand) HasCertPem() bool {
+func (o *CertificateProfileValidateCommand) HasCertPem() bool {
 	if o != nil && o.CertPem.IsSet() {
 		return true
 	}
@@ -160,21 +160,21 @@ func (o *CertificateCredentialValidateCommand) HasCertPem() bool {
 }
 
 // SetCertPem gets a reference to the given NullableString and assigns it to the CertPem field.
-func (o *CertificateCredentialValidateCommand) SetCertPem(v string) {
+func (o *CertificateProfileValidateCommand) SetCertPem(v string) {
 	o.CertPem.Set(&v)
 }
 // SetCertPemNil sets the value for CertPem to be an explicit nil
-func (o *CertificateCredentialValidateCommand) SetCertPemNil() {
+func (o *CertificateProfileValidateCommand) SetCertPemNil() {
 	o.CertPem.Set(nil)
 }
 
 // UnsetCertPem ensures that no value is present for CertPem, not even an explicit nil
-func (o *CertificateCredentialValidateCommand) UnsetCertPem() {
+func (o *CertificateProfileValidateCommand) UnsetCertPem() {
 	o.CertPem.Unset()
 }
 
 // GetKeyPem returns the KeyPem field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialValidateCommand) GetKeyPem() string {
+func (o *CertificateProfileValidateCommand) GetKeyPem() string {
 	if o == nil || IsNil(o.KeyPem.Get()) {
 		var ret string
 		return ret
@@ -185,7 +185,7 @@ func (o *CertificateCredentialValidateCommand) GetKeyPem() string {
 // GetKeyPemOk returns a tuple with the KeyPem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialValidateCommand) GetKeyPemOk() (*string, bool) {
+func (o *CertificateProfileValidateCommand) GetKeyPemOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -193,7 +193,7 @@ func (o *CertificateCredentialValidateCommand) GetKeyPemOk() (*string, bool) {
 }
 
 // HasKeyPem returns a boolean if a field has been set.
-func (o *CertificateCredentialValidateCommand) HasKeyPem() bool {
+func (o *CertificateProfileValidateCommand) HasKeyPem() bool {
 	if o != nil && o.KeyPem.IsSet() {
 		return true
 	}
@@ -202,21 +202,21 @@ func (o *CertificateCredentialValidateCommand) HasKeyPem() bool {
 }
 
 // SetKeyPem gets a reference to the given NullableString and assigns it to the KeyPem field.
-func (o *CertificateCredentialValidateCommand) SetKeyPem(v string) {
+func (o *CertificateProfileValidateCommand) SetKeyPem(v string) {
 	o.KeyPem.Set(&v)
 }
 // SetKeyPemNil sets the value for KeyPem to be an explicit nil
-func (o *CertificateCredentialValidateCommand) SetKeyPemNil() {
+func (o *CertificateProfileValidateCommand) SetKeyPemNil() {
 	o.KeyPem.Set(nil)
 }
 
 // UnsetKeyPem ensures that no value is present for KeyPem, not even an explicit nil
-func (o *CertificateCredentialValidateCommand) UnsetKeyPem() {
+func (o *CertificateProfileValidateCommand) UnsetKeyPem() {
 	o.KeyPem.Unset()
 }
 
 // GetChainPem returns the ChainPem field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialValidateCommand) GetChainPem() string {
+func (o *CertificateProfileValidateCommand) GetChainPem() string {
 	if o == nil || IsNil(o.ChainPem.Get()) {
 		var ret string
 		return ret
@@ -227,7 +227,7 @@ func (o *CertificateCredentialValidateCommand) GetChainPem() string {
 // GetChainPemOk returns a tuple with the ChainPem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialValidateCommand) GetChainPemOk() (*string, bool) {
+func (o *CertificateProfileValidateCommand) GetChainPemOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -235,7 +235,7 @@ func (o *CertificateCredentialValidateCommand) GetChainPemOk() (*string, bool) {
 }
 
 // HasChainPem returns a boolean if a field has been set.
-func (o *CertificateCredentialValidateCommand) HasChainPem() bool {
+func (o *CertificateProfileValidateCommand) HasChainPem() bool {
 	if o != nil && o.ChainPem.IsSet() {
 		return true
 	}
@@ -244,20 +244,20 @@ func (o *CertificateCredentialValidateCommand) HasChainPem() bool {
 }
 
 // SetChainPem gets a reference to the given NullableString and assigns it to the ChainPem field.
-func (o *CertificateCredentialValidateCommand) SetChainPem(v string) {
+func (o *CertificateProfileValidateCommand) SetChainPem(v string) {
 	o.ChainPem.Set(&v)
 }
 // SetChainPemNil sets the value for ChainPem to be an explicit nil
-func (o *CertificateCredentialValidateCommand) SetChainPemNil() {
+func (o *CertificateProfileValidateCommand) SetChainPemNil() {
 	o.ChainPem.Set(nil)
 }
 
 // UnsetChainPem ensures that no value is present for ChainPem, not even an explicit nil
-func (o *CertificateCredentialValidateCommand) UnsetChainPem() {
+func (o *CertificateProfileValidateCommand) UnsetChainPem() {
 	o.ChainPem.Unset()
 }
 
-func (o CertificateCredentialValidateCommand) MarshalJSON() ([]byte, error) {
+func (o CertificateProfileValidateCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -265,10 +265,10 @@ func (o CertificateCredentialValidateCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CertificateCredentialValidateCommand) ToMap() (map[string]interface{}, error) {
+func (o CertificateProfileValidateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CertificateCredentialId.IsSet() {
-		toSerialize["certificateCredentialId"] = o.CertificateCredentialId.Get()
+	if o.CertificateProfileId.IsSet() {
+		toSerialize["certificateProfileId"] = o.CertificateProfileId.Get()
 	}
 	if o.Kind.IsSet() {
 		toSerialize["kind"] = o.Kind.Get()
@@ -290,21 +290,21 @@ func (o CertificateCredentialValidateCommand) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *CertificateCredentialValidateCommand) UnmarshalJSON(data []byte) (err error) {
-	varCertificateCredentialValidateCommand := _CertificateCredentialValidateCommand{}
+func (o *CertificateProfileValidateCommand) UnmarshalJSON(data []byte) (err error) {
+	varCertificateProfileValidateCommand := _CertificateProfileValidateCommand{}
 
-	err = json.Unmarshal(data, &varCertificateCredentialValidateCommand)
+	err = json.Unmarshal(data, &varCertificateProfileValidateCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CertificateCredentialValidateCommand(varCertificateCredentialValidateCommand)
+	*o = CertificateProfileValidateCommand(varCertificateProfileValidateCommand)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "certificateCredentialId")
+		delete(additionalProperties, "certificateProfileId")
 		delete(additionalProperties, "kind")
 		delete(additionalProperties, "certPem")
 		delete(additionalProperties, "keyPem")
@@ -315,38 +315,38 @@ func (o *CertificateCredentialValidateCommand) UnmarshalJSON(data []byte) (err e
 	return err
 }
 
-type NullableCertificateCredentialValidateCommand struct {
-	value *CertificateCredentialValidateCommand
+type NullableCertificateProfileValidateCommand struct {
+	value *CertificateProfileValidateCommand
 	isSet bool
 }
 
-func (v NullableCertificateCredentialValidateCommand) Get() *CertificateCredentialValidateCommand {
+func (v NullableCertificateProfileValidateCommand) Get() *CertificateProfileValidateCommand {
 	return v.value
 }
 
-func (v *NullableCertificateCredentialValidateCommand) Set(val *CertificateCredentialValidateCommand) {
+func (v *NullableCertificateProfileValidateCommand) Set(val *CertificateProfileValidateCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCertificateCredentialValidateCommand) IsSet() bool {
+func (v NullableCertificateProfileValidateCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCertificateCredentialValidateCommand) Unset() {
+func (v *NullableCertificateProfileValidateCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCertificateCredentialValidateCommand(val *CertificateCredentialValidateCommand) *NullableCertificateCredentialValidateCommand {
-	return &NullableCertificateCredentialValidateCommand{value: val, isSet: true}
+func NewNullableCertificateProfileValidateCommand(val *CertificateProfileValidateCommand) *NullableCertificateProfileValidateCommand {
+	return &NullableCertificateProfileValidateCommand{value: val, isSet: true}
 }
 
-func (v NullableCertificateCredentialValidateCommand) MarshalJSON() ([]byte, error) {
+func (v NullableCertificateProfileValidateCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCertificateCredentialValidateCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableCertificateProfileValidateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

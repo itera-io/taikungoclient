@@ -21,32 +21,32 @@ import (
 )
 
 
-// CustomCAsAPIService CustomCAsAPI service
-type CustomCAsAPIService service
+// CertificateProfilesAPIService CertificateProfilesAPI service
+type CertificateProfilesAPIService service
 
-type ApiCustomCasCreateRequest struct {
+type ApiCertificateProfilesCreateRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
-	customCertificateAuthorityCreateCommand *CustomCertificateAuthorityCreateCommand
+	ApiService *CertificateProfilesAPIService
+	certificateProfileCreateCommand *CertificateProfileCreateCommand
 }
 
-func (r ApiCustomCasCreateRequest) CustomCertificateAuthorityCreateCommand(customCertificateAuthorityCreateCommand CustomCertificateAuthorityCreateCommand) ApiCustomCasCreateRequest {
-	r.customCertificateAuthorityCreateCommand = &customCertificateAuthorityCreateCommand
+func (r ApiCertificateProfilesCreateRequest) CertificateProfileCreateCommand(certificateProfileCreateCommand CertificateProfileCreateCommand) ApiCertificateProfilesCreateRequest {
+	r.certificateProfileCreateCommand = &certificateProfileCreateCommand
 	return r
 }
 
-func (r ApiCustomCasCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
-	return r.ApiService.CustomCasCreateExecute(r)
+func (r ApiCertificateProfilesCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
+	return r.ApiService.CertificateProfilesCreateExecute(r)
 }
 
 /*
-CustomCasCreate Add custom certificate authority
+CertificateProfilesCreate Create certificate profile (unified issuerMode DTO or legacy kind-based)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomCasCreateRequest
+ @return ApiCertificateProfilesCreateRequest
 */
-func (a *CustomCAsAPIService) CustomCasCreate(ctx context.Context) ApiCustomCasCreateRequest {
-	return ApiCustomCasCreateRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesCreate(ctx context.Context) ApiCertificateProfilesCreateRequest {
+	return ApiCertificateProfilesCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -54,7 +54,7 @@ func (a *CustomCAsAPIService) CustomCasCreate(ctx context.Context) ApiCustomCasC
 
 // Execute executes the request
 //  @return ApiResponse
-func (a *CustomCAsAPIService) CustomCasCreateExecute(r ApiCustomCasCreateRequest) (*ApiResponse, *http.Response, error) {
+func (a *CertificateProfilesAPIService) CertificateProfilesCreateExecute(r ApiCertificateProfilesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -62,12 +62,12 @@ func (a *CustomCAsAPIService) CustomCasCreateExecute(r ApiCustomCasCreateRequest
 		localVarReturnValue  *ApiResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -91,7 +91,7 @@ func (a *CustomCAsAPIService) CustomCasCreateExecute(r ApiCustomCasCreateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customCertificateAuthorityCreateCommand
+	localVarPostBody = r.certificateProfileCreateCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -208,25 +208,25 @@ func (a *CustomCAsAPIService) CustomCasCreateExecute(r ApiCustomCasCreateRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomCasDeleteRequest struct {
+type ApiCertificateProfilesDeleteRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
+	ApiService *CertificateProfilesAPIService
 	id int32
 }
 
-func (r ApiCustomCasDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CustomCasDeleteExecute(r)
+func (r ApiCertificateProfilesDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CertificateProfilesDeleteExecute(r)
 }
 
 /*
-CustomCasDelete Delete custom certificate authority
+CertificateProfilesDelete Delete certificate profile
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
- @return ApiCustomCasDeleteRequest
+ @return ApiCertificateProfilesDeleteRequest
 */
-func (a *CustomCAsAPIService) CustomCasDelete(ctx context.Context, id int32) ApiCustomCasDeleteRequest {
-	return ApiCustomCasDeleteRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesDelete(ctx context.Context, id int32) ApiCertificateProfilesDeleteRequest {
+	return ApiCertificateProfilesDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -234,19 +234,19 @@ func (a *CustomCAsAPIService) CustomCasDelete(ctx context.Context, id int32) Api
 }
 
 // Execute executes the request
-func (a *CustomCAsAPIService) CustomCasDeleteExecute(r ApiCustomCasDeleteRequest) (*http.Response, error) {
+func (a *CertificateProfilesAPIService) CertificateProfilesDeleteExecute(r ApiCertificateProfilesDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas/{id}"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -377,56 +377,62 @@ func (a *CustomCAsAPIService) CustomCasDeleteExecute(r ApiCustomCasDeleteRequest
 	return localVarHTTPResponse, nil
 }
 
-type ApiCustomCasDropdownRequest struct {
+type ApiCertificateProfilesDropdownRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
+	ApiService *CertificateProfilesAPIService
 	organizationId *int32
 	search *string
+	kind *string
 }
 
-func (r ApiCustomCasDropdownRequest) OrganizationId(organizationId int32) ApiCustomCasDropdownRequest {
+func (r ApiCertificateProfilesDropdownRequest) OrganizationId(organizationId int32) ApiCertificateProfilesDropdownRequest {
 	r.organizationId = &organizationId
 	return r
 }
 
-func (r ApiCustomCasDropdownRequest) Search(search string) ApiCustomCasDropdownRequest {
+func (r ApiCertificateProfilesDropdownRequest) Search(search string) ApiCertificateProfilesDropdownRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiCustomCasDropdownRequest) Execute() ([]CustomCertificateAuthorityDropdownDto, *http.Response, error) {
-	return r.ApiService.CustomCasDropdownExecute(r)
+func (r ApiCertificateProfilesDropdownRequest) Kind(kind string) ApiCertificateProfilesDropdownRequest {
+	r.kind = &kind
+	return r
+}
+
+func (r ApiCertificateProfilesDropdownRequest) Execute() ([]CertificateProfileDropdownDto, *http.Response, error) {
+	return r.ApiService.CertificateProfilesDropdownExecute(r)
 }
 
 /*
-CustomCasDropdown Retrieve custom CAs for organization dropdown
+CertificateProfilesDropdown Certificate profile dropdown (use ?kind=signing_ca for dns-cert CA picker)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomCasDropdownRequest
+ @return ApiCertificateProfilesDropdownRequest
 */
-func (a *CustomCAsAPIService) CustomCasDropdown(ctx context.Context) ApiCustomCasDropdownRequest {
-	return ApiCustomCasDropdownRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesDropdown(ctx context.Context) ApiCertificateProfilesDropdownRequest {
+	return ApiCertificateProfilesDropdownRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CustomCertificateAuthorityDropdownDto
-func (a *CustomCAsAPIService) CustomCasDropdownExecute(r ApiCustomCasDropdownRequest) ([]CustomCertificateAuthorityDropdownDto, *http.Response, error) {
+//  @return []CertificateProfileDropdownDto
+func (a *CertificateProfilesAPIService) CertificateProfilesDropdownExecute(r ApiCertificateProfilesDropdownRequest) ([]CertificateProfileDropdownDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []CustomCertificateAuthorityDropdownDto
+		localVarReturnValue  []CertificateProfileDropdownDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasDropdown")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesDropdown")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -437,6 +443,9 @@ func (a *CustomCAsAPIService) CustomCasDropdownExecute(r ApiCustomCasDropdownReq
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.kind != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Kind", r.kind, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -571,98 +580,284 @@ func (a *CustomCAsAPIService) CustomCasDropdownExecute(r ApiCustomCasDropdownReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomCasListRequest struct {
+type ApiCertificateProfilesGetTrustBundleRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
+	ApiService *CertificateProfilesAPIService
+	id int32
+}
+
+func (r ApiCertificateProfilesGetTrustBundleRequest) Execute() (*CertificateProfileTrustBundleResponse, *http.Response, error) {
+	return r.ApiService.CertificateProfilesGetTrustBundleExecute(r)
+}
+
+/*
+CertificateProfilesGetTrustBundle Get trust bundle items (name + PEM) for a certificate profile
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiCertificateProfilesGetTrustBundleRequest
+*/
+func (a *CertificateProfilesAPIService) CertificateProfilesGetTrustBundle(ctx context.Context, id int32) ApiCertificateProfilesGetTrustBundleRequest {
+	return ApiCertificateProfilesGetTrustBundleRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return CertificateProfileTrustBundleResponse
+func (a *CertificateProfilesAPIService) CertificateProfilesGetTrustBundleExecute(r ApiCertificateProfilesGetTrustBundleRequest) (*CertificateProfileTrustBundleResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CertificateProfileTrustBundleResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesGetTrustBundle")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/{id}/trust-bundle"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCertificateProfilesListRequest struct {
+	ctx context.Context
+	ApiService *CertificateProfilesAPIService
 	organizationId *int32
 	accountId *int32
 	search *string
 	searchId *string
 	id *int32
+	kind *string
 	sortBy *string
 	sortDirection *string
 	limit *int32
 	offset *int32
 }
 
-func (r ApiCustomCasListRequest) OrganizationId(organizationId int32) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) OrganizationId(organizationId int32) ApiCertificateProfilesListRequest {
 	r.organizationId = &organizationId
 	return r
 }
 
-func (r ApiCustomCasListRequest) AccountId(accountId int32) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) AccountId(accountId int32) ApiCertificateProfilesListRequest {
 	r.accountId = &accountId
 	return r
 }
 
-func (r ApiCustomCasListRequest) Search(search string) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) Search(search string) ApiCertificateProfilesListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiCustomCasListRequest) SearchId(searchId string) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) SearchId(searchId string) ApiCertificateProfilesListRequest {
 	r.searchId = &searchId
 	return r
 }
 
-func (r ApiCustomCasListRequest) Id(id int32) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) Id(id int32) ApiCertificateProfilesListRequest {
 	r.id = &id
 	return r
 }
 
-func (r ApiCustomCasListRequest) SortBy(sortBy string) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) Kind(kind string) ApiCertificateProfilesListRequest {
+	r.kind = &kind
+	return r
+}
+
+func (r ApiCertificateProfilesListRequest) SortBy(sortBy string) ApiCertificateProfilesListRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-func (r ApiCustomCasListRequest) SortDirection(sortDirection string) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) SortDirection(sortDirection string) ApiCertificateProfilesListRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-func (r ApiCustomCasListRequest) Limit(limit int32) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) Limit(limit int32) ApiCertificateProfilesListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiCustomCasListRequest) Offset(offset int32) ApiCustomCasListRequest {
+func (r ApiCertificateProfilesListRequest) Offset(offset int32) ApiCertificateProfilesListRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiCustomCasListRequest) Execute() (*CustomCertificateAuthorityListResponse, *http.Response, error) {
-	return r.ApiService.CustomCasListExecute(r)
+func (r ApiCertificateProfilesListRequest) Execute() (*CertificateProfileListResponse, *http.Response, error) {
+	return r.ApiService.CertificateProfilesListExecute(r)
 }
 
 /*
-CustomCasList Retrieve all custom certificate authorities
+CertificateProfilesList List certificate profiles (optional kind filter: signing_ca, trust_anchor, tls_leaf)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomCasListRequest
+ @return ApiCertificateProfilesListRequest
 */
-func (a *CustomCAsAPIService) CustomCasList(ctx context.Context) ApiCustomCasListRequest {
-	return ApiCustomCasListRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesList(ctx context.Context) ApiCertificateProfilesListRequest {
+	return ApiCertificateProfilesListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomCertificateAuthorityListResponse
-func (a *CustomCAsAPIService) CustomCasListExecute(r ApiCustomCasListRequest) (*CustomCertificateAuthorityListResponse, *http.Response, error) {
+//  @return CertificateProfileListResponse
+func (a *CertificateProfilesAPIService) CertificateProfilesListExecute(r ApiCertificateProfilesListRequest) (*CertificateProfileListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomCertificateAuthorityListResponse
+		localVarReturnValue  *CertificateProfileListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas/list"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/list"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -682,6 +877,9 @@ func (a *CustomCAsAPIService) CustomCasListExecute(r ApiCustomCasListRequest) (*
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.kind != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Kind", r.kind, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
@@ -836,48 +1034,48 @@ func (a *CustomCAsAPIService) CustomCasListExecute(r ApiCustomCasListRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomCasLockManagementRequest struct {
+type ApiCertificateProfilesLockManagementRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
-	customCertificateAuthorityLockCommand *CustomCertificateAuthorityLockCommand
+	ApiService *CertificateProfilesAPIService
+	certificateProfileLockCommand *CertificateProfileLockCommand
 }
 
-func (r ApiCustomCasLockManagementRequest) CustomCertificateAuthorityLockCommand(customCertificateAuthorityLockCommand CustomCertificateAuthorityLockCommand) ApiCustomCasLockManagementRequest {
-	r.customCertificateAuthorityLockCommand = &customCertificateAuthorityLockCommand
+func (r ApiCertificateProfilesLockManagementRequest) CertificateProfileLockCommand(certificateProfileLockCommand CertificateProfileLockCommand) ApiCertificateProfilesLockManagementRequest {
+	r.certificateProfileLockCommand = &certificateProfileLockCommand
 	return r
 }
 
-func (r ApiCustomCasLockManagementRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CustomCasLockManagementExecute(r)
+func (r ApiCertificateProfilesLockManagementRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CertificateProfilesLockManagementExecute(r)
 }
 
 /*
-CustomCasLockManagement Lock/unlock custom certificate authority
+CertificateProfilesLockManagement Lock/unlock certificate profile
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomCasLockManagementRequest
+ @return ApiCertificateProfilesLockManagementRequest
 */
-func (a *CustomCAsAPIService) CustomCasLockManagement(ctx context.Context) ApiCustomCasLockManagementRequest {
-	return ApiCustomCasLockManagementRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesLockManagement(ctx context.Context) ApiCertificateProfilesLockManagementRequest {
+	return ApiCertificateProfilesLockManagementRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CustomCAsAPIService) CustomCasLockManagementExecute(r ApiCustomCasLockManagementRequest) (*http.Response, error) {
+func (a *CertificateProfilesAPIService) CertificateProfilesLockManagementExecute(r ApiCertificateProfilesLockManagementRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasLockManagement")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesLockManagement")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas/lockmanager"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/lockmanager"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -901,7 +1099,7 @@ func (a *CustomCAsAPIService) CustomCasLockManagementExecute(r ApiCustomCasLockM
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customCertificateAuthorityLockCommand
+	localVarPostBody = r.certificateProfileLockCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1009,48 +1207,48 @@ func (a *CustomCAsAPIService) CustomCasLockManagementExecute(r ApiCustomCasLockM
 	return localVarHTTPResponse, nil
 }
 
-type ApiCustomCasMakeDefaultRequest struct {
+type ApiCertificateProfilesMakeDefaultRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
-	customCertificateAuthorityMakeDefaultCommand *CustomCertificateAuthorityMakeDefaultCommand
+	ApiService *CertificateProfilesAPIService
+	certificateProfileMakeDefaultCommand *CertificateProfileMakeDefaultCommand
 }
 
-func (r ApiCustomCasMakeDefaultRequest) CustomCertificateAuthorityMakeDefaultCommand(customCertificateAuthorityMakeDefaultCommand CustomCertificateAuthorityMakeDefaultCommand) ApiCustomCasMakeDefaultRequest {
-	r.customCertificateAuthorityMakeDefaultCommand = &customCertificateAuthorityMakeDefaultCommand
+func (r ApiCertificateProfilesMakeDefaultRequest) CertificateProfileMakeDefaultCommand(certificateProfileMakeDefaultCommand CertificateProfileMakeDefaultCommand) ApiCertificateProfilesMakeDefaultRequest {
+	r.certificateProfileMakeDefaultCommand = &certificateProfileMakeDefaultCommand
 	return r
 }
 
-func (r ApiCustomCasMakeDefaultRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CustomCasMakeDefaultExecute(r)
+func (r ApiCertificateProfilesMakeDefaultRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CertificateProfilesMakeDefaultExecute(r)
 }
 
 /*
-CustomCasMakeDefault Make default custom certificate authority
+CertificateProfilesMakeDefault Make default certificate profile for organization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomCasMakeDefaultRequest
+ @return ApiCertificateProfilesMakeDefaultRequest
 */
-func (a *CustomCAsAPIService) CustomCasMakeDefault(ctx context.Context) ApiCustomCasMakeDefaultRequest {
-	return ApiCustomCasMakeDefaultRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesMakeDefault(ctx context.Context) ApiCertificateProfilesMakeDefaultRequest {
+	return ApiCertificateProfilesMakeDefaultRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CustomCAsAPIService) CustomCasMakeDefaultExecute(r ApiCustomCasMakeDefaultRequest) (*http.Response, error) {
+func (a *CertificateProfilesAPIService) CertificateProfilesMakeDefaultExecute(r ApiCertificateProfilesMakeDefaultRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasMakeDefault")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesMakeDefault")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas/makedefault"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/makedefault"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1074,7 +1272,7 @@ func (a *CustomCAsAPIService) CustomCasMakeDefaultExecute(r ApiCustomCasMakeDefa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customCertificateAuthorityMakeDefaultCommand
+	localVarPostBody = r.certificateProfileMakeDefaultCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1182,48 +1380,232 @@ func (a *CustomCAsAPIService) CustomCasMakeDefaultExecute(r ApiCustomCasMakeDefa
 	return localVarHTTPResponse, nil
 }
 
-type ApiCustomCasUpdateRequest struct {
+type ApiCertificateProfilesParseCertificateRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
-	customCertificateAuthorityUpdateCommand *CustomCertificateAuthorityUpdateCommand
+	ApiService *CertificateProfilesAPIService
+	parseCertificateQuery *ParseCertificateQuery
 }
 
-func (r ApiCustomCasUpdateRequest) CustomCertificateAuthorityUpdateCommand(customCertificateAuthorityUpdateCommand CustomCertificateAuthorityUpdateCommand) ApiCustomCasUpdateRequest {
-	r.customCertificateAuthorityUpdateCommand = &customCertificateAuthorityUpdateCommand
+func (r ApiCertificateProfilesParseCertificateRequest) ParseCertificateQuery(parseCertificateQuery ParseCertificateQuery) ApiCertificateProfilesParseCertificateRequest {
+	r.parseCertificateQuery = &parseCertificateQuery
 	return r
 }
 
-func (r ApiCustomCasUpdateRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CustomCasUpdateExecute(r)
+func (r ApiCertificateProfilesParseCertificateRequest) Execute() (*ParseCertificateResponse, *http.Response, error) {
+	return r.ApiService.CertificateProfilesParseCertificateExecute(r)
 }
 
 /*
-CustomCasUpdate Update custom CA name/description
+CertificateProfilesParseCertificate Parse a PEM-encoded certificate and return CN and expiry
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomCasUpdateRequest
+ @return ApiCertificateProfilesParseCertificateRequest
 */
-func (a *CustomCAsAPIService) CustomCasUpdate(ctx context.Context) ApiCustomCasUpdateRequest {
-	return ApiCustomCasUpdateRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesParseCertificate(ctx context.Context) ApiCertificateProfilesParseCertificateRequest {
+	return ApiCertificateProfilesParseCertificateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CustomCAsAPIService) CustomCasUpdateExecute(r ApiCustomCasUpdateRequest) (*http.Response, error) {
+//  @return ParseCertificateResponse
+func (a *CertificateProfilesAPIService) CertificateProfilesParseCertificateExecute(r ApiCertificateProfilesParseCertificateRequest) (*ParseCertificateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ParseCertificateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesParseCertificate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/parse-certificate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.parseCertificateQuery
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCertificateProfilesUpdateRequest struct {
+	ctx context.Context
+	ApiService *CertificateProfilesAPIService
+	certificateProfileUpdateCommand *CertificateProfileUpdateCommand
+}
+
+func (r ApiCertificateProfilesUpdateRequest) CertificateProfileUpdateCommand(certificateProfileUpdateCommand CertificateProfileUpdateCommand) ApiCertificateProfilesUpdateRequest {
+	r.certificateProfileUpdateCommand = &certificateProfileUpdateCommand
+	return r
+}
+
+func (r ApiCertificateProfilesUpdateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CertificateProfilesUpdateExecute(r)
+}
+
+/*
+CertificateProfilesUpdate Update certificate profile (name, issuerMode template, trust bundle, and related fields)
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCertificateProfilesUpdateRequest
+*/
+func (a *CertificateProfilesAPIService) CertificateProfilesUpdate(ctx context.Context) ApiCertificateProfilesUpdateRequest {
+	return ApiCertificateProfilesUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *CertificateProfilesAPIService) CertificateProfilesUpdateExecute(r ApiCertificateProfilesUpdateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesUpdate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1247,7 +1629,7 @@ func (a *CustomCAsAPIService) CustomCasUpdateExecute(r ApiCustomCasUpdateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customCertificateAuthorityUpdateCommand
+	localVarPostBody = r.certificateProfileUpdateCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1355,48 +1737,48 @@ func (a *CustomCAsAPIService) CustomCasUpdateExecute(r ApiCustomCasUpdateRequest
 	return localVarHTTPResponse, nil
 }
 
-type ApiCustomCasValidateRequest struct {
+type ApiCertificateProfilesValidateRequest struct {
 	ctx context.Context
-	ApiService *CustomCAsAPIService
-	customCertificateAuthorityValidateCommand *CustomCertificateAuthorityValidateCommand
+	ApiService *CertificateProfilesAPIService
+	certificateProfileValidateCommand *CertificateProfileValidateCommand
 }
 
-func (r ApiCustomCasValidateRequest) CustomCertificateAuthorityValidateCommand(customCertificateAuthorityValidateCommand CustomCertificateAuthorityValidateCommand) ApiCustomCasValidateRequest {
-	r.customCertificateAuthorityValidateCommand = &customCertificateAuthorityValidateCommand
+func (r ApiCertificateProfilesValidateRequest) CertificateProfileValidateCommand(certificateProfileValidateCommand CertificateProfileValidateCommand) ApiCertificateProfilesValidateRequest {
+	r.certificateProfileValidateCommand = &certificateProfileValidateCommand
 	return r
 }
 
-func (r ApiCustomCasValidateRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CustomCasValidateExecute(r)
+func (r ApiCertificateProfilesValidateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CertificateProfilesValidateExecute(r)
 }
 
 /*
-CustomCasValidate Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)
+CertificateProfilesValidate Validate certificate profile PEMs or stored profile by certificateProfileId
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomCasValidateRequest
+ @return ApiCertificateProfilesValidateRequest
 */
-func (a *CustomCAsAPIService) CustomCasValidate(ctx context.Context) ApiCustomCasValidateRequest {
-	return ApiCustomCasValidateRequest{
+func (a *CertificateProfilesAPIService) CertificateProfilesValidate(ctx context.Context) ApiCertificateProfilesValidateRequest {
+	return ApiCertificateProfilesValidateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CustomCAsAPIService) CustomCasValidateExecute(r ApiCustomCasValidateRequest) (*http.Response, error) {
+func (a *CertificateProfilesAPIService) CertificateProfilesValidateExecute(r ApiCertificateProfilesValidateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomCAsAPIService.CustomCasValidate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesValidate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/custom-cas/validate"
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/validate"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1420,7 +1802,7 @@ func (a *CustomCAsAPIService) CustomCasValidateExecute(r ApiCustomCasValidateReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customCertificateAuthorityValidateCommand
+	localVarPostBody = r.certificateProfileValidateCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1526,4 +1908,188 @@ func (a *CustomCAsAPIService) CustomCasValidateExecute(r ApiCustomCasValidateReq
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiCertificateProfilesValidateTrustBundleRequest struct {
+	ctx context.Context
+	ApiService *CertificateProfilesAPIService
+	validateTrustBundleQuery *ValidateTrustBundleQuery
+}
+
+func (r ApiCertificateProfilesValidateTrustBundleRequest) ValidateTrustBundleQuery(validateTrustBundleQuery ValidateTrustBundleQuery) ApiCertificateProfilesValidateTrustBundleRequest {
+	r.validateTrustBundleQuery = &validateTrustBundleQuery
+	return r
+}
+
+func (r ApiCertificateProfilesValidateTrustBundleRequest) Execute() (*ValidateTrustBundleResponse, *http.Response, error) {
+	return r.ApiService.CertificateProfilesValidateTrustBundleExecute(r)
+}
+
+/*
+CertificateProfilesValidateTrustBundle Validate a PEM bundle and return the count of parseable certificates
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCertificateProfilesValidateTrustBundleRequest
+*/
+func (a *CertificateProfilesAPIService) CertificateProfilesValidateTrustBundle(ctx context.Context) ApiCertificateProfilesValidateTrustBundleRequest {
+	return ApiCertificateProfilesValidateTrustBundleRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ValidateTrustBundleResponse
+func (a *CertificateProfilesAPIService) CertificateProfilesValidateTrustBundleExecute(r ApiCertificateProfilesValidateTrustBundleRequest) (*ValidateTrustBundleResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ValidateTrustBundleResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateProfilesAPIService.CertificateProfilesValidateTrustBundle")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/certificate-profiles/validate-trust-bundle"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.validateTrustBundleQuery
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

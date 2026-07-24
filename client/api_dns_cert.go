@@ -1777,7 +1777,7 @@ func (r ApiDnsCertValidateRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DnsCertValidate Validate DNS provider credentials
+DnsCertValidate Validate DNS/Cert enablement inputs (provider credentials, signing CA reference, issuer rules)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDnsCertValidateRequest

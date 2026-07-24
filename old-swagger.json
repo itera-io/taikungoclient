@@ -14475,18 +14475,18 @@
         }
       }
     },
-    "/api/v1/certificate-credentials": {
+    "/api/v1/certificate-profiles": {
       "put": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Update custom CA name/description",
-        "operationId": "certificate-credentials-update",
+        "summary": "Update certificate profile (name, issuerMode template, trust bundle, and related fields)",
+        "operationId": "certificate-profiles-update",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CertificateCredentialUpdateCommand"
+                "$ref": "#/components/schemas/CertificateProfileUpdateCommand"
               }
             }
           }
@@ -14562,15 +14562,15 @@
       },
       "post": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Add certificate credential",
-        "operationId": "certificate-credentials-create",
+        "summary": "Create certificate profile (unified issuerMode DTO or legacy kind-based)",
+        "operationId": "certificate-profiles-create",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CertificateCredentialCreateCommand"
+                "$ref": "#/components/schemas/CertificateProfileCreateCommand"
               }
             }
           }
@@ -14650,10 +14650,10 @@
       },
       "get": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Retrieve custom CAs for organization dropdown",
-        "operationId": "certificate-credentials-dropdown",
+        "summary": "Certificate profile dropdown (use ?kind=signing_ca for dns-cert CA picker)",
+        "operationId": "certificate-profiles-dropdown",
         "parameters": [
           {
             "name": "OrganizationId",
@@ -14686,7 +14686,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CertificateCredentialDropdownDto"
+                    "$ref": "#/components/schemas/CertificateProfileDropdownDto"
                   }
                 }
               }
@@ -14755,18 +14755,18 @@
         }
       }
     },
-    "/api/v1/certificate-credentials/lockmanager": {
+    "/api/v1/certificate-profiles/lockmanager": {
       "post": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Lock/unlock certificate credential",
-        "operationId": "certificate-credentials-lock-management",
+        "summary": "Lock/unlock certificate profile",
+        "operationId": "certificate-profiles-lock-management",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CertificateCredentialLockCommand"
+                "$ref": "#/components/schemas/CertificateProfileLockCommand"
               }
             }
           }
@@ -14841,18 +14841,18 @@
         }
       }
     },
-    "/api/v1/certificate-credentials/makedefault": {
+    "/api/v1/certificate-profiles/makedefault": {
       "post": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Make default certificate credential",
-        "operationId": "certificate-credentials-make-default",
+        "summary": "Make default certificate profile for organization",
+        "operationId": "certificate-profiles-make-default",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CertificateCredentialMakeDefaultCommand"
+                "$ref": "#/components/schemas/CertificateProfileMakeDefaultCommand"
               }
             }
           }
@@ -14927,18 +14927,108 @@
         }
       }
     },
-    "/api/v1/certificate-credentials/validate": {
+    "/api/v1/certificate-profiles/parse-certificate": {
       "post": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)",
-        "operationId": "certificate-credentials-validate",
+        "summary": "Parse a PEM-encoded certificate and return CN and expiry",
+        "operationId": "certificate-profiles-parse-certificate",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CertificateCredentialValidateCommand"
+                "$ref": "#/components/schemas/ParseCertificateQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParseCertificateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-profiles/validate": {
+      "post": {
+        "tags": [
+          "Certificate profiles"
+        ],
+        "summary": "Validate certificate profile PEMs or stored profile by certificateProfileId",
+        "operationId": "certificate-profiles-validate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificateProfileValidateCommand"
               }
             }
           }
@@ -15013,13 +15103,103 @@
         }
       }
     },
-    "/api/v1/certificate-credentials/list": {
+    "/api/v1/certificate-profiles/validate-trust-bundle": {
+      "post": {
+        "tags": [
+          "Certificate profiles"
+        ],
+        "summary": "Validate a PEM bundle and return the count of parseable certificates",
+        "operationId": "certificate-profiles-validate-trust-bundle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateTrustBundleQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidateTrustBundleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-profiles/list": {
       "get": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Retrieve all custom certificate authorities",
-        "operationId": "certificate-credentials-list",
+        "summary": "List certificate profiles (optional kind filter: signing_ca, trust_anchor, tls_leaf)",
+        "operationId": "certificate-profiles-list",
         "parameters": [
           {
             "name": "OrganizationId",
@@ -15057,6 +15237,13 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "Kind",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -15098,7 +15285,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CertificateCredentialListResponse"
+                  "$ref": "#/components/schemas/CertificateProfileListResponse"
                 }
               }
             }
@@ -15166,13 +15353,105 @@
         }
       }
     },
-    "/api/v1/certificate-credentials/{id}": {
+    "/api/v1/certificate-profiles/{id}/trust-bundle": {
+      "get": {
+        "tags": [
+          "Certificate profiles"
+        ],
+        "summary": "Get trust bundle items (name + PEM) for a certificate profile",
+        "operationId": "certificate-profiles-get-trust-bundle",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificateProfileTrustBundleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-profiles/{id}": {
       "delete": {
         "tags": [
-          "Certificate credentials"
+          "Certificate profiles"
         ],
-        "summary": "Delete certificate credential",
-        "operationId": "certificate-credentials-delete",
+        "summary": "Delete certificate profile",
+        "operationId": "certificate-profiles-delete",
         "parameters": [
           {
             "name": "id",
@@ -19412,18 +19691,104 @@
         }
       }
     },
+    "/api/v1/cronjob/scan-certificate-profile-expiry": {
+      "post": {
+        "tags": [
+          "Cron Job Service"
+        ],
+        "summary": "Scan certificate profiles approaching or past expiry and emit alert logs",
+        "operationId": "CronJobScanCertificateProfileExpiry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScanCertificateProfileExpiryCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/cronjob/scan-certificate-credential-expiry": {
       "post": {
         "tags": [
           "Cron Job Service"
         ],
-        "summary": "Scan certificate credentials approaching or past expiry and emit alert logs",
-        "operationId": "cronjob-scan-certificate-credential-expiry",
+        "summary": "Legacy alias for scan-certificate-profile-expiry (pre-rename cron path)",
+        "operationId": "CronJobScanCertificateCredentialExpiryLegacy",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ScanCertificateCredentialExpiryCommand"
+                "$ref": "#/components/schemas/ScanCertificateProfileExpiryCommand"
               }
             }
           }
@@ -21487,778 +21852,6 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": { }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/custom-cas": {
-      "put": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Update custom CA name/description",
-        "operationId": "custom-cas-update",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CustomCertificateAuthorityUpdateCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": { }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Add custom certificate authority",
-        "operationId": "custom-cas-create",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CustomCertificateAuthorityCreateCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Retrieve custom CAs for organization dropdown",
-        "operationId": "custom-cas-dropdown",
-        "parameters": [
-          {
-            "name": "OrganizationId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CustomCertificateAuthorityDropdownDto"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/custom-cas/lockmanager": {
-      "post": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Lock/unlock custom certificate authority",
-        "operationId": "custom-cas-lock-management",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CustomCertificateAuthorityLockCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": { }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/custom-cas/makedefault": {
-      "post": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Make default custom certificate authority",
-        "operationId": "custom-cas-make-default",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CustomCertificateAuthorityMakeDefaultCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": { }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/custom-cas/validate": {
-      "post": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)",
-        "operationId": "custom-cas-validate",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CustomCertificateAuthorityValidateCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": { }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/custom-cas/list": {
-      "get": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Retrieve all custom certificate authorities",
-        "operationId": "custom-cas-list",
-        "parameters": [
-          {
-            "name": "OrganizationId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "AccountId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SearchId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "SortBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SortDirection",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 50
-            }
-          },
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 0
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CustomCertificateAuthorityListResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/custom-cas/{id}": {
-      "delete": {
-        "tags": [
-          "Custom CAs"
-        ],
-        "summary": "Delete custom certificate authority",
-        "operationId": "custom-cas-delete",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -24441,7 +24034,7 @@
         "tags": [
           "DnsCert"
         ],
-        "summary": "Validate DNS provider credentials",
+        "summary": "Validate DNS/Cert enablement inputs (provider credentials, signing CA reference, issuer rules)",
         "operationId": "dns-cert-validate",
         "requestBody": {
           "content": {
@@ -73473,6 +73066,20 @@
           },
           "sharedFileSystemEnabled": {
             "type": "boolean"
+          },
+          "vpcMode": {
+            "$ref": "#/components/schemas/VpcMode"
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
+          },
+          "importedVpcId": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedVpcCidr": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -76349,7 +75956,7 @@
           }
         }
       },
-      "CertificateCredentialCreateCommand": {
+      "CertificateProfileCreateCommand": {
         "type": "object",
         "properties": {
           "name": {
@@ -76361,6 +75968,57 @@
             "nullable": true
           },
           "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "issuerMode": {
+            "type": "string",
+            "nullable": true
+          },
+          "trustBundle": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustBundleItem"
+            },
+            "nullable": true
+          },
+          "acmeEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "acmeServer": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiType": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiBaseUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiZone": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiAccessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiApiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiZoneUuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "customCaCert": {
+            "type": "string",
+            "nullable": true
+          },
+          "customCaPrivateKey": {
             "type": "string",
             "nullable": true
           },
@@ -76394,11 +76052,10 @@
           }
         }
       },
-      "CertificateCredentialDropdownDto": {
+      "CertificateProfileDropdownDto": {
         "required": [
           "id",
           "isDefault",
-          "kind",
           "name"
         ],
         "type": "object",
@@ -76412,7 +76069,9 @@
             "nullable": true
           },
           "kind": {
-            "$ref": "#/components/schemas/CertificateCredentialKind"
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
           },
           "isDefault": {
             "type": "boolean"
@@ -76428,17 +76087,9 @@
           }
         }
       },
-      "CertificateCredentialKind": {
-        "enum": [
-          "SigningCa",
-          "TrustAnchor",
-          "TlsLeaf"
-        ],
-        "type": "string"
-      },
-      "CertificateCredentialListDto": {
+      "CertificateProfileListDto": {
         "required": [
-          "certPem",
+          "associatedProjects",
           "createdBy",
           "description",
           "id",
@@ -76446,12 +76097,12 @@
           "isDefault",
           "isInfra",
           "isLocked",
-          "kind",
           "lastModified",
           "lastModifiedBy",
           "name",
           "organizationId",
-          "organizationName"
+          "organizationName",
+          "trustBundle"
         ],
         "type": "object",
         "properties": {
@@ -76467,10 +76118,8 @@
             "nullable": true
           },
           "kind": {
-            "$ref": "#/components/schemas/CertificateCredentialKind"
-          },
-          "certPem": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "organizationId": {
             "type": "integer",
@@ -76522,24 +76171,42 @@
             "type": "boolean"
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "inUseCount": {
             "type": "integer",
             "format": "int32"
+          },
+          "associatedProjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommonDropdownDto"
+            }
+          },
+          "issuerMode": {
+            "type": "string",
+            "nullable": true
+          },
+          "trustBundleCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trustBundle": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CertificateProfileTrustBundleSummaryDto"
+            }
           }
         }
       },
-      "CertificateCredentialListResponse": {
+      "CertificateProfileListResponse": {
         "required": [
           "data",
           "hasMore",
@@ -76552,7 +76219,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CertificateCredentialListDto"
+              "$ref": "#/components/schemas/CertificateProfileListDto"
             },
             "nullable": true
           },
@@ -76578,7 +76245,7 @@
           }
         }
       },
-      "CertificateCredentialLockCommand": {
+      "CertificateProfileLockCommand": {
         "type": "object",
         "properties": {
           "id": {
@@ -76591,7 +76258,7 @@
           }
         }
       },
-      "CertificateCredentialMakeDefaultCommand": {
+      "CertificateProfileMakeDefaultCommand": {
         "type": "object",
         "properties": {
           "id": {
@@ -76600,7 +76267,7 @@
           }
         }
       },
-      "CertificateCredentialUpdateCommand": {
+      "CertificateProfileTrustBundleItemDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -76608,19 +76275,128 @@
             "format": "int32"
           },
           "name": {
+            "type": "string"
+          },
+          "pemBundle": {
+            "type": "string"
+          }
+        }
+      },
+      "CertificateProfileTrustBundleResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CertificateProfileTrustBundleItemDto"
+            }
+          }
+        }
+      },
+      "CertificateProfileTrustBundleSummaryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "CertificateProfileUpdateCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "issuerMode": {
+            "type": "string",
+            "nullable": true
+          },
+          "trustBundle": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustBundleUpdateItem"
+            },
+            "nullable": true
+          },
+          "acmeEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "acmeServer": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiType": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiBaseUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiZone": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiAccessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiApiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiZoneUuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "customCaCert": {
+            "type": "string",
+            "nullable": true
+          },
+          "customCaPrivateKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "chainPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "commonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "validityDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "certPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "keyPem": {
             "type": "string",
             "nullable": true
           }
         }
       },
-      "CertificateCredentialValidateCommand": {
+      "CertificateProfileValidateCommand": {
         "type": "object",
         "properties": {
-          "certificateCredentialId": {
+          "certificateProfileId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -79709,223 +79485,6 @@
           }
         }
       },
-      "CustomCertificateAuthorityCreateCommand": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "organizationId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "caCert": {
-            "type": "string",
-            "nullable": true
-          },
-          "caKey": {
-            "type": "string",
-            "nullable": true
-          },
-          "generateSelfSigned": {
-            "type": "boolean"
-          },
-          "commonName": {
-            "type": "string",
-            "nullable": true
-          },
-          "validityDays": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        }
-      },
-      "CustomCertificateAuthorityDropdownDto": {
-        "required": [
-          "id",
-          "isDefault",
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "isDefault": {
-            "type": "boolean"
-          }
-        }
-      },
-      "CustomCertificateAuthorityListDto": {
-        "required": [
-          "caCert",
-          "createdBy",
-          "description",
-          "id",
-          "inUseCount",
-          "isDefault",
-          "isInfra",
-          "isLocked",
-          "lastModified",
-          "lastModifiedBy",
-          "name",
-          "organizationId",
-          "organizationName"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "caCert": {
-            "type": "string"
-          },
-          "organizationId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "organizationName": {
-            "type": "string",
-            "nullable": true
-          },
-          "isLocked": {
-            "type": "boolean"
-          },
-          "isDefault": {
-            "type": "boolean"
-          },
-          "isInfra": {
-            "type": "boolean"
-          },
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastModified": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "inUseCount": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "CustomCertificateAuthorityListResponse": {
-        "required": [
-          "data",
-          "hasMore",
-          "limit",
-          "offset",
-          "totalCount"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomCertificateAuthorityListDto"
-            },
-            "nullable": true
-          },
-          "limit": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "hasMore": {
-            "type": "boolean"
-          },
-          "totalCount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "offset": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nextOffset": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        }
-      },
-      "CustomCertificateAuthorityLockCommand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "mode": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "CustomCertificateAuthorityMakeDefaultCommand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "CustomCertificateAuthorityUpdateCommand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "CustomCertificateAuthorityValidateCommand": {
-        "type": "object",
-        "properties": {
-          "caCert": {
-            "type": "string",
-            "nullable": true
-          },
-          "caKey": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
       "DaemonSetSearchCommand": {
         "type": "object",
         "properties": {
@@ -82036,12 +81595,7 @@
             "type": "string",
             "nullable": true
           },
-          "customCertificateAuthorityId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "certificateCredentialId": {
+          "certificateProfileId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -82072,12 +81626,7 @@
             "type": "string",
             "nullable": true
           },
-          "customCertificateAuthorityId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "certificateCredentialId": {
+          "certificateProfileId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -83121,6 +82670,9 @@
           "trustManagerEnabled": {
             "type": "boolean"
           },
+          "enabled": {
+            "type": "boolean"
+          },
           "dnsProvider": {
             "type": "string",
             "nullable": true
@@ -83190,6 +82742,15 @@
             "nullable": true
           },
           "dnsCredentialName": {
+            "type": "string",
+            "nullable": true
+          },
+          "certificateProfileId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "certificateProfileName": {
             "type": "string",
             "nullable": true
           },
@@ -89281,6 +88842,25 @@
         ],
         "type": "string"
       },
+      "ParseCertificateQuery": {
+        "type": "object",
+        "properties": {
+          "certPem": {
+            "type": "string"
+          }
+        }
+      },
+      "ParseCertificateResponse": {
+        "type": "object",
+        "properties": {
+          "cn": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string"
+          }
+        }
+      },
       "PartnerPoolDekAnomalyDto": {
         "type": "object",
         "properties": {
@@ -93367,7 +92947,7 @@
           }
         }
       },
-      "ScanCertificateCredentialExpiryCommand": {
+      "ScanCertificateProfileExpiryCommand": {
         "type": "object"
       },
       "SecretListDto": {
@@ -96146,6 +95726,39 @@
           }
         }
       },
+      "TrustBundleItem": {
+        "type": "object",
+        "properties": {
+          "certPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "pemBundle": {
+            "type": "string",
+            "nullable": true
+          },
+          "resolvedPem": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        }
+      },
+      "TrustBundleUpdateItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pemBundle": {
+            "type": "string"
+          }
+        }
+      },
       "TrustedRegisteredCreateDto": {
         "type": "object",
         "properties": {
@@ -97910,14 +97523,6 @@
             "type": "string",
             "nullable": true
           },
-          "caCert": {
-            "type": "string",
-            "nullable": true
-          },
-          "caKey": {
-            "type": "string",
-            "nullable": true
-          },
           "authMethod": {
             "type": "string",
             "nullable": true
@@ -97951,15 +97556,47 @@
             "format": "int32",
             "nullable": true
           },
-          "certificateCredentialId": {
+          "certificateProfileId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
+          }
+        }
+      },
+      "ValidateTrustBundleItem": {
+        "type": "object",
+        "properties": {
+          "cn": {
+            "type": "string"
           },
-          "customCertificateAuthorityId": {
+          "expires": {
+            "type": "string"
+          },
+          "expired": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ValidateTrustBundleQuery": {
+        "type": "object",
+        "properties": {
+          "pemBundle": {
+            "type": "string"
+          }
+        }
+      },
+      "ValidateTrustBundleResponse": {
+        "type": "object",
+        "properties": {
+          "validCount": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidateTrustBundleItem"
+            }
           }
         }
       },

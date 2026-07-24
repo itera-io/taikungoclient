@@ -16,12 +16,12 @@ import (
 	"fmt"
 )
 
-// checks if the CustomCertificateAuthorityListResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomCertificateAuthorityListResponse{}
+// checks if the CertificateProfileListResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateProfileListResponse{}
 
-// CustomCertificateAuthorityListResponse struct for CustomCertificateAuthorityListResponse
-type CustomCertificateAuthorityListResponse struct {
-	Data []CustomCertificateAuthorityListDto `json:"data"`
+// CertificateProfileListResponse struct for CertificateProfileListResponse
+type CertificateProfileListResponse struct {
+	Data []CertificateProfileListDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
@@ -30,14 +30,14 @@ type CustomCertificateAuthorityListResponse struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _CustomCertificateAuthorityListResponse CustomCertificateAuthorityListResponse
+type _CertificateProfileListResponse CertificateProfileListResponse
 
-// NewCustomCertificateAuthorityListResponse instantiates a new CustomCertificateAuthorityListResponse object
+// NewCertificateProfileListResponse instantiates a new CertificateProfileListResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomCertificateAuthorityListResponse(data []CustomCertificateAuthorityListDto, limit int32, hasMore bool, totalCount int64, offset int32) *CustomCertificateAuthorityListResponse {
-	this := CustomCertificateAuthorityListResponse{}
+func NewCertificateProfileListResponse(data []CertificateProfileListDto, limit int32, hasMore bool, totalCount int64, offset int32) *CertificateProfileListResponse {
+	this := CertificateProfileListResponse{}
 	this.Data = data
 	this.Limit = limit
 	this.HasMore = hasMore
@@ -46,19 +46,19 @@ func NewCustomCertificateAuthorityListResponse(data []CustomCertificateAuthority
 	return &this
 }
 
-// NewCustomCertificateAuthorityListResponseWithDefaults instantiates a new CustomCertificateAuthorityListResponse object
+// NewCertificateProfileListResponseWithDefaults instantiates a new CertificateProfileListResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCustomCertificateAuthorityListResponseWithDefaults() *CustomCertificateAuthorityListResponse {
-	this := CustomCertificateAuthorityListResponse{}
+func NewCertificateProfileListResponseWithDefaults() *CertificateProfileListResponse {
+	this := CertificateProfileListResponse{}
 	return &this
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []CustomCertificateAuthorityListDto will be returned
-func (o *CustomCertificateAuthorityListResponse) GetData() []CustomCertificateAuthorityListDto {
+// If the value is explicit nil, the zero value for []CertificateProfileListDto will be returned
+func (o *CertificateProfileListResponse) GetData() []CertificateProfileListDto {
 	if o == nil {
-		var ret []CustomCertificateAuthorityListDto
+		var ret []CertificateProfileListDto
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *CustomCertificateAuthorityListResponse) GetData() []CustomCertificateAu
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CustomCertificateAuthorityListResponse) GetDataOk() ([]CustomCertificateAuthorityListDto, bool) {
+func (o *CertificateProfileListResponse) GetDataOk() ([]CertificateProfileListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -76,12 +76,12 @@ func (o *CustomCertificateAuthorityListResponse) GetDataOk() ([]CustomCertificat
 }
 
 // SetData sets field value
-func (o *CustomCertificateAuthorityListResponse) SetData(v []CustomCertificateAuthorityListDto) {
+func (o *CertificateProfileListResponse) SetData(v []CertificateProfileListDto) {
 	o.Data = v
 }
 
 // GetLimit returns the Limit field value
-func (o *CustomCertificateAuthorityListResponse) GetLimit() int32 {
+func (o *CertificateProfileListResponse) GetLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -92,7 +92,7 @@ func (o *CustomCertificateAuthorityListResponse) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *CustomCertificateAuthorityListResponse) GetLimitOk() (*int32, bool) {
+func (o *CertificateProfileListResponse) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,12 +100,12 @@ func (o *CustomCertificateAuthorityListResponse) GetLimitOk() (*int32, bool) {
 }
 
 // SetLimit sets field value
-func (o *CustomCertificateAuthorityListResponse) SetLimit(v int32) {
+func (o *CertificateProfileListResponse) SetLimit(v int32) {
 	o.Limit = v
 }
 
 // GetHasMore returns the HasMore field value
-func (o *CustomCertificateAuthorityListResponse) GetHasMore() bool {
+func (o *CertificateProfileListResponse) GetHasMore() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -116,7 +116,7 @@ func (o *CustomCertificateAuthorityListResponse) GetHasMore() bool {
 
 // GetHasMoreOk returns a tuple with the HasMore field value
 // and a boolean to check if the value has been set.
-func (o *CustomCertificateAuthorityListResponse) GetHasMoreOk() (*bool, bool) {
+func (o *CertificateProfileListResponse) GetHasMoreOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -124,12 +124,12 @@ func (o *CustomCertificateAuthorityListResponse) GetHasMoreOk() (*bool, bool) {
 }
 
 // SetHasMore sets field value
-func (o *CustomCertificateAuthorityListResponse) SetHasMore(v bool) {
+func (o *CertificateProfileListResponse) SetHasMore(v bool) {
 	o.HasMore = v
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *CustomCertificateAuthorityListResponse) GetTotalCount() int64 {
+func (o *CertificateProfileListResponse) GetTotalCount() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -140,7 +140,7 @@ func (o *CustomCertificateAuthorityListResponse) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *CustomCertificateAuthorityListResponse) GetTotalCountOk() (*int64, bool) {
+func (o *CertificateProfileListResponse) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,12 +148,12 @@ func (o *CustomCertificateAuthorityListResponse) GetTotalCountOk() (*int64, bool
 }
 
 // SetTotalCount sets field value
-func (o *CustomCertificateAuthorityListResponse) SetTotalCount(v int64) {
+func (o *CertificateProfileListResponse) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 
 // GetOffset returns the Offset field value
-func (o *CustomCertificateAuthorityListResponse) GetOffset() int32 {
+func (o *CertificateProfileListResponse) GetOffset() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -164,7 +164,7 @@ func (o *CustomCertificateAuthorityListResponse) GetOffset() int32 {
 
 // GetOffsetOk returns a tuple with the Offset field value
 // and a boolean to check if the value has been set.
-func (o *CustomCertificateAuthorityListResponse) GetOffsetOk() (*int32, bool) {
+func (o *CertificateProfileListResponse) GetOffsetOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -172,12 +172,12 @@ func (o *CustomCertificateAuthorityListResponse) GetOffsetOk() (*int32, bool) {
 }
 
 // SetOffset sets field value
-func (o *CustomCertificateAuthorityListResponse) SetOffset(v int32) {
+func (o *CertificateProfileListResponse) SetOffset(v int32) {
 	o.Offset = v
 }
 
 // GetNextOffset returns the NextOffset field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CustomCertificateAuthorityListResponse) GetNextOffset() int32 {
+func (o *CertificateProfileListResponse) GetNextOffset() int32 {
 	if o == nil || IsNil(o.NextOffset.Get()) {
 		var ret int32
 		return ret
@@ -188,7 +188,7 @@ func (o *CustomCertificateAuthorityListResponse) GetNextOffset() int32 {
 // GetNextOffsetOk returns a tuple with the NextOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CustomCertificateAuthorityListResponse) GetNextOffsetOk() (*int32, bool) {
+func (o *CertificateProfileListResponse) GetNextOffsetOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -196,7 +196,7 @@ func (o *CustomCertificateAuthorityListResponse) GetNextOffsetOk() (*int32, bool
 }
 
 // HasNextOffset returns a boolean if a field has been set.
-func (o *CustomCertificateAuthorityListResponse) HasNextOffset() bool {
+func (o *CertificateProfileListResponse) HasNextOffset() bool {
 	if o != nil && o.NextOffset.IsSet() {
 		return true
 	}
@@ -205,20 +205,20 @@ func (o *CustomCertificateAuthorityListResponse) HasNextOffset() bool {
 }
 
 // SetNextOffset gets a reference to the given NullableInt32 and assigns it to the NextOffset field.
-func (o *CustomCertificateAuthorityListResponse) SetNextOffset(v int32) {
+func (o *CertificateProfileListResponse) SetNextOffset(v int32) {
 	o.NextOffset.Set(&v)
 }
 // SetNextOffsetNil sets the value for NextOffset to be an explicit nil
-func (o *CustomCertificateAuthorityListResponse) SetNextOffsetNil() {
+func (o *CertificateProfileListResponse) SetNextOffsetNil() {
 	o.NextOffset.Set(nil)
 }
 
 // UnsetNextOffset ensures that no value is present for NextOffset, not even an explicit nil
-func (o *CustomCertificateAuthorityListResponse) UnsetNextOffset() {
+func (o *CertificateProfileListResponse) UnsetNextOffset() {
 	o.NextOffset.Unset()
 }
 
-func (o CustomCertificateAuthorityListResponse) MarshalJSON() ([]byte, error) {
+func (o CertificateProfileListResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -226,7 +226,7 @@ func (o CustomCertificateAuthorityListResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CustomCertificateAuthorityListResponse) ToMap() (map[string]interface{}, error) {
+func (o CertificateProfileListResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -246,7 +246,7 @@ func (o CustomCertificateAuthorityListResponse) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *CustomCertificateAuthorityListResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *CertificateProfileListResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -272,15 +272,15 @@ func (o *CustomCertificateAuthorityListResponse) UnmarshalJSON(data []byte) (err
 		}
 	}
 
-	varCustomCertificateAuthorityListResponse := _CustomCertificateAuthorityListResponse{}
+	varCertificateProfileListResponse := _CertificateProfileListResponse{}
 
-	err = json.Unmarshal(data, &varCustomCertificateAuthorityListResponse)
+	err = json.Unmarshal(data, &varCertificateProfileListResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CustomCertificateAuthorityListResponse(varCustomCertificateAuthorityListResponse)
+	*o = CertificateProfileListResponse(varCertificateProfileListResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -297,38 +297,38 @@ func (o *CustomCertificateAuthorityListResponse) UnmarshalJSON(data []byte) (err
 	return err
 }
 
-type NullableCustomCertificateAuthorityListResponse struct {
-	value *CustomCertificateAuthorityListResponse
+type NullableCertificateProfileListResponse struct {
+	value *CertificateProfileListResponse
 	isSet bool
 }
 
-func (v NullableCustomCertificateAuthorityListResponse) Get() *CustomCertificateAuthorityListResponse {
+func (v NullableCertificateProfileListResponse) Get() *CertificateProfileListResponse {
 	return v.value
 }
 
-func (v *NullableCustomCertificateAuthorityListResponse) Set(val *CustomCertificateAuthorityListResponse) {
+func (v *NullableCertificateProfileListResponse) Set(val *CertificateProfileListResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCustomCertificateAuthorityListResponse) IsSet() bool {
+func (v NullableCertificateProfileListResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCustomCertificateAuthorityListResponse) Unset() {
+func (v *NullableCertificateProfileListResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCustomCertificateAuthorityListResponse(val *CustomCertificateAuthorityListResponse) *NullableCustomCertificateAuthorityListResponse {
-	return &NullableCustomCertificateAuthorityListResponse{value: val, isSet: true}
+func NewNullableCertificateProfileListResponse(val *CertificateProfileListResponse) *NullableCertificateProfileListResponse {
+	return &NullableCertificateProfileListResponse{value: val, isSet: true}
 }
 
-func (v NullableCustomCertificateAuthorityListResponse) MarshalJSON() ([]byte, error) {
+func (v NullableCertificateProfileListResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCustomCertificateAuthorityListResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableCertificateProfileListResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -15,37 +15,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomCertificateAuthorityLockCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomCertificateAuthorityLockCommand{}
+// checks if the CertificateProfileLockCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateProfileLockCommand{}
 
-// CustomCertificateAuthorityLockCommand struct for CustomCertificateAuthorityLockCommand
-type CustomCertificateAuthorityLockCommand struct {
+// CertificateProfileLockCommand struct for CertificateProfileLockCommand
+type CertificateProfileLockCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CustomCertificateAuthorityLockCommand CustomCertificateAuthorityLockCommand
+type _CertificateProfileLockCommand CertificateProfileLockCommand
 
-// NewCustomCertificateAuthorityLockCommand instantiates a new CustomCertificateAuthorityLockCommand object
+// NewCertificateProfileLockCommand instantiates a new CertificateProfileLockCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomCertificateAuthorityLockCommand() *CustomCertificateAuthorityLockCommand {
-	this := CustomCertificateAuthorityLockCommand{}
+func NewCertificateProfileLockCommand() *CertificateProfileLockCommand {
+	this := CertificateProfileLockCommand{}
 	return &this
 }
 
-// NewCustomCertificateAuthorityLockCommandWithDefaults instantiates a new CustomCertificateAuthorityLockCommand object
+// NewCertificateProfileLockCommandWithDefaults instantiates a new CertificateProfileLockCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCustomCertificateAuthorityLockCommandWithDefaults() *CustomCertificateAuthorityLockCommand {
-	this := CustomCertificateAuthorityLockCommand{}
+func NewCertificateProfileLockCommandWithDefaults() *CertificateProfileLockCommand {
+	this := CertificateProfileLockCommand{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *CustomCertificateAuthorityLockCommand) GetId() int32 {
+func (o *CertificateProfileLockCommand) GetId() int32 {
 	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
@@ -55,7 +55,7 @@ func (o *CustomCertificateAuthorityLockCommand) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomCertificateAuthorityLockCommand) GetIdOk() (*int32, bool) {
+func (o *CertificateProfileLockCommand) GetIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CustomCertificateAuthorityLockCommand) GetIdOk() (*int32, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *CustomCertificateAuthorityLockCommand) HasId() bool {
+func (o *CertificateProfileLockCommand) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -72,12 +72,12 @@ func (o *CustomCertificateAuthorityLockCommand) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *CustomCertificateAuthorityLockCommand) SetId(v int32) {
+func (o *CertificateProfileLockCommand) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CustomCertificateAuthorityLockCommand) GetMode() string {
+func (o *CertificateProfileLockCommand) GetMode() string {
 	if o == nil || IsNil(o.Mode.Get()) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *CustomCertificateAuthorityLockCommand) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CustomCertificateAuthorityLockCommand) GetModeOk() (*string, bool) {
+func (o *CertificateProfileLockCommand) GetModeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *CustomCertificateAuthorityLockCommand) GetModeOk() (*string, bool) {
 }
 
 // HasMode returns a boolean if a field has been set.
-func (o *CustomCertificateAuthorityLockCommand) HasMode() bool {
+func (o *CertificateProfileLockCommand) HasMode() bool {
 	if o != nil && o.Mode.IsSet() {
 		return true
 	}
@@ -105,20 +105,20 @@ func (o *CustomCertificateAuthorityLockCommand) HasMode() bool {
 }
 
 // SetMode gets a reference to the given NullableString and assigns it to the Mode field.
-func (o *CustomCertificateAuthorityLockCommand) SetMode(v string) {
+func (o *CertificateProfileLockCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
 // SetModeNil sets the value for Mode to be an explicit nil
-func (o *CustomCertificateAuthorityLockCommand) SetModeNil() {
+func (o *CertificateProfileLockCommand) SetModeNil() {
 	o.Mode.Set(nil)
 }
 
 // UnsetMode ensures that no value is present for Mode, not even an explicit nil
-func (o *CustomCertificateAuthorityLockCommand) UnsetMode() {
+func (o *CertificateProfileLockCommand) UnsetMode() {
 	o.Mode.Unset()
 }
 
-func (o CustomCertificateAuthorityLockCommand) MarshalJSON() ([]byte, error) {
+func (o CertificateProfileLockCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -126,7 +126,7 @@ func (o CustomCertificateAuthorityLockCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CustomCertificateAuthorityLockCommand) ToMap() (map[string]interface{}, error) {
+func (o CertificateProfileLockCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -142,16 +142,16 @@ func (o CustomCertificateAuthorityLockCommand) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *CustomCertificateAuthorityLockCommand) UnmarshalJSON(data []byte) (err error) {
-	varCustomCertificateAuthorityLockCommand := _CustomCertificateAuthorityLockCommand{}
+func (o *CertificateProfileLockCommand) UnmarshalJSON(data []byte) (err error) {
+	varCertificateProfileLockCommand := _CertificateProfileLockCommand{}
 
-	err = json.Unmarshal(data, &varCustomCertificateAuthorityLockCommand)
+	err = json.Unmarshal(data, &varCertificateProfileLockCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CustomCertificateAuthorityLockCommand(varCustomCertificateAuthorityLockCommand)
+	*o = CertificateProfileLockCommand(varCertificateProfileLockCommand)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -164,38 +164,38 @@ func (o *CustomCertificateAuthorityLockCommand) UnmarshalJSON(data []byte) (err 
 	return err
 }
 
-type NullableCustomCertificateAuthorityLockCommand struct {
-	value *CustomCertificateAuthorityLockCommand
+type NullableCertificateProfileLockCommand struct {
+	value *CertificateProfileLockCommand
 	isSet bool
 }
 
-func (v NullableCustomCertificateAuthorityLockCommand) Get() *CustomCertificateAuthorityLockCommand {
+func (v NullableCertificateProfileLockCommand) Get() *CertificateProfileLockCommand {
 	return v.value
 }
 
-func (v *NullableCustomCertificateAuthorityLockCommand) Set(val *CustomCertificateAuthorityLockCommand) {
+func (v *NullableCertificateProfileLockCommand) Set(val *CertificateProfileLockCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCustomCertificateAuthorityLockCommand) IsSet() bool {
+func (v NullableCertificateProfileLockCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCustomCertificateAuthorityLockCommand) Unset() {
+func (v *NullableCertificateProfileLockCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCustomCertificateAuthorityLockCommand(val *CustomCertificateAuthorityLockCommand) *NullableCustomCertificateAuthorityLockCommand {
-	return &NullableCustomCertificateAuthorityLockCommand{value: val, isSet: true}
+func NewNullableCertificateProfileLockCommand(val *CertificateProfileLockCommand) *NullableCertificateProfileLockCommand {
+	return &NullableCertificateProfileLockCommand{value: val, isSet: true}
 }
 
-func (v NullableCustomCertificateAuthorityLockCommand) MarshalJSON() ([]byte, error) {
+func (v NullableCertificateProfileLockCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCustomCertificateAuthorityLockCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableCertificateProfileLockCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

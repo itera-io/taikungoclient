@@ -217,14 +217,17 @@ Class | Method | HTTP request | Description
 *CatalogAppAPI* | [**CatalogAppList**](docs/CatalogAppAPI.md#catalogapplist) | **Get** /api/v1/catalog-app/list | Catalog App list
 *CatalogAppAPI* | [**CatalogAppLockManager**](docs/CatalogAppAPI.md#catalogapplockmanager) | **Post** /api/v1/catalog-app/lockmanager | Lock catalog app
 *CatalogAppAPI* | [**CatalogAppParamDetails**](docs/CatalogAppAPI.md#catalogappparamdetails) | **Get** /api/v1/catalog-app/params/{catalogAppId} | Catalog App param details
-*CertificateCredentialsAPI* | [**CertificateCredentialsCreate**](docs/CertificateCredentialsAPI.md#certificatecredentialscreate) | **Post** /api/v1/certificate-credentials | Add certificate credential
-*CertificateCredentialsAPI* | [**CertificateCredentialsDelete**](docs/CertificateCredentialsAPI.md#certificatecredentialsdelete) | **Delete** /api/v1/certificate-credentials/{id} | Delete certificate credential
-*CertificateCredentialsAPI* | [**CertificateCredentialsDropdown**](docs/CertificateCredentialsAPI.md#certificatecredentialsdropdown) | **Get** /api/v1/certificate-credentials | Retrieve custom CAs for organization dropdown
-*CertificateCredentialsAPI* | [**CertificateCredentialsList**](docs/CertificateCredentialsAPI.md#certificatecredentialslist) | **Get** /api/v1/certificate-credentials/list | Retrieve all custom certificate authorities
-*CertificateCredentialsAPI* | [**CertificateCredentialsLockManagement**](docs/CertificateCredentialsAPI.md#certificatecredentialslockmanagement) | **Post** /api/v1/certificate-credentials/lockmanager | Lock/unlock certificate credential
-*CertificateCredentialsAPI* | [**CertificateCredentialsMakeDefault**](docs/CertificateCredentialsAPI.md#certificatecredentialsmakedefault) | **Post** /api/v1/certificate-credentials/makedefault | Make default certificate credential
-*CertificateCredentialsAPI* | [**CertificateCredentialsUpdate**](docs/CertificateCredentialsAPI.md#certificatecredentialsupdate) | **Put** /api/v1/certificate-credentials | Update custom CA name/description
-*CertificateCredentialsAPI* | [**CertificateCredentialsValidate**](docs/CertificateCredentialsAPI.md#certificatecredentialsvalidate) | **Post** /api/v1/certificate-credentials/validate | Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)
+*CertificateProfilesAPI* | [**CertificateProfilesCreate**](docs/CertificateProfilesAPI.md#certificateprofilescreate) | **Post** /api/v1/certificate-profiles | Create certificate profile (unified issuerMode DTO or legacy kind-based)
+*CertificateProfilesAPI* | [**CertificateProfilesDelete**](docs/CertificateProfilesAPI.md#certificateprofilesdelete) | **Delete** /api/v1/certificate-profiles/{id} | Delete certificate profile
+*CertificateProfilesAPI* | [**CertificateProfilesDropdown**](docs/CertificateProfilesAPI.md#certificateprofilesdropdown) | **Get** /api/v1/certificate-profiles | Certificate profile dropdown (use ?kind&#x3D;signing_ca for dns-cert CA picker)
+*CertificateProfilesAPI* | [**CertificateProfilesGetTrustBundle**](docs/CertificateProfilesAPI.md#certificateprofilesgettrustbundle) | **Get** /api/v1/certificate-profiles/{id}/trust-bundle | Get trust bundle items (name + PEM) for a certificate profile
+*CertificateProfilesAPI* | [**CertificateProfilesList**](docs/CertificateProfilesAPI.md#certificateprofileslist) | **Get** /api/v1/certificate-profiles/list | List certificate profiles (optional kind filter: signing_ca, trust_anchor, tls_leaf)
+*CertificateProfilesAPI* | [**CertificateProfilesLockManagement**](docs/CertificateProfilesAPI.md#certificateprofileslockmanagement) | **Post** /api/v1/certificate-profiles/lockmanager | Lock/unlock certificate profile
+*CertificateProfilesAPI* | [**CertificateProfilesMakeDefault**](docs/CertificateProfilesAPI.md#certificateprofilesmakedefault) | **Post** /api/v1/certificate-profiles/makedefault | Make default certificate profile for organization
+*CertificateProfilesAPI* | [**CertificateProfilesParseCertificate**](docs/CertificateProfilesAPI.md#certificateprofilesparsecertificate) | **Post** /api/v1/certificate-profiles/parse-certificate | Parse a PEM-encoded certificate and return CN and expiry
+*CertificateProfilesAPI* | [**CertificateProfilesUpdate**](docs/CertificateProfilesAPI.md#certificateprofilesupdate) | **Put** /api/v1/certificate-profiles | Update certificate profile (name, issuerMode template, trust bundle, and related fields)
+*CertificateProfilesAPI* | [**CertificateProfilesValidate**](docs/CertificateProfilesAPI.md#certificateprofilesvalidate) | **Post** /api/v1/certificate-profiles/validate | Validate certificate profile PEMs or stored profile by certificateProfileId
+*CertificateProfilesAPI* | [**CertificateProfilesValidateTrustBundle**](docs/CertificateProfilesAPI.md#certificateprofilesvalidatetrustbundle) | **Post** /api/v1/certificate-profiles/validate-trust-bundle | Validate a PEM bundle and return the count of parseable certificates
 *CheckerAPI* | [**CheckerArtifact**](docs/CheckerAPI.md#checkerartifact) | **Post** /api/v1/checker/artifact | Check artifact url
 *CheckerAPI* | [**CheckerAws**](docs/CheckerAPI.md#checkeraws) | **Post** /api/v1/checker/aws | Check aws credential
 *CheckerAPI* | [**CheckerAzure**](docs/CheckerAPI.md#checkerazure) | **Post** /api/v1/checker/azure | Check azure credentials
@@ -265,6 +268,8 @@ Class | Method | HTTP request | Description
 *CommonAPI* | [**CommonIpRangeCount**](docs/CommonAPI.md#commoniprangecount) | **Post** /api/v1/common/ip-range-count | Retrieve ip address range count
 *CommonAPI* | [**CommonIpRangeList**](docs/CommonAPI.md#commoniprangelist) | **Post** /api/v1/common/ip-range-list | Retrieve ip address range list
 *CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | Retrieve sorting values
+*CronJobServiceAPI* | [**CronJobScanCertificateCredentialExpiryLegacy**](docs/CronJobServiceAPI.md#cronjobscancertificatecredentialexpirylegacy) | **Post** /api/v1/cronjob/scan-certificate-credential-expiry | Legacy alias for scan-certificate-profile-expiry (pre-rename cron path)
+*CronJobServiceAPI* | [**CronJobScanCertificateProfileExpiry**](docs/CronJobServiceAPI.md#cronjobscancertificateprofileexpiry) | **Post** /api/v1/cronjob/scan-certificate-profile-expiry | Scan certificate profiles approaching or past expiry and emit alert logs
 *CronJobServiceAPI* | [**CronjobAutoUpgradeProjects**](docs/CronJobServiceAPI.md#cronjobautoupgradeprojects) | **Post** /api/v1/cronjob/auto-upgrade-projects | Upgrade projects that auto-upgrade option enabled
 *CronJobServiceAPI* | [**CronjobBlockOrganization**](docs/CronJobServiceAPI.md#cronjobblockorganization) | **Post** /api/v1/cronjob/block-organization | Block organization
 *CronJobServiceAPI* | [**CronjobCancelExpiredSubscriptions**](docs/CronJobServiceAPI.md#cronjobcancelexpiredsubscriptions) | **Post** /api/v1/cronjob/cancel-expired-subscriptions | Cancel expired subscriptions
@@ -288,7 +293,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobReconcilePartnerScopes**](docs/CronJobServiceAPI.md#cronjobreconcilepartnerscopes) | **Post** /api/v1/cronjob/reconcile-partner-scopes | Reconcile CCF partner scope holders (moves DEK rows off soft-deleted partner scope holders)
 *CronJobServiceAPI* | [**CronjobRemindUsersByAlertingProfile**](docs/CronJobServiceAPI.md#cronjobremindusersbyalertingprofile) | **Post** /api/v1/cronjob/remind-users-by-alerting-profile | Remind users by alerting profile
 *CronJobServiceAPI* | [**CronjobRotateTenantKeks**](docs/CronJobServiceAPI.md#cronjobrotatetenantkeks) | **Post** /api/v1/cronjob/rotate-tenant-keks | Rotate tenant KEKs via Transit rewrap
-*CronJobServiceAPI* | [**CronjobScanCertificateCredentialExpiry**](docs/CronJobServiceAPI.md#cronjobscancertificatecredentialexpiry) | **Post** /api/v1/cronjob/scan-certificate-credential-expiry | Scan certificate credentials approaching or past expiry and emit alert logs
 *CronJobServiceAPI* | [**CronjobSyncBackupCredentials**](docs/CronJobServiceAPI.md#cronjobsyncbackupcredentials) | **Post** /api/v1/cronjob/sync-backup-credentials | Sync backup credentials
 *CronJobServiceAPI* | [**CronjobSyncDnsCertConfigs**](docs/CronJobServiceAPI.md#cronjobsyncdnscertconfigs) | **Post** /api/v1/cronjob/sync-dns-cert-configs | Sync DNS/Cert configs (drift cron — re-fires kubevap addons pipeline when Applied &lt; Desired)
 *CronJobServiceAPI* | [**CronjobSyncOpaProfiles**](docs/CronJobServiceAPI.md#cronjobsyncopaprofiles) | **Post** /api/v1/cronjob/sync-opa-profiles | Sync opa profiles
@@ -298,14 +302,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobTektonPipelines**](docs/CronJobServiceAPI.md#cronjobtektonpipelines) | **Post** /api/v1/cronjob/tekton-pipelines | Tekton pipelines
 *CronJobServiceAPI* | [**CronjobUpdateProjectAppStatus**](docs/CronJobServiceAPI.md#cronjobupdateprojectappstatus) | **Post** /api/v1/cronjob/update-project-app-status | Update project app status
 *CronJobServiceAPI* | [**CronjobUpdateProjectQuotaMessage**](docs/CronJobServiceAPI.md#cronjobupdateprojectquotamessage) | **Post** /api/v1/cronjob/update-project-quota-message | Update project quota message
-*CustomCAsAPI* | [**CustomCasCreate**](docs/CustomCAsAPI.md#customcascreate) | **Post** /api/v1/custom-cas | Add custom certificate authority
-*CustomCAsAPI* | [**CustomCasDelete**](docs/CustomCAsAPI.md#customcasdelete) | **Delete** /api/v1/custom-cas/{id} | Delete custom certificate authority
-*CustomCAsAPI* | [**CustomCasDropdown**](docs/CustomCAsAPI.md#customcasdropdown) | **Get** /api/v1/custom-cas | Retrieve custom CAs for organization dropdown
-*CustomCAsAPI* | [**CustomCasList**](docs/CustomCAsAPI.md#customcaslist) | **Get** /api/v1/custom-cas/list | Retrieve all custom certificate authorities
-*CustomCAsAPI* | [**CustomCasLockManagement**](docs/CustomCAsAPI.md#customcaslockmanagement) | **Post** /api/v1/custom-cas/lockmanager | Lock/unlock custom certificate authority
-*CustomCAsAPI* | [**CustomCasMakeDefault**](docs/CustomCAsAPI.md#customcasmakedefault) | **Post** /api/v1/custom-cas/makedefault | Make default custom certificate authority
-*CustomCAsAPI* | [**CustomCasUpdate**](docs/CustomCAsAPI.md#customcasupdate) | **Put** /api/v1/custom-cas | Update custom CA name/description
-*CustomCAsAPI* | [**CustomCasValidate**](docs/CustomCAsAPI.md#customcasvalidate) | **Post** /api/v1/custom-cas/validate | Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)
 *DNSCredentialsAPI* | [**DnscredentialsAttachProject**](docs/DNSCredentialsAPI.md#dnscredentialsattachproject) | **Post** /api/v1/dnscredentials/attach-project | Attach a DNS credential to a project
 *DNSCredentialsAPI* | [**DnscredentialsCreate**](docs/DNSCredentialsAPI.md#dnscredentialscreate) | **Post** /api/v1/dnscredentials | Add DNS credential
 *DNSCredentialsAPI* | [**DnscredentialsDelete**](docs/DNSCredentialsAPI.md#dnscredentialsdelete) | **Delete** /api/v1/dnscredentials/{id} | Delete DNS credential
@@ -326,7 +322,7 @@ Class | Method | HTTP request | Description
 *DnsCertAPI* | [**DnsCertSync**](docs/DnsCertAPI.md#dnscertsync) | **Post** /api/v1/dns-cert/sync | Sync DNS/Cert to cluster
 *DnsCertAPI* | [**DnsCertTrustManagerDisable**](docs/DnsCertAPI.md#dnscerttrustmanagerdisable) | **Post** /api/v1/dns-cert/trust-manager/disable | Disable trust-manager for a project
 *DnsCertAPI* | [**DnsCertTrustManagerEnable**](docs/DnsCertAPI.md#dnscerttrustmanagerenable) | **Post** /api/v1/dns-cert/trust-manager/enable | Enable trust-manager for a project
-*DnsCertAPI* | [**DnsCertValidate**](docs/DnsCertAPI.md#dnscertvalidate) | **Post** /api/v1/dns-cert/validate | Validate DNS provider credentials
+*DnsCertAPI* | [**DnsCertValidate**](docs/DnsCertAPI.md#dnscertvalidate) | **Post** /api/v1/dns-cert/validate | Validate DNS/Cert enablement inputs (provider credentials, signing CA reference, issuer rules)
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete DNS server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
@@ -968,15 +964,17 @@ Class | Method | HTTP request | Description
  - [CatalogLockManagementCommand](docs/CatalogLockManagementCommand.md)
  - [CatalogMakeDefaultCommand](docs/CatalogMakeDefaultCommand.md)
  - [CatalogsForProjectDto](docs/CatalogsForProjectDto.md)
- - [CertificateCredentialCreateCommand](docs/CertificateCredentialCreateCommand.md)
- - [CertificateCredentialDropdownDto](docs/CertificateCredentialDropdownDto.md)
- - [CertificateCredentialKind](docs/CertificateCredentialKind.md)
- - [CertificateCredentialListDto](docs/CertificateCredentialListDto.md)
- - [CertificateCredentialListResponse](docs/CertificateCredentialListResponse.md)
- - [CertificateCredentialLockCommand](docs/CertificateCredentialLockCommand.md)
- - [CertificateCredentialMakeDefaultCommand](docs/CertificateCredentialMakeDefaultCommand.md)
- - [CertificateCredentialUpdateCommand](docs/CertificateCredentialUpdateCommand.md)
- - [CertificateCredentialValidateCommand](docs/CertificateCredentialValidateCommand.md)
+ - [CertificateProfileCreateCommand](docs/CertificateProfileCreateCommand.md)
+ - [CertificateProfileDropdownDto](docs/CertificateProfileDropdownDto.md)
+ - [CertificateProfileListDto](docs/CertificateProfileListDto.md)
+ - [CertificateProfileListResponse](docs/CertificateProfileListResponse.md)
+ - [CertificateProfileLockCommand](docs/CertificateProfileLockCommand.md)
+ - [CertificateProfileMakeDefaultCommand](docs/CertificateProfileMakeDefaultCommand.md)
+ - [CertificateProfileTrustBundleItemDto](docs/CertificateProfileTrustBundleItemDto.md)
+ - [CertificateProfileTrustBundleResponse](docs/CertificateProfileTrustBundleResponse.md)
+ - [CertificateProfileTrustBundleSummaryDto](docs/CertificateProfileTrustBundleSummaryDto.md)
+ - [CertificateProfileUpdateCommand](docs/CertificateProfileUpdateCommand.md)
+ - [CertificateProfileValidateCommand](docs/CertificateProfileValidateCommand.md)
  - [ChangeCardCommand](docs/ChangeCardCommand.md)
  - [ChangePasswordCommand](docs/ChangePasswordCommand.md)
  - [ChatCompletionsCommand](docs/ChatCompletionsCommand.md)
@@ -1089,14 +1087,6 @@ Class | Method | HTTP request | Description
  - [CronjobsSearchList](docs/CronjobsSearchList.md)
  - [CskRegisterNodeCommand](docs/CskRegisterNodeCommand.md)
  - [CsvExporter](docs/CsvExporter.md)
- - [CustomCertificateAuthorityCreateCommand](docs/CustomCertificateAuthorityCreateCommand.md)
- - [CustomCertificateAuthorityDropdownDto](docs/CustomCertificateAuthorityDropdownDto.md)
- - [CustomCertificateAuthorityListDto](docs/CustomCertificateAuthorityListDto.md)
- - [CustomCertificateAuthorityListResponse](docs/CustomCertificateAuthorityListResponse.md)
- - [CustomCertificateAuthorityLockCommand](docs/CustomCertificateAuthorityLockCommand.md)
- - [CustomCertificateAuthorityMakeDefaultCommand](docs/CustomCertificateAuthorityMakeDefaultCommand.md)
- - [CustomCertificateAuthorityUpdateCommand](docs/CustomCertificateAuthorityUpdateCommand.md)
- - [CustomCertificateAuthorityValidateCommand](docs/CustomCertificateAuthorityValidateCommand.md)
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DaemonsetActionCommand](docs/DaemonsetActionCommand.md)
@@ -1456,6 +1446,8 @@ Class | Method | HTTP request | Description
  - [OverloadProtectionMode](docs/OverloadProtectionMode.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
  - [ParameterType](docs/ParameterType.md)
+ - [ParseCertificateQuery](docs/ParseCertificateQuery.md)
+ - [ParseCertificateResponse](docs/ParseCertificateResponse.md)
  - [PartnerPoolDekAnomalyDto](docs/PartnerPoolDekAnomalyDto.md)
  - [PartnerScopeReconcileResult](docs/PartnerScopeReconcileResult.md)
  - [PatchKubernetesResourceCommand](docs/PatchKubernetesResourceCommand.md)
@@ -1674,6 +1666,8 @@ Class | Method | HTTP request | Description
  - [ToggleOverloadProtectionCommand](docs/ToggleOverloadProtectionCommand.md)
  - [TransferOwnershipCommand](docs/TransferOwnershipCommand.md)
  - [TransitEncryptionStatusDto](docs/TransitEncryptionStatusDto.md)
+ - [TrustBundleItem](docs/TrustBundleItem.md)
+ - [TrustBundleUpdateItem](docs/TrustBundleUpdateItem.md)
  - [TrustedRegisteredCreateDto](docs/TrustedRegisteredCreateDto.md)
  - [TrustedRegistriesListDto](docs/TrustedRegistriesListDto.md)
  - [TrustedRegistryEditDto](docs/TrustedRegistryEditDto.md)
@@ -1746,6 +1740,9 @@ Class | Method | HTTP request | Description
  - [VClusterResourceLimitsListDto](docs/VClusterResourceLimitsListDto.md)
  - [VClusterWorkloadResourcesListDto](docs/VClusterWorkloadResourcesListDto.md)
  - [ValidateDnsCertCommand](docs/ValidateDnsCertCommand.md)
+ - [ValidateTrustBundleItem](docs/ValidateTrustBundleItem.md)
+ - [ValidateTrustBundleQuery](docs/ValidateTrustBundleQuery.md)
+ - [ValidateTrustBundleResponse](docs/ValidateTrustBundleResponse.md)
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)

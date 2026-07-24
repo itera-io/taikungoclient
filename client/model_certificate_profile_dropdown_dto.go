@@ -17,45 +17,44 @@ import (
 	"fmt"
 )
 
-// checks if the CertificateCredentialDropdownDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CertificateCredentialDropdownDto{}
+// checks if the CertificateProfileDropdownDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateProfileDropdownDto{}
 
-// CertificateCredentialDropdownDto struct for CertificateCredentialDropdownDto
-type CertificateCredentialDropdownDto struct {
+// CertificateProfileDropdownDto struct for CertificateProfileDropdownDto
+type CertificateProfileDropdownDto struct {
 	Id int32 `json:"id"`
 	Name NullableString `json:"name"`
-	Kind CertificateCredentialKind `json:"kind"`
+	Kind NullableString `json:"kind,omitempty"`
 	IsDefault bool `json:"isDefault"`
 	NotAfter NullableTime `json:"notAfter,omitempty"`
 	ExpiryStatus NullableString `json:"expiryStatus,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CertificateCredentialDropdownDto CertificateCredentialDropdownDto
+type _CertificateProfileDropdownDto CertificateProfileDropdownDto
 
-// NewCertificateCredentialDropdownDto instantiates a new CertificateCredentialDropdownDto object
+// NewCertificateProfileDropdownDto instantiates a new CertificateProfileDropdownDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateCredentialDropdownDto(id int32, name NullableString, kind CertificateCredentialKind, isDefault bool) *CertificateCredentialDropdownDto {
-	this := CertificateCredentialDropdownDto{}
+func NewCertificateProfileDropdownDto(id int32, name NullableString, isDefault bool) *CertificateProfileDropdownDto {
+	this := CertificateProfileDropdownDto{}
 	this.Id = id
 	this.Name = name
-	this.Kind = kind
 	this.IsDefault = isDefault
 	return &this
 }
 
-// NewCertificateCredentialDropdownDtoWithDefaults instantiates a new CertificateCredentialDropdownDto object
+// NewCertificateProfileDropdownDtoWithDefaults instantiates a new CertificateProfileDropdownDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCertificateCredentialDropdownDtoWithDefaults() *CertificateCredentialDropdownDto {
-	this := CertificateCredentialDropdownDto{}
+func NewCertificateProfileDropdownDtoWithDefaults() *CertificateProfileDropdownDto {
+	this := CertificateProfileDropdownDto{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *CertificateCredentialDropdownDto) GetId() int32 {
+func (o *CertificateProfileDropdownDto) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -66,7 +65,7 @@ func (o *CertificateCredentialDropdownDto) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialDropdownDto) GetIdOk() (*int32, bool) {
+func (o *CertificateProfileDropdownDto) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,13 +73,13 @@ func (o *CertificateCredentialDropdownDto) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *CertificateCredentialDropdownDto) SetId(v int32) {
+func (o *CertificateProfileDropdownDto) SetId(v int32) {
 	o.Id = v
 }
 
 // GetName returns the Name field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *CertificateCredentialDropdownDto) GetName() string {
+func (o *CertificateProfileDropdownDto) GetName() string {
 	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
@@ -92,7 +91,7 @@ func (o *CertificateCredentialDropdownDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialDropdownDto) GetNameOk() (*string, bool) {
+func (o *CertificateProfileDropdownDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,36 +99,54 @@ func (o *CertificateCredentialDropdownDto) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *CertificateCredentialDropdownDto) SetName(v string) {
+func (o *CertificateProfileDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
 
-// GetKind returns the Kind field value
-func (o *CertificateCredentialDropdownDto) GetKind() CertificateCredentialKind {
-	if o == nil {
-		var ret CertificateCredentialKind
+// GetKind returns the Kind field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileDropdownDto) GetKind() string {
+	if o == nil || IsNil(o.Kind.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.Kind
+	return *o.Kind.Get()
 }
 
-// GetKindOk returns a tuple with the Kind field value
+// GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialDropdownDto) GetKindOk() (*CertificateCredentialKind, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileDropdownDto) GetKindOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Kind, true
+	return o.Kind.Get(), o.Kind.IsSet()
 }
 
-// SetKind sets field value
-func (o *CertificateCredentialDropdownDto) SetKind(v CertificateCredentialKind) {
-	o.Kind = v
+// HasKind returns a boolean if a field has been set.
+func (o *CertificateProfileDropdownDto) HasKind() bool {
+	if o != nil && o.Kind.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetKind gets a reference to the given NullableString and assigns it to the Kind field.
+func (o *CertificateProfileDropdownDto) SetKind(v string) {
+	o.Kind.Set(&v)
+}
+// SetKindNil sets the value for Kind to be an explicit nil
+func (o *CertificateProfileDropdownDto) SetKindNil() {
+	o.Kind.Set(nil)
+}
+
+// UnsetKind ensures that no value is present for Kind, not even an explicit nil
+func (o *CertificateProfileDropdownDto) UnsetKind() {
+	o.Kind.Unset()
 }
 
 // GetIsDefault returns the IsDefault field value
-func (o *CertificateCredentialDropdownDto) GetIsDefault() bool {
+func (o *CertificateProfileDropdownDto) GetIsDefault() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -140,7 +157,7 @@ func (o *CertificateCredentialDropdownDto) GetIsDefault() bool {
 
 // GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialDropdownDto) GetIsDefaultOk() (*bool, bool) {
+func (o *CertificateProfileDropdownDto) GetIsDefaultOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,12 +165,12 @@ func (o *CertificateCredentialDropdownDto) GetIsDefaultOk() (*bool, bool) {
 }
 
 // SetIsDefault sets field value
-func (o *CertificateCredentialDropdownDto) SetIsDefault(v bool) {
+func (o *CertificateProfileDropdownDto) SetIsDefault(v bool) {
 	o.IsDefault = v
 }
 
 // GetNotAfter returns the NotAfter field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialDropdownDto) GetNotAfter() time.Time {
+func (o *CertificateProfileDropdownDto) GetNotAfter() time.Time {
 	if o == nil || IsNil(o.NotAfter.Get()) {
 		var ret time.Time
 		return ret
@@ -164,7 +181,7 @@ func (o *CertificateCredentialDropdownDto) GetNotAfter() time.Time {
 // GetNotAfterOk returns a tuple with the NotAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialDropdownDto) GetNotAfterOk() (*time.Time, bool) {
+func (o *CertificateProfileDropdownDto) GetNotAfterOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -172,7 +189,7 @@ func (o *CertificateCredentialDropdownDto) GetNotAfterOk() (*time.Time, bool) {
 }
 
 // HasNotAfter returns a boolean if a field has been set.
-func (o *CertificateCredentialDropdownDto) HasNotAfter() bool {
+func (o *CertificateProfileDropdownDto) HasNotAfter() bool {
 	if o != nil && o.NotAfter.IsSet() {
 		return true
 	}
@@ -181,21 +198,21 @@ func (o *CertificateCredentialDropdownDto) HasNotAfter() bool {
 }
 
 // SetNotAfter gets a reference to the given NullableTime and assigns it to the NotAfter field.
-func (o *CertificateCredentialDropdownDto) SetNotAfter(v time.Time) {
+func (o *CertificateProfileDropdownDto) SetNotAfter(v time.Time) {
 	o.NotAfter.Set(&v)
 }
 // SetNotAfterNil sets the value for NotAfter to be an explicit nil
-func (o *CertificateCredentialDropdownDto) SetNotAfterNil() {
+func (o *CertificateProfileDropdownDto) SetNotAfterNil() {
 	o.NotAfter.Set(nil)
 }
 
 // UnsetNotAfter ensures that no value is present for NotAfter, not even an explicit nil
-func (o *CertificateCredentialDropdownDto) UnsetNotAfter() {
+func (o *CertificateProfileDropdownDto) UnsetNotAfter() {
 	o.NotAfter.Unset()
 }
 
 // GetExpiryStatus returns the ExpiryStatus field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialDropdownDto) GetExpiryStatus() string {
+func (o *CertificateProfileDropdownDto) GetExpiryStatus() string {
 	if o == nil || IsNil(o.ExpiryStatus.Get()) {
 		var ret string
 		return ret
@@ -206,7 +223,7 @@ func (o *CertificateCredentialDropdownDto) GetExpiryStatus() string {
 // GetExpiryStatusOk returns a tuple with the ExpiryStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialDropdownDto) GetExpiryStatusOk() (*string, bool) {
+func (o *CertificateProfileDropdownDto) GetExpiryStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -214,7 +231,7 @@ func (o *CertificateCredentialDropdownDto) GetExpiryStatusOk() (*string, bool) {
 }
 
 // HasExpiryStatus returns a boolean if a field has been set.
-func (o *CertificateCredentialDropdownDto) HasExpiryStatus() bool {
+func (o *CertificateProfileDropdownDto) HasExpiryStatus() bool {
 	if o != nil && o.ExpiryStatus.IsSet() {
 		return true
 	}
@@ -223,20 +240,20 @@ func (o *CertificateCredentialDropdownDto) HasExpiryStatus() bool {
 }
 
 // SetExpiryStatus gets a reference to the given NullableString and assigns it to the ExpiryStatus field.
-func (o *CertificateCredentialDropdownDto) SetExpiryStatus(v string) {
+func (o *CertificateProfileDropdownDto) SetExpiryStatus(v string) {
 	o.ExpiryStatus.Set(&v)
 }
 // SetExpiryStatusNil sets the value for ExpiryStatus to be an explicit nil
-func (o *CertificateCredentialDropdownDto) SetExpiryStatusNil() {
+func (o *CertificateProfileDropdownDto) SetExpiryStatusNil() {
 	o.ExpiryStatus.Set(nil)
 }
 
 // UnsetExpiryStatus ensures that no value is present for ExpiryStatus, not even an explicit nil
-func (o *CertificateCredentialDropdownDto) UnsetExpiryStatus() {
+func (o *CertificateProfileDropdownDto) UnsetExpiryStatus() {
 	o.ExpiryStatus.Unset()
 }
 
-func (o CertificateCredentialDropdownDto) MarshalJSON() ([]byte, error) {
+func (o CertificateProfileDropdownDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -244,11 +261,13 @@ func (o CertificateCredentialDropdownDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CertificateCredentialDropdownDto) ToMap() (map[string]interface{}, error) {
+func (o CertificateProfileDropdownDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name.Get()
-	toSerialize["kind"] = o.Kind
+	if o.Kind.IsSet() {
+		toSerialize["kind"] = o.Kind.Get()
+	}
 	toSerialize["isDefault"] = o.IsDefault
 	if o.NotAfter.IsSet() {
 		toSerialize["notAfter"] = o.NotAfter.Get()
@@ -264,14 +283,13 @@ func (o CertificateCredentialDropdownDto) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *CertificateCredentialDropdownDto) UnmarshalJSON(data []byte) (err error) {
+func (o *CertificateProfileDropdownDto) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
 		"name",
-		"kind",
 		"isDefault",
 	}
 
@@ -289,15 +307,15 @@ func (o *CertificateCredentialDropdownDto) UnmarshalJSON(data []byte) (err error
 		}
 	}
 
-	varCertificateCredentialDropdownDto := _CertificateCredentialDropdownDto{}
+	varCertificateProfileDropdownDto := _CertificateProfileDropdownDto{}
 
-	err = json.Unmarshal(data, &varCertificateCredentialDropdownDto)
+	err = json.Unmarshal(data, &varCertificateProfileDropdownDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CertificateCredentialDropdownDto(varCertificateCredentialDropdownDto)
+	*o = CertificateProfileDropdownDto(varCertificateProfileDropdownDto)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -314,38 +332,38 @@ func (o *CertificateCredentialDropdownDto) UnmarshalJSON(data []byte) (err error
 	return err
 }
 
-type NullableCertificateCredentialDropdownDto struct {
-	value *CertificateCredentialDropdownDto
+type NullableCertificateProfileDropdownDto struct {
+	value *CertificateProfileDropdownDto
 	isSet bool
 }
 
-func (v NullableCertificateCredentialDropdownDto) Get() *CertificateCredentialDropdownDto {
+func (v NullableCertificateProfileDropdownDto) Get() *CertificateProfileDropdownDto {
 	return v.value
 }
 
-func (v *NullableCertificateCredentialDropdownDto) Set(val *CertificateCredentialDropdownDto) {
+func (v *NullableCertificateProfileDropdownDto) Set(val *CertificateProfileDropdownDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCertificateCredentialDropdownDto) IsSet() bool {
+func (v NullableCertificateProfileDropdownDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCertificateCredentialDropdownDto) Unset() {
+func (v *NullableCertificateProfileDropdownDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCertificateCredentialDropdownDto(val *CertificateCredentialDropdownDto) *NullableCertificateCredentialDropdownDto {
-	return &NullableCertificateCredentialDropdownDto{value: val, isSet: true}
+func NewNullableCertificateProfileDropdownDto(val *CertificateProfileDropdownDto) *NullableCertificateProfileDropdownDto {
+	return &NullableCertificateProfileDropdownDto{value: val, isSet: true}
 }
 
-func (v NullableCertificateCredentialDropdownDto) MarshalJSON() ([]byte, error) {
+func (v NullableCertificateProfileDropdownDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCertificateCredentialDropdownDto) UnmarshalJSON(src []byte) error {
+func (v *NullableCertificateProfileDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

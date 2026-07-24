@@ -17,16 +17,15 @@ import (
 	"fmt"
 )
 
-// checks if the CertificateCredentialListDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CertificateCredentialListDto{}
+// checks if the CertificateProfileListDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateProfileListDto{}
 
-// CertificateCredentialListDto struct for CertificateCredentialListDto
-type CertificateCredentialListDto struct {
+// CertificateProfileListDto struct for CertificateProfileListDto
+type CertificateProfileListDto struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
 	Description NullableString `json:"description"`
-	Kind CertificateCredentialKind `json:"kind"`
-	CertPem string `json:"certPem"`
+	Kind *string `json:"kind,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId"`
 	OrganizationName NullableString `json:"organizationName"`
 	NotBefore NullableTime `json:"notBefore,omitempty"`
@@ -39,26 +38,28 @@ type CertificateCredentialListDto struct {
 	IsLocked bool `json:"isLocked"`
 	IsDefault bool `json:"isDefault"`
 	IsInfra bool `json:"isInfra"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	InUseCount int32 `json:"inUseCount"`
+	AssociatedProjects []CommonDropdownDto `json:"associatedProjects"`
+	IssuerMode NullableString `json:"issuerMode,omitempty"`
+	TrustBundleCount *int32 `json:"trustBundleCount,omitempty"`
+	TrustBundle []CertificateProfileTrustBundleSummaryDto `json:"trustBundle"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CertificateCredentialListDto CertificateCredentialListDto
+type _CertificateProfileListDto CertificateProfileListDto
 
-// NewCertificateCredentialListDto instantiates a new CertificateCredentialListDto object
+// NewCertificateProfileListDto instantiates a new CertificateProfileListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateCredentialListDto(id int32, name string, description NullableString, kind CertificateCredentialKind, certPem string, organizationId NullableInt32, organizationName NullableString, isLocked bool, isDefault bool, isInfra bool, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, inUseCount int32) *CertificateCredentialListDto {
-	this := CertificateCredentialListDto{}
+func NewCertificateProfileListDto(id int32, name string, description NullableString, organizationId NullableInt32, organizationName NullableString, isLocked bool, isDefault bool, isInfra bool, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, inUseCount int32, associatedProjects []CommonDropdownDto, trustBundle []CertificateProfileTrustBundleSummaryDto) *CertificateProfileListDto {
+	this := CertificateProfileListDto{}
 	this.Id = id
 	this.Name = name
 	this.Description = description
-	this.Kind = kind
-	this.CertPem = certPem
 	this.OrganizationId = organizationId
 	this.OrganizationName = organizationName
 	this.IsLocked = isLocked
@@ -68,19 +69,21 @@ func NewCertificateCredentialListDto(id int32, name string, description Nullable
 	this.LastModified = lastModified
 	this.LastModifiedBy = lastModifiedBy
 	this.InUseCount = inUseCount
+	this.AssociatedProjects = associatedProjects
+	this.TrustBundle = trustBundle
 	return &this
 }
 
-// NewCertificateCredentialListDtoWithDefaults instantiates a new CertificateCredentialListDto object
+// NewCertificateProfileListDtoWithDefaults instantiates a new CertificateProfileListDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCertificateCredentialListDtoWithDefaults() *CertificateCredentialListDto {
-	this := CertificateCredentialListDto{}
+func NewCertificateProfileListDtoWithDefaults() *CertificateProfileListDto {
+	this := CertificateProfileListDto{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *CertificateCredentialListDto) GetId() int32 {
+func (o *CertificateProfileListDto) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -91,7 +94,7 @@ func (o *CertificateCredentialListDto) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetIdOk() (*int32, bool) {
+func (o *CertificateProfileListDto) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,12 +102,12 @@ func (o *CertificateCredentialListDto) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *CertificateCredentialListDto) SetId(v int32) {
+func (o *CertificateProfileListDto) SetId(v int32) {
 	o.Id = v
 }
 
 // GetName returns the Name field value
-func (o *CertificateCredentialListDto) GetName() string {
+func (o *CertificateProfileListDto) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -115,7 +118,7 @@ func (o *CertificateCredentialListDto) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetNameOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,13 +126,13 @@ func (o *CertificateCredentialListDto) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *CertificateCredentialListDto) SetName(v string) {
+func (o *CertificateProfileListDto) SetName(v string) {
 	o.Name = v
 }
 
 // GetDescription returns the Description field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *CertificateCredentialListDto) GetDescription() string {
+func (o *CertificateProfileListDto) GetDescription() string {
 	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
@@ -141,7 +144,7 @@ func (o *CertificateCredentialListDto) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetDescriptionOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,61 +152,45 @@ func (o *CertificateCredentialListDto) GetDescriptionOk() (*string, bool) {
 }
 
 // SetDescription sets field value
-func (o *CertificateCredentialListDto) SetDescription(v string) {
+func (o *CertificateProfileListDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 
-// GetKind returns the Kind field value
-func (o *CertificateCredentialListDto) GetKind() CertificateCredentialKind {
-	if o == nil {
-		var ret CertificateCredentialKind
-		return ret
-	}
-
-	return o.Kind
-}
-
-// GetKindOk returns a tuple with the Kind field value
-// and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetKindOk() (*CertificateCredentialKind, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Kind, true
-}
-
-// SetKind sets field value
-func (o *CertificateCredentialListDto) SetKind(v CertificateCredentialKind) {
-	o.Kind = v
-}
-
-// GetCertPem returns the CertPem field value
-func (o *CertificateCredentialListDto) GetCertPem() string {
-	if o == nil {
+// GetKind returns the Kind field value if set, zero value otherwise.
+func (o *CertificateProfileListDto) GetKind() string {
+	if o == nil || IsNil(o.Kind) {
 		var ret string
 		return ret
 	}
-
-	return o.CertPem
+	return *o.Kind
 }
 
-// GetCertPemOk returns a tuple with the CertPem field value
+// GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetCertPemOk() (*string, bool) {
-	if o == nil {
+func (o *CertificateProfileListDto) GetKindOk() (*string, bool) {
+	if o == nil || IsNil(o.Kind) {
 		return nil, false
 	}
-	return &o.CertPem, true
+	return o.Kind, true
 }
 
-// SetCertPem sets field value
-func (o *CertificateCredentialListDto) SetCertPem(v string) {
-	o.CertPem = v
+// HasKind returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasKind() bool {
+	if o != nil && !IsNil(o.Kind) {
+		return true
+	}
+
+	return false
+}
+
+// SetKind gets a reference to the given string and assigns it to the Kind field.
+func (o *CertificateProfileListDto) SetKind(v string) {
+	o.Kind = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value
 // If the value is explicit nil, the zero value for int32 will be returned
-func (o *CertificateCredentialListDto) GetOrganizationId() int32 {
+func (o *CertificateProfileListDto) GetOrganizationId() int32 {
 	if o == nil || o.OrganizationId.Get() == nil {
 		var ret int32
 		return ret
@@ -215,7 +202,7 @@ func (o *CertificateCredentialListDto) GetOrganizationId() int32 {
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetOrganizationIdOk() (*int32, bool) {
+func (o *CertificateProfileListDto) GetOrganizationIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -223,13 +210,13 @@ func (o *CertificateCredentialListDto) GetOrganizationIdOk() (*int32, bool) {
 }
 
 // SetOrganizationId sets field value
-func (o *CertificateCredentialListDto) SetOrganizationId(v int32) {
+func (o *CertificateProfileListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
 
 // GetOrganizationName returns the OrganizationName field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *CertificateCredentialListDto) GetOrganizationName() string {
+func (o *CertificateProfileListDto) GetOrganizationName() string {
 	if o == nil || o.OrganizationName.Get() == nil {
 		var ret string
 		return ret
@@ -241,7 +228,7 @@ func (o *CertificateCredentialListDto) GetOrganizationName() string {
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetOrganizationNameOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -249,12 +236,12 @@ func (o *CertificateCredentialListDto) GetOrganizationNameOk() (*string, bool) {
 }
 
 // SetOrganizationName sets field value
-func (o *CertificateCredentialListDto) SetOrganizationName(v string) {
+func (o *CertificateProfileListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
 
 // GetNotBefore returns the NotBefore field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialListDto) GetNotBefore() time.Time {
+func (o *CertificateProfileListDto) GetNotBefore() time.Time {
 	if o == nil || IsNil(o.NotBefore.Get()) {
 		var ret time.Time
 		return ret
@@ -265,7 +252,7 @@ func (o *CertificateCredentialListDto) GetNotBefore() time.Time {
 // GetNotBeforeOk returns a tuple with the NotBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetNotBeforeOk() (*time.Time, bool) {
+func (o *CertificateProfileListDto) GetNotBeforeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -273,7 +260,7 @@ func (o *CertificateCredentialListDto) GetNotBeforeOk() (*time.Time, bool) {
 }
 
 // HasNotBefore returns a boolean if a field has been set.
-func (o *CertificateCredentialListDto) HasNotBefore() bool {
+func (o *CertificateProfileListDto) HasNotBefore() bool {
 	if o != nil && o.NotBefore.IsSet() {
 		return true
 	}
@@ -282,21 +269,21 @@ func (o *CertificateCredentialListDto) HasNotBefore() bool {
 }
 
 // SetNotBefore gets a reference to the given NullableTime and assigns it to the NotBefore field.
-func (o *CertificateCredentialListDto) SetNotBefore(v time.Time) {
+func (o *CertificateProfileListDto) SetNotBefore(v time.Time) {
 	o.NotBefore.Set(&v)
 }
 // SetNotBeforeNil sets the value for NotBefore to be an explicit nil
-func (o *CertificateCredentialListDto) SetNotBeforeNil() {
+func (o *CertificateProfileListDto) SetNotBeforeNil() {
 	o.NotBefore.Set(nil)
 }
 
 // UnsetNotBefore ensures that no value is present for NotBefore, not even an explicit nil
-func (o *CertificateCredentialListDto) UnsetNotBefore() {
+func (o *CertificateProfileListDto) UnsetNotBefore() {
 	o.NotBefore.Unset()
 }
 
 // GetNotAfter returns the NotAfter field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialListDto) GetNotAfter() time.Time {
+func (o *CertificateProfileListDto) GetNotAfter() time.Time {
 	if o == nil || IsNil(o.NotAfter.Get()) {
 		var ret time.Time
 		return ret
@@ -307,7 +294,7 @@ func (o *CertificateCredentialListDto) GetNotAfter() time.Time {
 // GetNotAfterOk returns a tuple with the NotAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetNotAfterOk() (*time.Time, bool) {
+func (o *CertificateProfileListDto) GetNotAfterOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -315,7 +302,7 @@ func (o *CertificateCredentialListDto) GetNotAfterOk() (*time.Time, bool) {
 }
 
 // HasNotAfter returns a boolean if a field has been set.
-func (o *CertificateCredentialListDto) HasNotAfter() bool {
+func (o *CertificateProfileListDto) HasNotAfter() bool {
 	if o != nil && o.NotAfter.IsSet() {
 		return true
 	}
@@ -324,21 +311,21 @@ func (o *CertificateCredentialListDto) HasNotAfter() bool {
 }
 
 // SetNotAfter gets a reference to the given NullableTime and assigns it to the NotAfter field.
-func (o *CertificateCredentialListDto) SetNotAfter(v time.Time) {
+func (o *CertificateProfileListDto) SetNotAfter(v time.Time) {
 	o.NotAfter.Set(&v)
 }
 // SetNotAfterNil sets the value for NotAfter to be an explicit nil
-func (o *CertificateCredentialListDto) SetNotAfterNil() {
+func (o *CertificateProfileListDto) SetNotAfterNil() {
 	o.NotAfter.Set(nil)
 }
 
 // UnsetNotAfter ensures that no value is present for NotAfter, not even an explicit nil
-func (o *CertificateCredentialListDto) UnsetNotAfter() {
+func (o *CertificateProfileListDto) UnsetNotAfter() {
 	o.NotAfter.Unset()
 }
 
 // GetSubject returns the Subject field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialListDto) GetSubject() string {
+func (o *CertificateProfileListDto) GetSubject() string {
 	if o == nil || IsNil(o.Subject.Get()) {
 		var ret string
 		return ret
@@ -349,7 +336,7 @@ func (o *CertificateCredentialListDto) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetSubjectOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetSubjectOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -357,7 +344,7 @@ func (o *CertificateCredentialListDto) GetSubjectOk() (*string, bool) {
 }
 
 // HasSubject returns a boolean if a field has been set.
-func (o *CertificateCredentialListDto) HasSubject() bool {
+func (o *CertificateProfileListDto) HasSubject() bool {
 	if o != nil && o.Subject.IsSet() {
 		return true
 	}
@@ -366,21 +353,21 @@ func (o *CertificateCredentialListDto) HasSubject() bool {
 }
 
 // SetSubject gets a reference to the given NullableString and assigns it to the Subject field.
-func (o *CertificateCredentialListDto) SetSubject(v string) {
+func (o *CertificateProfileListDto) SetSubject(v string) {
 	o.Subject.Set(&v)
 }
 // SetSubjectNil sets the value for Subject to be an explicit nil
-func (o *CertificateCredentialListDto) SetSubjectNil() {
+func (o *CertificateProfileListDto) SetSubjectNil() {
 	o.Subject.Set(nil)
 }
 
 // UnsetSubject ensures that no value is present for Subject, not even an explicit nil
-func (o *CertificateCredentialListDto) UnsetSubject() {
+func (o *CertificateProfileListDto) UnsetSubject() {
 	o.Subject.Unset()
 }
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialListDto) GetIssuer() string {
+func (o *CertificateProfileListDto) GetIssuer() string {
 	if o == nil || IsNil(o.Issuer.Get()) {
 		var ret string
 		return ret
@@ -391,7 +378,7 @@ func (o *CertificateCredentialListDto) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetIssuerOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetIssuerOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -399,7 +386,7 @@ func (o *CertificateCredentialListDto) GetIssuerOk() (*string, bool) {
 }
 
 // HasIssuer returns a boolean if a field has been set.
-func (o *CertificateCredentialListDto) HasIssuer() bool {
+func (o *CertificateProfileListDto) HasIssuer() bool {
 	if o != nil && o.Issuer.IsSet() {
 		return true
 	}
@@ -408,21 +395,21 @@ func (o *CertificateCredentialListDto) HasIssuer() bool {
 }
 
 // SetIssuer gets a reference to the given NullableString and assigns it to the Issuer field.
-func (o *CertificateCredentialListDto) SetIssuer(v string) {
+func (o *CertificateProfileListDto) SetIssuer(v string) {
 	o.Issuer.Set(&v)
 }
 // SetIssuerNil sets the value for Issuer to be an explicit nil
-func (o *CertificateCredentialListDto) SetIssuerNil() {
+func (o *CertificateProfileListDto) SetIssuerNil() {
 	o.Issuer.Set(nil)
 }
 
 // UnsetIssuer ensures that no value is present for Issuer, not even an explicit nil
-func (o *CertificateCredentialListDto) UnsetIssuer() {
+func (o *CertificateProfileListDto) UnsetIssuer() {
 	o.Issuer.Unset()
 }
 
 // GetSans returns the Sans field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialListDto) GetSans() string {
+func (o *CertificateProfileListDto) GetSans() string {
 	if o == nil || IsNil(o.Sans.Get()) {
 		var ret string
 		return ret
@@ -433,7 +420,7 @@ func (o *CertificateCredentialListDto) GetSans() string {
 // GetSansOk returns a tuple with the Sans field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetSansOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetSansOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -441,7 +428,7 @@ func (o *CertificateCredentialListDto) GetSansOk() (*string, bool) {
 }
 
 // HasSans returns a boolean if a field has been set.
-func (o *CertificateCredentialListDto) HasSans() bool {
+func (o *CertificateProfileListDto) HasSans() bool {
 	if o != nil && o.Sans.IsSet() {
 		return true
 	}
@@ -450,21 +437,21 @@ func (o *CertificateCredentialListDto) HasSans() bool {
 }
 
 // SetSans gets a reference to the given NullableString and assigns it to the Sans field.
-func (o *CertificateCredentialListDto) SetSans(v string) {
+func (o *CertificateProfileListDto) SetSans(v string) {
 	o.Sans.Set(&v)
 }
 // SetSansNil sets the value for Sans to be an explicit nil
-func (o *CertificateCredentialListDto) SetSansNil() {
+func (o *CertificateProfileListDto) SetSansNil() {
 	o.Sans.Set(nil)
 }
 
 // UnsetSans ensures that no value is present for Sans, not even an explicit nil
-func (o *CertificateCredentialListDto) UnsetSans() {
+func (o *CertificateProfileListDto) UnsetSans() {
 	o.Sans.Unset()
 }
 
 // GetDaysUntilExpiry returns the DaysUntilExpiry field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialListDto) GetDaysUntilExpiry() int32 {
+func (o *CertificateProfileListDto) GetDaysUntilExpiry() int32 {
 	if o == nil || IsNil(o.DaysUntilExpiry.Get()) {
 		var ret int32
 		return ret
@@ -475,7 +462,7 @@ func (o *CertificateCredentialListDto) GetDaysUntilExpiry() int32 {
 // GetDaysUntilExpiryOk returns a tuple with the DaysUntilExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetDaysUntilExpiryOk() (*int32, bool) {
+func (o *CertificateProfileListDto) GetDaysUntilExpiryOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -483,7 +470,7 @@ func (o *CertificateCredentialListDto) GetDaysUntilExpiryOk() (*int32, bool) {
 }
 
 // HasDaysUntilExpiry returns a boolean if a field has been set.
-func (o *CertificateCredentialListDto) HasDaysUntilExpiry() bool {
+func (o *CertificateProfileListDto) HasDaysUntilExpiry() bool {
 	if o != nil && o.DaysUntilExpiry.IsSet() {
 		return true
 	}
@@ -492,21 +479,21 @@ func (o *CertificateCredentialListDto) HasDaysUntilExpiry() bool {
 }
 
 // SetDaysUntilExpiry gets a reference to the given NullableInt32 and assigns it to the DaysUntilExpiry field.
-func (o *CertificateCredentialListDto) SetDaysUntilExpiry(v int32) {
+func (o *CertificateProfileListDto) SetDaysUntilExpiry(v int32) {
 	o.DaysUntilExpiry.Set(&v)
 }
 // SetDaysUntilExpiryNil sets the value for DaysUntilExpiry to be an explicit nil
-func (o *CertificateCredentialListDto) SetDaysUntilExpiryNil() {
+func (o *CertificateProfileListDto) SetDaysUntilExpiryNil() {
 	o.DaysUntilExpiry.Set(nil)
 }
 
 // UnsetDaysUntilExpiry ensures that no value is present for DaysUntilExpiry, not even an explicit nil
-func (o *CertificateCredentialListDto) UnsetDaysUntilExpiry() {
+func (o *CertificateProfileListDto) UnsetDaysUntilExpiry() {
 	o.DaysUntilExpiry.Unset()
 }
 
 // GetExpiryStatus returns the ExpiryStatus field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateCredentialListDto) GetExpiryStatus() string {
+func (o *CertificateProfileListDto) GetExpiryStatus() string {
 	if o == nil || IsNil(o.ExpiryStatus.Get()) {
 		var ret string
 		return ret
@@ -517,7 +504,7 @@ func (o *CertificateCredentialListDto) GetExpiryStatus() string {
 // GetExpiryStatusOk returns a tuple with the ExpiryStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetExpiryStatusOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetExpiryStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -525,7 +512,7 @@ func (o *CertificateCredentialListDto) GetExpiryStatusOk() (*string, bool) {
 }
 
 // HasExpiryStatus returns a boolean if a field has been set.
-func (o *CertificateCredentialListDto) HasExpiryStatus() bool {
+func (o *CertificateProfileListDto) HasExpiryStatus() bool {
 	if o != nil && o.ExpiryStatus.IsSet() {
 		return true
 	}
@@ -534,21 +521,21 @@ func (o *CertificateCredentialListDto) HasExpiryStatus() bool {
 }
 
 // SetExpiryStatus gets a reference to the given NullableString and assigns it to the ExpiryStatus field.
-func (o *CertificateCredentialListDto) SetExpiryStatus(v string) {
+func (o *CertificateProfileListDto) SetExpiryStatus(v string) {
 	o.ExpiryStatus.Set(&v)
 }
 // SetExpiryStatusNil sets the value for ExpiryStatus to be an explicit nil
-func (o *CertificateCredentialListDto) SetExpiryStatusNil() {
+func (o *CertificateProfileListDto) SetExpiryStatusNil() {
 	o.ExpiryStatus.Set(nil)
 }
 
 // UnsetExpiryStatus ensures that no value is present for ExpiryStatus, not even an explicit nil
-func (o *CertificateCredentialListDto) UnsetExpiryStatus() {
+func (o *CertificateProfileListDto) UnsetExpiryStatus() {
 	o.ExpiryStatus.Unset()
 }
 
 // GetIsLocked returns the IsLocked field value
-func (o *CertificateCredentialListDto) GetIsLocked() bool {
+func (o *CertificateProfileListDto) GetIsLocked() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -559,7 +546,7 @@ func (o *CertificateCredentialListDto) GetIsLocked() bool {
 
 // GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetIsLockedOk() (*bool, bool) {
+func (o *CertificateProfileListDto) GetIsLockedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -567,12 +554,12 @@ func (o *CertificateCredentialListDto) GetIsLockedOk() (*bool, bool) {
 }
 
 // SetIsLocked sets field value
-func (o *CertificateCredentialListDto) SetIsLocked(v bool) {
+func (o *CertificateProfileListDto) SetIsLocked(v bool) {
 	o.IsLocked = v
 }
 
 // GetIsDefault returns the IsDefault field value
-func (o *CertificateCredentialListDto) GetIsDefault() bool {
+func (o *CertificateProfileListDto) GetIsDefault() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -583,7 +570,7 @@ func (o *CertificateCredentialListDto) GetIsDefault() bool {
 
 // GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetIsDefaultOk() (*bool, bool) {
+func (o *CertificateProfileListDto) GetIsDefaultOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -591,12 +578,12 @@ func (o *CertificateCredentialListDto) GetIsDefaultOk() (*bool, bool) {
 }
 
 // SetIsDefault sets field value
-func (o *CertificateCredentialListDto) SetIsDefault(v bool) {
+func (o *CertificateProfileListDto) SetIsDefault(v bool) {
 	o.IsDefault = v
 }
 
 // GetIsInfra returns the IsInfra field value
-func (o *CertificateCredentialListDto) GetIsInfra() bool {
+func (o *CertificateProfileListDto) GetIsInfra() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -607,7 +594,7 @@ func (o *CertificateCredentialListDto) GetIsInfra() bool {
 
 // GetIsInfraOk returns a tuple with the IsInfra field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetIsInfraOk() (*bool, bool) {
+func (o *CertificateProfileListDto) GetIsInfraOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -615,39 +602,37 @@ func (o *CertificateCredentialListDto) GetIsInfraOk() (*bool, bool) {
 }
 
 // SetIsInfra sets field value
-func (o *CertificateCredentialListDto) SetIsInfra(v bool) {
+func (o *CertificateProfileListDto) SetIsInfra(v bool) {
 	o.IsInfra = v
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CertificateCredentialListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *CertificateProfileListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetCreatedByOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *CertificateCredentialListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *CertificateProfileListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *CertificateCredentialListDto) GetLastModified() string {
+func (o *CertificateProfileListDto) GetLastModified() string {
 	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
@@ -659,7 +644,7 @@ func (o *CertificateCredentialListDto) GetLastModified() string {
 // GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetLastModifiedOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetLastModifiedOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -667,38 +652,36 @@ func (o *CertificateCredentialListDto) GetLastModifiedOk() (*string, bool) {
 }
 
 // SetLastModified sets field value
-func (o *CertificateCredentialListDto) SetLastModified(v string) {
+func (o *CertificateProfileListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CertificateCredentialListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *CertificateProfileListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateCredentialListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *CertificateProfileListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *CertificateCredentialListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *CertificateProfileListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetInUseCount returns the InUseCount field value
-func (o *CertificateCredentialListDto) GetInUseCount() int32 {
+func (o *CertificateProfileListDto) GetInUseCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -709,7 +692,7 @@ func (o *CertificateCredentialListDto) GetInUseCount() int32 {
 
 // GetInUseCountOk returns a tuple with the InUseCount field value
 // and a boolean to check if the value has been set.
-func (o *CertificateCredentialListDto) GetInUseCountOk() (*int32, bool) {
+func (o *CertificateProfileListDto) GetInUseCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -717,11 +700,133 @@ func (o *CertificateCredentialListDto) GetInUseCountOk() (*int32, bool) {
 }
 
 // SetInUseCount sets field value
-func (o *CertificateCredentialListDto) SetInUseCount(v int32) {
+func (o *CertificateProfileListDto) SetInUseCount(v int32) {
 	o.InUseCount = v
 }
 
-func (o CertificateCredentialListDto) MarshalJSON() ([]byte, error) {
+// GetAssociatedProjects returns the AssociatedProjects field value
+func (o *CertificateProfileListDto) GetAssociatedProjects() []CommonDropdownDto {
+	if o == nil {
+		var ret []CommonDropdownDto
+		return ret
+	}
+
+	return o.AssociatedProjects
+}
+
+// GetAssociatedProjectsOk returns a tuple with the AssociatedProjects field value
+// and a boolean to check if the value has been set.
+func (o *CertificateProfileListDto) GetAssociatedProjectsOk() ([]CommonDropdownDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AssociatedProjects, true
+}
+
+// SetAssociatedProjects sets field value
+func (o *CertificateProfileListDto) SetAssociatedProjects(v []CommonDropdownDto) {
+	o.AssociatedProjects = v
+}
+
+// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetIssuerMode() string {
+	if o == nil || IsNil(o.IssuerMode.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.IssuerMode.Get()
+}
+
+// GetIssuerModeOk returns a tuple with the IssuerMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetIssuerModeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IssuerMode.Get(), o.IssuerMode.IsSet()
+}
+
+// HasIssuerMode returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasIssuerMode() bool {
+	if o != nil && o.IssuerMode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuerMode gets a reference to the given NullableString and assigns it to the IssuerMode field.
+func (o *CertificateProfileListDto) SetIssuerMode(v string) {
+	o.IssuerMode.Set(&v)
+}
+// SetIssuerModeNil sets the value for IssuerMode to be an explicit nil
+func (o *CertificateProfileListDto) SetIssuerModeNil() {
+	o.IssuerMode.Set(nil)
+}
+
+// UnsetIssuerMode ensures that no value is present for IssuerMode, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetIssuerMode() {
+	o.IssuerMode.Unset()
+}
+
+// GetTrustBundleCount returns the TrustBundleCount field value if set, zero value otherwise.
+func (o *CertificateProfileListDto) GetTrustBundleCount() int32 {
+	if o == nil || IsNil(o.TrustBundleCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TrustBundleCount
+}
+
+// GetTrustBundleCountOk returns a tuple with the TrustBundleCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateProfileListDto) GetTrustBundleCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TrustBundleCount) {
+		return nil, false
+	}
+	return o.TrustBundleCount, true
+}
+
+// HasTrustBundleCount returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasTrustBundleCount() bool {
+	if o != nil && !IsNil(o.TrustBundleCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrustBundleCount gets a reference to the given int32 and assigns it to the TrustBundleCount field.
+func (o *CertificateProfileListDto) SetTrustBundleCount(v int32) {
+	o.TrustBundleCount = &v
+}
+
+// GetTrustBundle returns the TrustBundle field value
+func (o *CertificateProfileListDto) GetTrustBundle() []CertificateProfileTrustBundleSummaryDto {
+	if o == nil {
+		var ret []CertificateProfileTrustBundleSummaryDto
+		return ret
+	}
+
+	return o.TrustBundle
+}
+
+// GetTrustBundleOk returns a tuple with the TrustBundle field value
+// and a boolean to check if the value has been set.
+func (o *CertificateProfileListDto) GetTrustBundleOk() ([]CertificateProfileTrustBundleSummaryDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TrustBundle, true
+}
+
+// SetTrustBundle sets field value
+func (o *CertificateProfileListDto) SetTrustBundle(v []CertificateProfileTrustBundleSummaryDto) {
+	o.TrustBundle = v
+}
+
+func (o CertificateProfileListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -729,13 +834,14 @@ func (o CertificateCredentialListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CertificateCredentialListDto) ToMap() (map[string]interface{}, error) {
+func (o CertificateProfileListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description.Get()
-	toSerialize["kind"] = o.Kind
-	toSerialize["certPem"] = o.CertPem
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
+	}
 	toSerialize["organizationId"] = o.OrganizationId.Get()
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	if o.NotBefore.IsSet() {
@@ -762,10 +868,18 @@ func (o CertificateCredentialListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["isInfra"] = o.IsInfra
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["inUseCount"] = o.InUseCount
+	toSerialize["associatedProjects"] = o.AssociatedProjects
+	if o.IssuerMode.IsSet() {
+		toSerialize["issuerMode"] = o.IssuerMode.Get()
+	}
+	if !IsNil(o.TrustBundleCount) {
+		toSerialize["trustBundleCount"] = o.TrustBundleCount
+	}
+	toSerialize["trustBundle"] = o.TrustBundle
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -774,7 +888,7 @@ func (o CertificateCredentialListDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CertificateCredentialListDto) UnmarshalJSON(data []byte) (err error) {
+func (o *CertificateProfileListDto) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -782,8 +896,6 @@ func (o *CertificateCredentialListDto) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"name",
 		"description",
-		"kind",
-		"certPem",
 		"organizationId",
 		"organizationName",
 		"isLocked",
@@ -793,6 +905,8 @@ func (o *CertificateCredentialListDto) UnmarshalJSON(data []byte) (err error) {
 		"lastModified",
 		"lastModifiedBy",
 		"inUseCount",
+		"associatedProjects",
+		"trustBundle",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -809,15 +923,15 @@ func (o *CertificateCredentialListDto) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varCertificateCredentialListDto := _CertificateCredentialListDto{}
+	varCertificateProfileListDto := _CertificateProfileListDto{}
 
-	err = json.Unmarshal(data, &varCertificateCredentialListDto)
+	err = json.Unmarshal(data, &varCertificateProfileListDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CertificateCredentialListDto(varCertificateCredentialListDto)
+	*o = CertificateProfileListDto(varCertificateProfileListDto)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -826,7 +940,6 @@ func (o *CertificateCredentialListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "kind")
-		delete(additionalProperties, "certPem")
 		delete(additionalProperties, "organizationId")
 		delete(additionalProperties, "organizationName")
 		delete(additionalProperties, "notBefore")
@@ -843,44 +956,48 @@ func (o *CertificateCredentialListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "lastModified")
 		delete(additionalProperties, "lastModifiedBy")
 		delete(additionalProperties, "inUseCount")
+		delete(additionalProperties, "associatedProjects")
+		delete(additionalProperties, "issuerMode")
+		delete(additionalProperties, "trustBundleCount")
+		delete(additionalProperties, "trustBundle")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableCertificateCredentialListDto struct {
-	value *CertificateCredentialListDto
+type NullableCertificateProfileListDto struct {
+	value *CertificateProfileListDto
 	isSet bool
 }
 
-func (v NullableCertificateCredentialListDto) Get() *CertificateCredentialListDto {
+func (v NullableCertificateProfileListDto) Get() *CertificateProfileListDto {
 	return v.value
 }
 
-func (v *NullableCertificateCredentialListDto) Set(val *CertificateCredentialListDto) {
+func (v *NullableCertificateProfileListDto) Set(val *CertificateProfileListDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCertificateCredentialListDto) IsSet() bool {
+func (v NullableCertificateProfileListDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCertificateCredentialListDto) Unset() {
+func (v *NullableCertificateProfileListDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCertificateCredentialListDto(val *CertificateCredentialListDto) *NullableCertificateCredentialListDto {
-	return &NullableCertificateCredentialListDto{value: val, isSet: true}
+func NewNullableCertificateProfileListDto(val *CertificateProfileListDto) *NullableCertificateProfileListDto {
+	return &NullableCertificateProfileListDto{value: val, isSet: true}
 }
 
-func (v NullableCertificateCredentialListDto) MarshalJSON() ([]byte, error) {
+func (v NullableCertificateProfileListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCertificateCredentialListDto) UnmarshalJSON(src []byte) error {
+func (v *NullableCertificateProfileListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

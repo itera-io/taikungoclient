@@ -83,7 +83,7 @@ type APIClient struct {
 
 	CatalogAppAPI *CatalogAppAPIService
 
-	CertificateCredentialsAPI *CertificateCredentialsAPIService
+	CertificateProfilesAPI *CertificateProfilesAPIService
 
 	CheckerAPI *CheckerAPIService
 
@@ -92,8 +92,6 @@ type APIClient struct {
 	CommonAPI *CommonAPIService
 
 	CronJobServiceAPI *CronJobServiceAPIService
-
-	CustomCAsAPI *CustomCAsAPIService
 
 	DNSCredentialsAPI *DNSCredentialsAPIService
 
@@ -258,12 +256,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BillingAPI = (*BillingAPIService)(&c.common)
 	c.CatalogAPI = (*CatalogAPIService)(&c.common)
 	c.CatalogAppAPI = (*CatalogAppAPIService)(&c.common)
-	c.CertificateCredentialsAPI = (*CertificateCredentialsAPIService)(&c.common)
+	c.CertificateProfilesAPI = (*CertificateProfilesAPIService)(&c.common)
 	c.CheckerAPI = (*CheckerAPIService)(&c.common)
 	c.CloudCredentialAPI = (*CloudCredentialAPIService)(&c.common)
 	c.CommonAPI = (*CommonAPIService)(&c.common)
 	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
-	c.CustomCAsAPI = (*CustomCAsAPIService)(&c.common)
 	c.DNSCredentialsAPI = (*DNSCredentialsAPIService)(&c.common)
 	c.DnsCertAPI = (*DnsCertAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)

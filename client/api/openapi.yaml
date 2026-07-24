@@ -9486,9 +9486,9 @@ paths:
       summary: Delete catalog app
       tags:
       - Catalog app
-  /api/v1/certificate-credentials:
+  /api/v1/certificate-profiles:
     get:
-      operationId: certificate-credentials-dropdown
+      operationId: certificate-profiles-dropdown
       parameters:
       - explode: true
         in: query
@@ -9518,7 +9518,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/CertificateCredentialDropdownDto"
+                  $ref: "#/components/schemas/CertificateProfileDropdownDto"
                 type: array
           description: OK
         "400":
@@ -9557,16 +9557,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve custom CAs for organization dropdown
+      summary: Certificate profile dropdown (use ?kind=signing_ca for dns-cert CA
+        picker)
       tags:
-      - Certificate credentials
+      - Certificate profiles
     post:
-      operationId: certificate-credentials-create
+      operationId: certificate-profiles-create
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateCredentialCreateCommand"
+              $ref: "#/components/schemas/CertificateProfileCreateCommand"
       responses:
         "200":
           content:
@@ -9610,16 +9611,16 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Add certificate credential
+      summary: Create certificate profile (unified issuerMode DTO or legacy kind-based)
       tags:
-      - Certificate credentials
+      - Certificate profiles
     put:
-      operationId: certificate-credentials-update
+      operationId: certificate-profiles-update
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateCredentialUpdateCommand"
+              $ref: "#/components/schemas/CertificateProfileUpdateCommand"
       responses:
         "200":
           content:
@@ -9661,17 +9662,18 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Update custom CA name/description
+      summary: "Update certificate profile (name, issuerMode template, trust bundle,\
+        \ and related fields)"
       tags:
-      - Certificate credentials
-  /api/v1/certificate-credentials/lockmanager:
+      - Certificate profiles
+  /api/v1/certificate-profiles/lockmanager:
     post:
-      operationId: certificate-credentials-lock-management
+      operationId: certificate-profiles-lock-management
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateCredentialLockCommand"
+              $ref: "#/components/schemas/CertificateProfileLockCommand"
       responses:
         "200":
           content:
@@ -9713,17 +9715,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Lock/unlock certificate credential
+      summary: Lock/unlock certificate profile
       tags:
-      - Certificate credentials
-  /api/v1/certificate-credentials/makedefault:
+      - Certificate profiles
+  /api/v1/certificate-profiles/makedefault:
     post:
-      operationId: certificate-credentials-make-default
+      operationId: certificate-profiles-make-default
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateCredentialMakeDefaultCommand"
+              $ref: "#/components/schemas/CertificateProfileMakeDefaultCommand"
       responses:
         "200":
           content:
@@ -9765,17 +9767,71 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Make default certificate credential
+      summary: Make default certificate profile for organization
       tags:
-      - Certificate credentials
-  /api/v1/certificate-credentials/validate:
+      - Certificate profiles
+  /api/v1/certificate-profiles/parse-certificate:
     post:
-      operationId: certificate-credentials-validate
+      operationId: certificate-profiles-parse-certificate
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CertificateCredentialValidateCommand"
+              $ref: "#/components/schemas/ParseCertificateQuery"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ParseCertificateResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Parse a PEM-encoded certificate and return CN and expiry
+      tags:
+      - Certificate profiles
+  /api/v1/certificate-profiles/validate:
+    post:
+      operationId: certificate-profiles-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CertificateProfileValidateCommand"
       responses:
         "200":
           content:
@@ -9817,13 +9873,66 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: "Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not\
-        \ expired)"
+      summary: Validate certificate profile PEMs or stored profile by certificateProfileId
       tags:
-      - Certificate credentials
-  /api/v1/certificate-credentials/list:
+      - Certificate profiles
+  /api/v1/certificate-profiles/validate-trust-bundle:
+    post:
+      operationId: certificate-profiles-validate-trust-bundle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ValidateTrustBundleQuery"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidateTrustBundleResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Validate a PEM bundle and return the count of parseable certificates
+      tags:
+      - Certificate profiles
+  /api/v1/certificate-profiles/list:
     get:
-      operationId: certificate-credentials-list
+      operationId: certificate-profiles-list
       parameters:
       - explode: true
         in: query
@@ -9865,6 +9974,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: Kind
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: SortBy
         required: false
         schema:
@@ -9900,7 +10016,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CertificateCredentialListResponse"
+                $ref: "#/components/schemas/CertificateProfileListResponse"
           description: OK
         "400":
           content:
@@ -9938,12 +10054,71 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve all custom certificate authorities
+      summary: "List certificate profiles (optional kind filter: signing_ca, trust_anchor,\
+        \ tls_leaf)"
       tags:
-      - Certificate credentials
-  /api/v1/certificate-credentials/{id}:
+      - Certificate profiles
+  /api/v1/certificate-profiles/{id}/trust-bundle:
+    get:
+      operationId: certificate-profiles-get-trust-bundle
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CertificateProfileTrustBundleResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get trust bundle items (name + PEM) for a certificate profile
+      tags:
+      - Certificate profiles
+  /api/v1/certificate-profiles/{id}:
     delete:
-      operationId: certificate-credentials-delete
+      operationId: certificate-profiles-delete
       parameters:
       - explode: false
         in: path
@@ -9994,9 +10169,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Delete certificate credential
+      summary: Delete certificate profile
       tags:
-      - Certificate credentials
+      - Certificate profiles
   /api/v1/checker/openai:
     post:
       operationId: checker-open-ai
@@ -12595,14 +12770,14 @@ paths:
       summary: Rotate tenant KEKs via Transit rewrap
       tags:
       - Cron Job Service
-  /api/v1/cronjob/scan-certificate-credential-expiry:
+  /api/v1/cronjob/scan-certificate-profile-expiry:
     post:
-      operationId: cronjob-scan-certificate-credential-expiry
+      operationId: CronJobScanCertificateProfileExpiry
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ScanCertificateCredentialExpiryCommand"
+              $ref: "#/components/schemas/ScanCertificateProfileExpiryCommand"
       responses:
         "200":
           content:
@@ -12644,8 +12819,60 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Scan certificate credentials approaching or past expiry and emit alert
+      summary: Scan certificate profiles approaching or past expiry and emit alert
         logs
+      tags:
+      - Cron Job Service
+  /api/v1/cronjob/scan-certificate-credential-expiry:
+    post:
+      operationId: CronJobScanCertificateCredentialExpiryLegacy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScanCertificateProfileExpiryCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Legacy alias for scan-certificate-profile-expiry (pre-rename cron path)
       tags:
       - Cron Job Service
   /api/v1/cronjob/project-expiration:
@@ -13895,510 +14122,6 @@ paths:
       summary: Update project app status
       tags:
       - Cron Job Service
-  /api/v1/custom-cas:
-    get:
-      operationId: custom-cas-dropdown
-      parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/CustomCertificateAuthorityDropdownDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve custom CAs for organization dropdown
-      tags:
-      - Custom CAs
-    post:
-      operationId: custom-cas-create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CustomCertificateAuthorityCreateCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApiResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Add custom certificate authority
-      tags:
-      - Custom CAs
-    put:
-      operationId: custom-cas-update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CustomCertificateAuthorityUpdateCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Update custom CA name/description
-      tags:
-      - Custom CAs
-  /api/v1/custom-cas/lockmanager:
-    post:
-      operationId: custom-cas-lock-management
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CustomCertificateAuthorityLockCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Lock/unlock custom certificate authority
-      tags:
-      - Custom CAs
-  /api/v1/custom-cas/makedefault:
-    post:
-      operationId: custom-cas-make-default
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CustomCertificateAuthorityMakeDefaultCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Make default custom certificate authority
-      tags:
-      - Custom CAs
-  /api/v1/custom-cas/validate:
-    post:
-      operationId: custom-cas-validate
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CustomCertificateAuthorityValidateCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: "Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not\
-        \ expired)"
-      tags:
-      - Custom CAs
-  /api/v1/custom-cas/list:
-    get:
-      operationId: custom-cas-list
-      parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: AccountId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Id
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          default: 50
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CustomCertificateAuthorityListResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve all custom certificate authorities
-      tags:
-      - Custom CAs
-  /api/v1/custom-cas/{id}:
-    delete:
-      operationId: custom-cas-delete
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Delete custom certificate authority
-      tags:
-      - Custom CAs
   /api/v1/dnscredentials:
     get:
       operationId: dnscredentials-dropdown
@@ -15773,7 +15496,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Validate DNS provider credentials
+      summary: "Validate DNS/Cert enablement inputs (provider credentials, signing\
+        \ CA reference, issuer rules)"
       tags:
       - DnsCert
   /api/v1/dns-cert/{projectId}:
@@ -48471,6 +48195,10 @@ components:
         efsFileSystemId: efsFileSystemId
         efsFileSystemName: efsFileSystemName
         sharedFileSystemEnabled: true
+        vpcMode: Create
+        ipMode: Ipv4
+        importedVpcId: importedVpcId
+        importedVpcCidr: importedVpcCidr
       properties:
         id:
           format: int32
@@ -48523,6 +48251,16 @@ components:
           type: string
         sharedFileSystemEnabled:
           type: boolean
+        vpcMode:
+          $ref: "#/components/schemas/VpcMode"
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
+        importedVpcId:
+          nullable: true
+          type: string
+        importedVpcCidr:
+          nullable: true
+          type: string
       required:
       - availabilityZones
       - availabilityZonesCount
@@ -49050,6 +48788,10 @@ components:
           efsFileSystemId: efsFileSystemId
           efsFileSystemName: efsFileSystemName
           sharedFileSystemEnabled: true
+          vpcMode: Create
+          ipMode: Ipv4
+          importedVpcId: importedVpcId
+          importedVpcCidr: importedVpcCidr
         - id: 0
           projectCount: 6
           isLocked: true
@@ -49083,6 +48825,10 @@ components:
           efsFileSystemId: efsFileSystemId
           efsFileSystemName: efsFileSystemName
           sharedFileSystemEnabled: true
+          vpcMode: Create
+          ipMode: Ipv4
+          importedVpcId: importedVpcId
+          importedVpcCidr: importedVpcCidr
         limit: 7
         hasMore: true
         totalCount: 9
@@ -52459,11 +52205,31 @@ components:
       - catalogName
       - isBound
       type: object
-    CertificateCredentialCreateCommand:
+    CertificateProfileCreateCommand:
       example:
         name: name
         organizationId: 0
         description: description
+        issuerMode: issuerMode
+        trustBundle:
+        - certPem: certPem
+          name: name
+          pemBundle: pemBundle
+          resolvedPem: resolvedPem
+        - certPem: certPem
+          name: name
+          pemBundle: pemBundle
+          resolvedPem: resolvedPem
+        acmeEmail: acmeEmail
+        acmeServer: acmeServer
+        venafiType: venafiType
+        venafiBaseUrl: venafiBaseUrl
+        venafiZone: venafiZone
+        venafiAccessToken: venafiAccessToken
+        venafiApiKey: venafiApiKey
+        venafiZoneUuid: venafiZoneUuid
+        customCaCert: customCaCert
+        customCaPrivateKey: customCaPrivateKey
         kind: kind
         certPem: certPem
         keyPem: keyPem
@@ -52479,6 +52245,44 @@ components:
           nullable: true
           type: integer
         description:
+          nullable: true
+          type: string
+        issuerMode:
+          nullable: true
+          type: string
+        trustBundle:
+          items:
+            $ref: "#/components/schemas/TrustBundleItem"
+          nullable: true
+          type: array
+        acmeEmail:
+          nullable: true
+          type: string
+        acmeServer:
+          nullable: true
+          type: string
+        venafiType:
+          nullable: true
+          type: string
+        venafiBaseUrl:
+          nullable: true
+          type: string
+        venafiZone:
+          nullable: true
+          type: string
+        venafiAccessToken:
+          nullable: true
+          type: string
+        venafiApiKey:
+          nullable: true
+          type: string
+        venafiZoneUuid:
+          nullable: true
+          type: string
+        customCaCert:
+          nullable: true
+          type: string
+        customCaPrivateKey:
           nullable: true
           type: string
         kind:
@@ -52503,11 +52307,11 @@ components:
           nullable: true
           type: integer
       type: object
-    CertificateCredentialDropdownDto:
+    CertificateProfileDropdownDto:
       example:
         id: 0
         name: name
-        kind: SigningCa
+        kind: kind
         isDefault: true
         notAfter: 2000-01-23T04:56:07.000+00:00
         expiryStatus: expiryStatus
@@ -52519,7 +52323,9 @@ components:
           nullable: true
           type: string
         kind:
-          $ref: "#/components/schemas/CertificateCredentialKind"
+          nullable: true
+          readOnly: true
+          type: string
         isDefault:
           type: boolean
         notAfter:
@@ -52532,22 +52338,14 @@ components:
       required:
       - id
       - isDefault
-      - kind
       - name
       type: object
-    CertificateCredentialKind:
-      enum:
-      - SigningCa
-      - TrustAnchor
-      - TlsLeaf
-      type: string
-    CertificateCredentialListDto:
+    CertificateProfileListDto:
       example:
         id: 0
         name: name
         description: description
-        kind: SigningCa
-        certPem: certPem
+        kind: kind
         organizationId: 6
         organizationName: organizationName
         notBefore: 2000-01-23T04:56:07.000+00:00
@@ -52560,10 +52358,30 @@ components:
         isLocked: true
         isDefault: true
         isInfra: true
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         inUseCount: 5
+        associatedProjects:
+        - id: 5
+          name: name
+        - id: 5
+          name: name
+        issuerMode: issuerMode
+        trustBundleCount: 5
+        trustBundle:
+        - id: 2
+          name: name
+        - id: 2
+          name: name
       properties:
         id:
           format: int32
@@ -52574,8 +52392,7 @@ components:
           nullable: true
           type: string
         kind:
-          $ref: "#/components/schemas/CertificateCredentialKind"
-        certPem:
+          readOnly: true
           type: string
         organizationId:
           format: int32
@@ -52615,19 +52432,31 @@ components:
         isInfra:
           type: boolean
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         inUseCount:
           format: int32
           type: integer
+        associatedProjects:
+          items:
+            $ref: "#/components/schemas/CommonDropdownDto"
+          type: array
+        issuerMode:
+          nullable: true
+          type: string
+        trustBundleCount:
+          format: int32
+          type: integer
+        trustBundle:
+          items:
+            $ref: "#/components/schemas/CertificateProfileTrustBundleSummaryDto"
+          type: array
       required:
-      - certPem
+      - associatedProjects
       - createdBy
       - description
       - id
@@ -52635,21 +52464,20 @@ components:
       - isDefault
       - isInfra
       - isLocked
-      - kind
       - lastModified
       - lastModifiedBy
       - name
       - organizationId
       - organizationName
+      - trustBundle
       type: object
-    CertificateCredentialListResponse:
+    CertificateProfileListResponse:
       example:
         data:
         - id: 0
           name: name
           description: description
-          kind: SigningCa
-          certPem: certPem
+          kind: kind
           organizationId: 6
           organizationName: organizationName
           notBefore: 2000-01-23T04:56:07.000+00:00
@@ -52662,15 +52490,34 @@ components:
           isLocked: true
           isDefault: true
           isInfra: true
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           inUseCount: 5
+          associatedProjects:
+          - id: 5
+            name: name
+          - id: 5
+            name: name
+          issuerMode: issuerMode
+          trustBundleCount: 5
+          trustBundle:
+          - id: 2
+            name: name
+          - id: 2
+            name: name
         - id: 0
           name: name
           description: description
-          kind: SigningCa
-          certPem: certPem
+          kind: kind
           organizationId: 6
           organizationName: organizationName
           notBefore: 2000-01-23T04:56:07.000+00:00
@@ -52683,19 +52530,39 @@ components:
           isLocked: true
           isDefault: true
           isInfra: true
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           inUseCount: 5
-        limit: 5
+          associatedProjects:
+          - id: 5
+            name: name
+          - id: 5
+            name: name
+          issuerMode: issuerMode
+          trustBundleCount: 5
+          trustBundle:
+          - id: 2
+            name: name
+          - id: 2
+            name: name
+        limit: 7
         hasMore: true
-        totalCount: 2
-        offset: 7
-        nextOffset: 9
+        totalCount: 9
+        offset: 3
+        nextOffset: 2
       properties:
         data:
           items:
-            $ref: "#/components/schemas/CertificateCredentialListDto"
+            $ref: "#/components/schemas/CertificateProfileListDto"
           nullable: true
           type: array
         limit:
@@ -52720,7 +52587,7 @@ components:
       - offset
       - totalCount
       type: object
-    CertificateCredentialLockCommand:
+    CertificateProfileLockCommand:
       example:
         id: 0
         mode: mode
@@ -52732,7 +52599,7 @@ components:
           nullable: true
           type: string
       type: object
-    CertificateCredentialMakeDefaultCommand:
+    CertificateProfileMakeDefaultCommand:
       example:
         id: 0
       properties:
@@ -52740,31 +52607,145 @@ components:
           format: int32
           type: integer
       type: object
-    CertificateCredentialUpdateCommand:
+    CertificateProfileTrustBundleItemDto:
       example:
         id: 0
         name: name
-        description: description
+        pemBundle: pemBundle
       properties:
         id:
           format: int32
           type: integer
         name:
-          nullable: true
+          type: string
+        pemBundle:
+          type: string
+      type: object
+    CertificateProfileTrustBundleResponse:
+      example:
+        items:
+        - id: 0
+          name: name
+          pemBundle: pemBundle
+        - id: 0
+          name: name
+          pemBundle: pemBundle
+      properties:
+        items:
+          items:
+            $ref: "#/components/schemas/CertificateProfileTrustBundleItemDto"
+          type: array
+      type: object
+    CertificateProfileTrustBundleSummaryDto:
+      example:
+        id: 2
+        name: name
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+      type: object
+    CertificateProfileUpdateCommand:
+      example:
+        id: 0
+        name: name
+        description: description
+        issuerMode: issuerMode
+        trustBundle:
+        - name: name
+          pemBundle: pemBundle
+        - name: name
+          pemBundle: pemBundle
+        acmeEmail: acmeEmail
+        acmeServer: acmeServer
+        venafiType: venafiType
+        venafiBaseUrl: venafiBaseUrl
+        venafiZone: venafiZone
+        venafiAccessToken: venafiAccessToken
+        venafiApiKey: venafiApiKey
+        venafiZoneUuid: venafiZoneUuid
+        customCaCert: customCaCert
+        customCaPrivateKey: customCaPrivateKey
+        chainPem: chainPem
+        commonName: commonName
+        validityDays: 6
+        certPem: certPem
+        keyPem: keyPem
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
           type: string
         description:
           nullable: true
           type: string
+        issuerMode:
+          nullable: true
+          type: string
+        trustBundle:
+          items:
+            $ref: "#/components/schemas/TrustBundleUpdateItem"
+          nullable: true
+          type: array
+        acmeEmail:
+          nullable: true
+          type: string
+        acmeServer:
+          nullable: true
+          type: string
+        venafiType:
+          nullable: true
+          type: string
+        venafiBaseUrl:
+          nullable: true
+          type: string
+        venafiZone:
+          nullable: true
+          type: string
+        venafiAccessToken:
+          nullable: true
+          type: string
+        venafiApiKey:
+          nullable: true
+          type: string
+        venafiZoneUuid:
+          nullable: true
+          type: string
+        customCaCert:
+          nullable: true
+          type: string
+        customCaPrivateKey:
+          nullable: true
+          type: string
+        chainPem:
+          nullable: true
+          type: string
+        commonName:
+          nullable: true
+          type: string
+        validityDays:
+          format: int32
+          nullable: true
+          type: integer
+        certPem:
+          nullable: true
+          type: string
+        keyPem:
+          nullable: true
+          type: string
       type: object
-    CertificateCredentialValidateCommand:
+    CertificateProfileValidateCommand:
       example:
-        certificateCredentialId: 0
+        certificateProfileId: 0
         kind: kind
         certPem: certPem
         keyPem: keyPem
         chainPem: chainPem
       properties:
-        certificateCredentialId:
+        certificateProfileId:
           format: int32
           nullable: true
           type: integer
@@ -55912,237 +55893,6 @@ components:
       - contentType
       - fileName
       type: object
-    CustomCertificateAuthorityCreateCommand:
-      example:
-        name: name
-        organizationId: 0
-        description: description
-        caCert: caCert
-        caKey: caKey
-        generateSelfSigned: true
-        commonName: commonName
-        validityDays: 6
-      properties:
-        name:
-          type: string
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
-        description:
-          nullable: true
-          type: string
-        caCert:
-          nullable: true
-          type: string
-        caKey:
-          nullable: true
-          type: string
-        generateSelfSigned:
-          type: boolean
-        commonName:
-          nullable: true
-          type: string
-        validityDays:
-          format: int32
-          nullable: true
-          type: integer
-      type: object
-    CustomCertificateAuthorityDropdownDto:
-      example:
-        id: 0
-        name: name
-        isDefault: true
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        isDefault:
-          type: boolean
-      required:
-      - id
-      - isDefault
-      - name
-      type: object
-    CustomCertificateAuthorityListDto:
-      example:
-        id: 0
-        name: name
-        description: description
-        caCert: caCert
-        organizationId: 6
-        organizationName: organizationName
-        isLocked: true
-        isDefault: true
-        isInfra: true
-        createdBy: createdBy
-        lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
-        inUseCount: 1
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        description:
-          nullable: true
-          type: string
-        caCert:
-          type: string
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
-        organizationName:
-          nullable: true
-          type: string
-        isLocked:
-          type: boolean
-        isDefault:
-          type: boolean
-        isInfra:
-          type: boolean
-        createdBy:
-          nullable: true
-          type: string
-        lastModified:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        inUseCount:
-          format: int32
-          type: integer
-      required:
-      - caCert
-      - createdBy
-      - description
-      - id
-      - inUseCount
-      - isDefault
-      - isInfra
-      - isLocked
-      - lastModified
-      - lastModifiedBy
-      - name
-      - organizationId
-      - organizationName
-      type: object
-    CustomCertificateAuthorityListResponse:
-      example:
-        data:
-        - id: 0
-          name: name
-          description: description
-          caCert: caCert
-          organizationId: 6
-          organizationName: organizationName
-          isLocked: true
-          isDefault: true
-          isInfra: true
-          createdBy: createdBy
-          lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
-          inUseCount: 1
-        - id: 0
-          name: name
-          description: description
-          caCert: caCert
-          organizationId: 6
-          organizationName: organizationName
-          isLocked: true
-          isDefault: true
-          isInfra: true
-          createdBy: createdBy
-          lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
-          inUseCount: 1
-        limit: 5
-        hasMore: true
-        totalCount: 5
-        offset: 2
-        nextOffset: 7
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/CustomCertificateAuthorityListDto"
-          nullable: true
-          type: array
-        limit:
-          format: int32
-          type: integer
-        hasMore:
-          type: boolean
-        totalCount:
-          format: int64
-          type: integer
-        offset:
-          format: int32
-          type: integer
-        nextOffset:
-          format: int32
-          nullable: true
-          type: integer
-      required:
-      - data
-      - hasMore
-      - limit
-      - offset
-      - totalCount
-      type: object
-    CustomCertificateAuthorityLockCommand:
-      example:
-        id: 0
-        mode: mode
-      properties:
-        id:
-          format: int32
-          type: integer
-        mode:
-          nullable: true
-          type: string
-      type: object
-    CustomCertificateAuthorityMakeDefaultCommand:
-      example:
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-      type: object
-    CustomCertificateAuthorityUpdateCommand:
-      example:
-        id: 0
-        name: name
-        description: description
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        description:
-          nullable: true
-          type: string
-      type: object
-    CustomCertificateAuthorityValidateCommand:
-      example:
-        caCert: caCert
-        caKey: caKey
-      properties:
-        caCert:
-          nullable: true
-          type: string
-        caKey:
-          nullable: true
-          type: string
-      type: object
     DaemonSetSearchCommand:
       example:
         limit: 0
@@ -58882,8 +58632,7 @@ components:
         certIssuerType: certIssuerType
         acmeEmail: acmeEmail
         domain: domain
-        customCertificateAuthorityId: 1
-        certificateCredentialId: 5
+        certificateProfileId: 1
       properties:
         projectId:
           format: int32
@@ -58901,11 +58650,7 @@ components:
         domain:
           nullable: true
           type: string
-        customCertificateAuthorityId:
-          format: int32
-          nullable: true
-          type: integer
-        certificateCredentialId:
+        certificateProfileId:
           format: int32
           nullable: true
           type: integer
@@ -58917,8 +58662,7 @@ components:
         certIssuerType: certIssuerType
         acmeEmail: acmeEmail
         domain: domain
-        customCertificateAuthorityId: 1
-        certificateCredentialId: 5
+        certificateProfileId: 1
       properties:
         projectId:
           format: int32
@@ -58936,11 +58680,7 @@ components:
         domain:
           nullable: true
           type: string
-        customCertificateAuthorityId:
-          format: int32
-          nullable: true
-          type: integer
-        certificateCredentialId:
+        certificateProfileId:
           format: int32
           nullable: true
           type: integer
@@ -61119,6 +60859,7 @@ components:
         certManagerEnabled: true
         externalDnsEnabled: true
         trustManagerEnabled: true
+        enabled: true
         dnsProvider: dnsProvider
         certIssuerType: certIssuerType
         domain: domain
@@ -61137,6 +60878,8 @@ components:
         synced: true
         dnsCredentialId: 4
         dnsCredentialName: dnsCredentialName
+        certificateProfileId: 7
+        certificateProfileName: certificateProfileName
         projectStatus: "Null"
         failureReason: failureReason
       properties:
@@ -61145,6 +60888,8 @@ components:
         externalDnsEnabled:
           type: boolean
         trustManagerEnabled:
+          type: boolean
+        enabled:
           type: boolean
         dnsProvider:
           nullable: true
@@ -61198,6 +60943,13 @@ components:
           nullable: true
           type: integer
         dnsCredentialName:
+          nullable: true
+          type: string
+        certificateProfileId:
+          format: int32
+          nullable: true
+          type: integer
+        certificateProfileName:
           nullable: true
           type: string
         projectStatus:
@@ -68518,6 +68270,23 @@ components:
       - Array
       - Multiline
       type: string
+    ParseCertificateQuery:
+      example:
+        certPem: certPem
+      properties:
+        certPem:
+          type: string
+      type: object
+    ParseCertificateResponse:
+      example:
+        cn: cn
+        expires: expires
+      properties:
+        cn:
+          type: string
+        expires:
+          type: string
+      type: object
     PartnerPoolDekAnomalyDto:
       example:
         partnerId: 1
@@ -74357,7 +74126,7 @@ components:
           nullable: true
           type: string
       type: object
-    ScanCertificateCredentialExpiryCommand:
+    ScanCertificateProfileExpiryCommand:
       type: object
     SecretListDto:
       example:
@@ -78060,6 +77829,37 @@ components:
           nullable: true
           type: string
       type: object
+    TrustBundleItem:
+      example:
+        certPem: certPem
+        name: name
+        pemBundle: pemBundle
+        resolvedPem: resolvedPem
+      properties:
+        certPem:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        pemBundle:
+          nullable: true
+          type: string
+        resolvedPem:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    TrustBundleUpdateItem:
+      example:
+        name: name
+        pemBundle: pemBundle
+      properties:
+        name:
+          type: string
+        pemBundle:
+          type: string
+      type: object
     TrustedRegisteredCreateDto:
       example:
         registry: registry
@@ -80096,8 +79896,6 @@ components:
         azureClientSecret: azureClientSecret
         gcpProject: gcpProject
         gcpServiceAccountJson: gcpServiceAccountJson
-        caCert: caCert
-        caKey: caKey
         authMethod: authMethod
         authVariant: authVariant
         awsRoleArn: awsRoleArn
@@ -80106,8 +79904,7 @@ components:
         pdnsApiKey: pdnsApiKey
         pdnsServerId: pdnsServerId
         dnsCredentialId: 0
-        certificateCredentialId: 6
-        customCertificateAuthorityId: 1
+        certificateProfileId: 6
       properties:
         dnsProvider:
           type: string
@@ -80166,12 +79963,6 @@ components:
         gcpServiceAccountJson:
           nullable: true
           type: string
-        caCert:
-          nullable: true
-          type: string
-        caKey:
-          nullable: true
-          type: string
         authMethod:
           nullable: true
           type: string
@@ -80197,14 +79988,49 @@ components:
           format: int32
           nullable: true
           type: integer
-        certificateCredentialId:
+        certificateProfileId:
           format: int32
           nullable: true
           type: integer
-        customCertificateAuthorityId:
+      type: object
+    ValidateTrustBundleItem:
+      example:
+        cn: cn
+        expires: expires
+        expired: true
+      properties:
+        cn:
+          type: string
+        expires:
+          type: string
+        expired:
+          type: boolean
+      type: object
+    ValidateTrustBundleQuery:
+      example:
+        pemBundle: pemBundle
+      properties:
+        pemBundle:
+          type: string
+      type: object
+    ValidateTrustBundleResponse:
+      example:
+        validCount: 0
+        items:
+        - cn: cn
+          expires: expires
+          expired: true
+        - cn: cn
+          expires: expires
+          expired: true
+      properties:
+        validCount:
           format: int32
-          nullable: true
           type: integer
+        items:
+          items:
+            $ref: "#/components/schemas/ValidateTrustBundleItem"
+          type: array
       type: object
     ValidateVsphereCommand:
       example:

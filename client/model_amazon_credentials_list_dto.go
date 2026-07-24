@@ -40,6 +40,10 @@ type AmazonCredentialsListDto struct {
 	EfsFileSystemId NullableString `json:"efsFileSystemId,omitempty"`
 	EfsFileSystemName NullableString `json:"efsFileSystemName,omitempty"`
 	SharedFileSystemEnabled *bool `json:"sharedFileSystemEnabled,omitempty"`
+	VpcMode *VpcMode `json:"vpcMode,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
+	ImportedVpcId NullableString `json:"importedVpcId,omitempty"`
+	ImportedVpcCidr NullableString `json:"importedVpcCidr,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -584,6 +588,154 @@ func (o *AmazonCredentialsListDto) SetSharedFileSystemEnabled(v bool) {
 	o.SharedFileSystemEnabled = &v
 }
 
+// GetVpcMode returns the VpcMode field value if set, zero value otherwise.
+func (o *AmazonCredentialsListDto) GetVpcMode() VpcMode {
+	if o == nil || IsNil(o.VpcMode) {
+		var ret VpcMode
+		return ret
+	}
+	return *o.VpcMode
+}
+
+// GetVpcModeOk returns a tuple with the VpcMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AmazonCredentialsListDto) GetVpcModeOk() (*VpcMode, bool) {
+	if o == nil || IsNil(o.VpcMode) {
+		return nil, false
+	}
+	return o.VpcMode, true
+}
+
+// HasVpcMode returns a boolean if a field has been set.
+func (o *AmazonCredentialsListDto) HasVpcMode() bool {
+	if o != nil && !IsNil(o.VpcMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcMode gets a reference to the given VpcMode and assigns it to the VpcMode field.
+func (o *AmazonCredentialsListDto) SetVpcMode(v VpcMode) {
+	o.VpcMode = &v
+}
+
+// GetIpMode returns the IpMode field value if set, zero value otherwise.
+func (o *AmazonCredentialsListDto) GetIpMode() IpMode {
+	if o == nil || IsNil(o.IpMode) {
+		var ret IpMode
+		return ret
+	}
+	return *o.IpMode
+}
+
+// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AmazonCredentialsListDto) GetIpModeOk() (*IpMode, bool) {
+	if o == nil || IsNil(o.IpMode) {
+		return nil, false
+	}
+	return o.IpMode, true
+}
+
+// HasIpMode returns a boolean if a field has been set.
+func (o *AmazonCredentialsListDto) HasIpMode() bool {
+	if o != nil && !IsNil(o.IpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
+func (o *AmazonCredentialsListDto) SetIpMode(v IpMode) {
+	o.IpMode = &v
+}
+
+// GetImportedVpcId returns the ImportedVpcId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AmazonCredentialsListDto) GetImportedVpcId() string {
+	if o == nil || IsNil(o.ImportedVpcId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedVpcId.Get()
+}
+
+// GetImportedVpcIdOk returns a tuple with the ImportedVpcId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AmazonCredentialsListDto) GetImportedVpcIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedVpcId.Get(), o.ImportedVpcId.IsSet()
+}
+
+// HasImportedVpcId returns a boolean if a field has been set.
+func (o *AmazonCredentialsListDto) HasImportedVpcId() bool {
+	if o != nil && o.ImportedVpcId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedVpcId gets a reference to the given NullableString and assigns it to the ImportedVpcId field.
+func (o *AmazonCredentialsListDto) SetImportedVpcId(v string) {
+	o.ImportedVpcId.Set(&v)
+}
+// SetImportedVpcIdNil sets the value for ImportedVpcId to be an explicit nil
+func (o *AmazonCredentialsListDto) SetImportedVpcIdNil() {
+	o.ImportedVpcId.Set(nil)
+}
+
+// UnsetImportedVpcId ensures that no value is present for ImportedVpcId, not even an explicit nil
+func (o *AmazonCredentialsListDto) UnsetImportedVpcId() {
+	o.ImportedVpcId.Unset()
+}
+
+// GetImportedVpcCidr returns the ImportedVpcCidr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AmazonCredentialsListDto) GetImportedVpcCidr() string {
+	if o == nil || IsNil(o.ImportedVpcCidr.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedVpcCidr.Get()
+}
+
+// GetImportedVpcCidrOk returns a tuple with the ImportedVpcCidr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AmazonCredentialsListDto) GetImportedVpcCidrOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedVpcCidr.Get(), o.ImportedVpcCidr.IsSet()
+}
+
+// HasImportedVpcCidr returns a boolean if a field has been set.
+func (o *AmazonCredentialsListDto) HasImportedVpcCidr() bool {
+	if o != nil && o.ImportedVpcCidr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedVpcCidr gets a reference to the given NullableString and assigns it to the ImportedVpcCidr field.
+func (o *AmazonCredentialsListDto) SetImportedVpcCidr(v string) {
+	o.ImportedVpcCidr.Set(&v)
+}
+// SetImportedVpcCidrNil sets the value for ImportedVpcCidr to be an explicit nil
+func (o *AmazonCredentialsListDto) SetImportedVpcCidrNil() {
+	o.ImportedVpcCidr.Set(nil)
+}
+
+// UnsetImportedVpcCidr ensures that no value is present for ImportedVpcCidr, not even an explicit nil
+func (o *AmazonCredentialsListDto) UnsetImportedVpcCidr() {
+	o.ImportedVpcCidr.Unset()
+}
+
 func (o AmazonCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -618,6 +770,18 @@ func (o AmazonCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SharedFileSystemEnabled) {
 		toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
+	}
+	if !IsNil(o.VpcMode) {
+		toSerialize["vpcMode"] = o.VpcMode
+	}
+	if !IsNil(o.IpMode) {
+		toSerialize["ipMode"] = o.IpMode
+	}
+	if o.ImportedVpcId.IsSet() {
+		toSerialize["importedVpcId"] = o.ImportedVpcId.Get()
+	}
+	if o.ImportedVpcCidr.IsSet() {
+		toSerialize["importedVpcCidr"] = o.ImportedVpcCidr.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -696,6 +860,10 @@ func (o *AmazonCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "efsFileSystemId")
 		delete(additionalProperties, "efsFileSystemName")
 		delete(additionalProperties, "sharedFileSystemEnabled")
+		delete(additionalProperties, "vpcMode")
+		delete(additionalProperties, "ipMode")
+		delete(additionalProperties, "importedVpcId")
+		delete(additionalProperties, "importedVpcCidr")
 		o.AdditionalProperties = additionalProperties
 	}
 
