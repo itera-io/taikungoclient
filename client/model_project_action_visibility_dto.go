@@ -60,6 +60,8 @@ type ProjectActionVisibilityDto struct {
 	DisableExternalDns ButtonStatusDto `json:"disableExternalDns"`
 	EnableTrustManager ButtonStatusDto `json:"enableTrustManager"`
 	DisableTrustManager ButtonStatusDto `json:"disableTrustManager"`
+	EnableCTProfiles ButtonStatusDto `json:"enableCTProfiles"`
+	DisableCTProfiles ButtonStatusDto `json:"disableCTProfiles"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -69,7 +71,7 @@ type _ProjectActionVisibilityDto ProjectActionVisibilityDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDto, upgrade ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableAutoscaler ButtonStatusDto, disableAutoscaler ButtonStatusDto, enableGatewayApi ButtonStatusDto, disableGatewayApi ButtonStatusDto, vmRepair ButtonStatusDto, vmCommit ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto, enableSpotWorker ButtonStatusDto, disableSpotWorker ButtonStatusDto, enableFullSpot ButtonStatusDto, disableFullSpot ButtonStatusDto, enableSpotVm ButtonStatusDto, disableSpotVm ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, aiAssistant ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, addServer ButtonStatusDto, addVm ButtonStatusDto, enableDnsCert ButtonStatusDto, disableDnsCert ButtonStatusDto, enableCertManager ButtonStatusDto, disableCertManager ButtonStatusDto, enableExternalDns ButtonStatusDto, disableExternalDns ButtonStatusDto, enableTrustManager ButtonStatusDto, disableTrustManager ButtonStatusDto) *ProjectActionVisibilityDto {
+func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDto, upgrade ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableAutoscaler ButtonStatusDto, disableAutoscaler ButtonStatusDto, enableGatewayApi ButtonStatusDto, disableGatewayApi ButtonStatusDto, vmRepair ButtonStatusDto, vmCommit ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto, enableSpotWorker ButtonStatusDto, disableSpotWorker ButtonStatusDto, enableFullSpot ButtonStatusDto, disableFullSpot ButtonStatusDto, enableSpotVm ButtonStatusDto, disableSpotVm ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, aiAssistant ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, addServer ButtonStatusDto, addVm ButtonStatusDto, enableDnsCert ButtonStatusDto, disableDnsCert ButtonStatusDto, enableCertManager ButtonStatusDto, disableCertManager ButtonStatusDto, enableExternalDns ButtonStatusDto, disableExternalDns ButtonStatusDto, enableTrustManager ButtonStatusDto, disableTrustManager ButtonStatusDto, enableCTProfiles ButtonStatusDto, disableCTProfiles ButtonStatusDto) *ProjectActionVisibilityDto {
 	this := ProjectActionVisibilityDto{}
 	this.Commit = commit
 	this.Repair = repair
@@ -110,6 +112,8 @@ func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDt
 	this.DisableExternalDns = disableExternalDns
 	this.EnableTrustManager = enableTrustManager
 	this.DisableTrustManager = disableTrustManager
+	this.EnableCTProfiles = enableCTProfiles
+	this.DisableCTProfiles = disableCTProfiles
 	return &this
 }
 
@@ -1057,6 +1061,54 @@ func (o *ProjectActionVisibilityDto) SetDisableTrustManager(v ButtonStatusDto) {
 	o.DisableTrustManager = v
 }
 
+// GetEnableCTProfiles returns the EnableCTProfiles field value
+func (o *ProjectActionVisibilityDto) GetEnableCTProfiles() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.EnableCTProfiles
+}
+
+// GetEnableCTProfilesOk returns a tuple with the EnableCTProfiles field value
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetEnableCTProfilesOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableCTProfiles, true
+}
+
+// SetEnableCTProfiles sets field value
+func (o *ProjectActionVisibilityDto) SetEnableCTProfiles(v ButtonStatusDto) {
+	o.EnableCTProfiles = v
+}
+
+// GetDisableCTProfiles returns the DisableCTProfiles field value
+func (o *ProjectActionVisibilityDto) GetDisableCTProfiles() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DisableCTProfiles
+}
+
+// GetDisableCTProfilesOk returns a tuple with the DisableCTProfiles field value
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetDisableCTProfilesOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableCTProfiles, true
+}
+
+// SetDisableCTProfiles sets field value
+func (o *ProjectActionVisibilityDto) SetDisableCTProfiles(v ButtonStatusDto) {
+	o.DisableCTProfiles = v
+}
+
 func (o ProjectActionVisibilityDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1106,6 +1158,8 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["disableExternalDns"] = o.DisableExternalDns
 	toSerialize["enableTrustManager"] = o.EnableTrustManager
 	toSerialize["disableTrustManager"] = o.DisableTrustManager
+	toSerialize["enableCTProfiles"] = o.EnableCTProfiles
+	toSerialize["disableCTProfiles"] = o.DisableCTProfiles
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1158,6 +1212,8 @@ func (o *ProjectActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 		"disableExternalDns",
 		"enableTrustManager",
 		"disableTrustManager",
+		"enableCTProfiles",
+		"disableCTProfiles",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1226,6 +1282,8 @@ func (o *ProjectActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "disableExternalDns")
 		delete(additionalProperties, "enableTrustManager")
 		delete(additionalProperties, "disableTrustManager")
+		delete(additionalProperties, "enableCTProfiles")
+		delete(additionalProperties, "disableCTProfiles")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -152,6 +152,7 @@ docs/AppRepositoryList.md
 docs/ApplicationSyncResponse.md
 docs/ArtifactRepositoryDto.md
 docs/ArtifactUrlCheckerCommand.md
+docs/AssignCertificateProfileCommand.md
 docs/AttachDetachAlertingProfileCommand.md
 docs/AttachDetachDnsCredentialCommand.md
 docs/AuditUserDto.md
@@ -251,6 +252,7 @@ docs/CatalogMakeDefaultCommand.md
 docs/CatalogsForProjectDto.md
 docs/CertificateProfileCreateCommand.md
 docs/CertificateProfileDropdownDto.md
+docs/CertificateProfileIssuerMode.md
 docs/CertificateProfileListDto.md
 docs/CertificateProfileListResponse.md
 docs/CertificateProfileLockCommand.md
@@ -260,6 +262,7 @@ docs/CertificateProfileTrustBundleResponse.md
 docs/CertificateProfileTrustBundleSummaryDto.md
 docs/CertificateProfileUpdateCommand.md
 docs/CertificateProfileValidateCommand.md
+docs/CertificateProfileVenafiType.md
 docs/CertificateProfilesAPI.md
 docs/ChangeCardCommand.md
 docs/ChangePasswordCommand.md
@@ -1028,6 +1031,7 @@ docs/TwoFactorAuthRecoveryCommand.md
 docs/TwoFactorAuthSetupResult.md
 docs/TwoFactorAuthVerifyCommand.md
 docs/TwoFactorAuthVerifyResult.md
+docs/UnassignCertificateProfileCommand.md
 docs/UnbindAppRepositoryCommand.md
 docs/UnbindFlavorFromProjectCommand.md
 docs/UninstallProjectAppResult.md
@@ -1185,6 +1189,7 @@ model_app_repository_list.go
 model_application_sync_response.go
 model_artifact_repository_dto.go
 model_artifact_url_checker_command.go
+model_assign_certificate_profile_command.go
 model_attach_detach_alerting_profile_command.go
 model_attach_detach_dns_credential_command.go
 model_audit_user_dto.go
@@ -1276,6 +1281,7 @@ model_catalog_make_default_command.go
 model_catalogs_for_project_dto.go
 model_certificate_profile_create_command.go
 model_certificate_profile_dropdown_dto.go
+model_certificate_profile_issuer_mode.go
 model_certificate_profile_list_dto.go
 model_certificate_profile_list_response.go
 model_certificate_profile_lock_command.go
@@ -1285,6 +1291,7 @@ model_certificate_profile_trust_bundle_response.go
 model_certificate_profile_trust_bundle_summary_dto.go
 model_certificate_profile_update_command.go
 model_certificate_profile_validate_command.go
+model_certificate_profile_venafi_type.go
 model_change_card_command.go
 model_change_password_command.go
 model_chat_completions_command.go
@@ -1988,6 +1995,7 @@ model_two_factor_auth_recovery_command.go
 model_two_factor_auth_setup_result.go
 model_two_factor_auth_verify_command.go
 model_two_factor_auth_verify_result.go
+model_unassign_certificate_profile_command.go
 model_unbind_app_repository_command.go
 model_unbind_flavor_from_project_command.go
 model_uninstall_project_app_result.go

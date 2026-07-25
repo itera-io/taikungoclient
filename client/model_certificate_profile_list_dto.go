@@ -43,7 +43,20 @@ type CertificateProfileListDto struct {
 	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	InUseCount int32 `json:"inUseCount"`
 	AssociatedProjects []CommonDropdownDto `json:"associatedProjects"`
-	IssuerMode NullableString `json:"issuerMode,omitempty"`
+	IssuerMode *CertificateProfileIssuerMode `json:"issuerMode,omitempty"`
+	AcmeEmail NullableString `json:"acmeEmail,omitempty"`
+	AcmeServer NullableString `json:"acmeServer,omitempty"`
+	VenafiType *CertificateProfileVenafiType `json:"venafiType,omitempty"`
+	VenafiBaseUrl NullableString `json:"venafiBaseUrl,omitempty"`
+	VenafiZone NullableString `json:"venafiZone,omitempty"`
+	VenafiZoneUuid NullableString `json:"venafiZoneUuid,omitempty"`
+	// Redacted on list responses (`****` when stored). Omit or send a new value on update to rotate.
+	VenafiAccessToken NullableString `json:"venafiAccessToken,omitempty"`
+	// Redacted on list responses (`****` when stored). Omit or send a new value on update to rotate.
+	VenafiApiKey NullableString `json:"venafiApiKey,omitempty"`
+	CustomCaCert NullableString `json:"customCaCert,omitempty"`
+	// Redacted on list responses (`****` when stored). Omit or send a new value on update to rotate.
+	CustomCaPrivateKey NullableString `json:"customCaPrivateKey,omitempty"`
 	TrustBundleCount *int32 `json:"trustBundleCount,omitempty"`
 	TrustBundle []CertificateProfileTrustBundleSummaryDto `json:"trustBundle"`
 	AdditionalProperties map[string]interface{}
@@ -728,46 +741,446 @@ func (o *CertificateProfileListDto) SetAssociatedProjects(v []CommonDropdownDto)
 	o.AssociatedProjects = v
 }
 
-// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateProfileListDto) GetIssuerMode() string {
-	if o == nil || IsNil(o.IssuerMode.Get()) {
-		var ret string
+// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise.
+func (o *CertificateProfileListDto) GetIssuerMode() CertificateProfileIssuerMode {
+	if o == nil || IsNil(o.IssuerMode) {
+		var ret CertificateProfileIssuerMode
 		return ret
 	}
-	return *o.IssuerMode.Get()
+	return *o.IssuerMode
 }
 
 // GetIssuerModeOk returns a tuple with the IssuerMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateProfileListDto) GetIssuerModeOk() (*string, bool) {
-	if o == nil {
+func (o *CertificateProfileListDto) GetIssuerModeOk() (*CertificateProfileIssuerMode, bool) {
+	if o == nil || IsNil(o.IssuerMode) {
 		return nil, false
 	}
-	return o.IssuerMode.Get(), o.IssuerMode.IsSet()
+	return o.IssuerMode, true
 }
 
 // HasIssuerMode returns a boolean if a field has been set.
 func (o *CertificateProfileListDto) HasIssuerMode() bool {
-	if o != nil && o.IssuerMode.IsSet() {
+	if o != nil && !IsNil(o.IssuerMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetIssuerMode gets a reference to the given NullableString and assigns it to the IssuerMode field.
-func (o *CertificateProfileListDto) SetIssuerMode(v string) {
-	o.IssuerMode.Set(&v)
-}
-// SetIssuerModeNil sets the value for IssuerMode to be an explicit nil
-func (o *CertificateProfileListDto) SetIssuerModeNil() {
-	o.IssuerMode.Set(nil)
+// SetIssuerMode gets a reference to the given CertificateProfileIssuerMode and assigns it to the IssuerMode field.
+func (o *CertificateProfileListDto) SetIssuerMode(v CertificateProfileIssuerMode) {
+	o.IssuerMode = &v
 }
 
-// UnsetIssuerMode ensures that no value is present for IssuerMode, not even an explicit nil
-func (o *CertificateProfileListDto) UnsetIssuerMode() {
-	o.IssuerMode.Unset()
+// GetAcmeEmail returns the AcmeEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetAcmeEmail() string {
+	if o == nil || IsNil(o.AcmeEmail.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AcmeEmail.Get()
+}
+
+// GetAcmeEmailOk returns a tuple with the AcmeEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetAcmeEmailOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AcmeEmail.Get(), o.AcmeEmail.IsSet()
+}
+
+// HasAcmeEmail returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasAcmeEmail() bool {
+	if o != nil && o.AcmeEmail.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAcmeEmail gets a reference to the given NullableString and assigns it to the AcmeEmail field.
+func (o *CertificateProfileListDto) SetAcmeEmail(v string) {
+	o.AcmeEmail.Set(&v)
+}
+// SetAcmeEmailNil sets the value for AcmeEmail to be an explicit nil
+func (o *CertificateProfileListDto) SetAcmeEmailNil() {
+	o.AcmeEmail.Set(nil)
+}
+
+// UnsetAcmeEmail ensures that no value is present for AcmeEmail, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetAcmeEmail() {
+	o.AcmeEmail.Unset()
+}
+
+// GetAcmeServer returns the AcmeServer field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetAcmeServer() string {
+	if o == nil || IsNil(o.AcmeServer.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AcmeServer.Get()
+}
+
+// GetAcmeServerOk returns a tuple with the AcmeServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetAcmeServerOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AcmeServer.Get(), o.AcmeServer.IsSet()
+}
+
+// HasAcmeServer returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasAcmeServer() bool {
+	if o != nil && o.AcmeServer.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAcmeServer gets a reference to the given NullableString and assigns it to the AcmeServer field.
+func (o *CertificateProfileListDto) SetAcmeServer(v string) {
+	o.AcmeServer.Set(&v)
+}
+// SetAcmeServerNil sets the value for AcmeServer to be an explicit nil
+func (o *CertificateProfileListDto) SetAcmeServerNil() {
+	o.AcmeServer.Set(nil)
+}
+
+// UnsetAcmeServer ensures that no value is present for AcmeServer, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetAcmeServer() {
+	o.AcmeServer.Unset()
+}
+
+// GetVenafiType returns the VenafiType field value if set, zero value otherwise.
+func (o *CertificateProfileListDto) GetVenafiType() CertificateProfileVenafiType {
+	if o == nil || IsNil(o.VenafiType) {
+		var ret CertificateProfileVenafiType
+		return ret
+	}
+	return *o.VenafiType
+}
+
+// GetVenafiTypeOk returns a tuple with the VenafiType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateProfileListDto) GetVenafiTypeOk() (*CertificateProfileVenafiType, bool) {
+	if o == nil || IsNil(o.VenafiType) {
+		return nil, false
+	}
+	return o.VenafiType, true
+}
+
+// HasVenafiType returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasVenafiType() bool {
+	if o != nil && !IsNil(o.VenafiType) {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiType gets a reference to the given CertificateProfileVenafiType and assigns it to the VenafiType field.
+func (o *CertificateProfileListDto) SetVenafiType(v CertificateProfileVenafiType) {
+	o.VenafiType = &v
+}
+
+// GetVenafiBaseUrl returns the VenafiBaseUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetVenafiBaseUrl() string {
+	if o == nil || IsNil(o.VenafiBaseUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VenafiBaseUrl.Get()
+}
+
+// GetVenafiBaseUrlOk returns a tuple with the VenafiBaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetVenafiBaseUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VenafiBaseUrl.Get(), o.VenafiBaseUrl.IsSet()
+}
+
+// HasVenafiBaseUrl returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasVenafiBaseUrl() bool {
+	if o != nil && o.VenafiBaseUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiBaseUrl gets a reference to the given NullableString and assigns it to the VenafiBaseUrl field.
+func (o *CertificateProfileListDto) SetVenafiBaseUrl(v string) {
+	o.VenafiBaseUrl.Set(&v)
+}
+// SetVenafiBaseUrlNil sets the value for VenafiBaseUrl to be an explicit nil
+func (o *CertificateProfileListDto) SetVenafiBaseUrlNil() {
+	o.VenafiBaseUrl.Set(nil)
+}
+
+// UnsetVenafiBaseUrl ensures that no value is present for VenafiBaseUrl, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetVenafiBaseUrl() {
+	o.VenafiBaseUrl.Unset()
+}
+
+// GetVenafiZone returns the VenafiZone field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetVenafiZone() string {
+	if o == nil || IsNil(o.VenafiZone.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VenafiZone.Get()
+}
+
+// GetVenafiZoneOk returns a tuple with the VenafiZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetVenafiZoneOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VenafiZone.Get(), o.VenafiZone.IsSet()
+}
+
+// HasVenafiZone returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasVenafiZone() bool {
+	if o != nil && o.VenafiZone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiZone gets a reference to the given NullableString and assigns it to the VenafiZone field.
+func (o *CertificateProfileListDto) SetVenafiZone(v string) {
+	o.VenafiZone.Set(&v)
+}
+// SetVenafiZoneNil sets the value for VenafiZone to be an explicit nil
+func (o *CertificateProfileListDto) SetVenafiZoneNil() {
+	o.VenafiZone.Set(nil)
+}
+
+// UnsetVenafiZone ensures that no value is present for VenafiZone, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetVenafiZone() {
+	o.VenafiZone.Unset()
+}
+
+// GetVenafiZoneUuid returns the VenafiZoneUuid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetVenafiZoneUuid() string {
+	if o == nil || IsNil(o.VenafiZoneUuid.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VenafiZoneUuid.Get()
+}
+
+// GetVenafiZoneUuidOk returns a tuple with the VenafiZoneUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetVenafiZoneUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VenafiZoneUuid.Get(), o.VenafiZoneUuid.IsSet()
+}
+
+// HasVenafiZoneUuid returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasVenafiZoneUuid() bool {
+	if o != nil && o.VenafiZoneUuid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiZoneUuid gets a reference to the given NullableString and assigns it to the VenafiZoneUuid field.
+func (o *CertificateProfileListDto) SetVenafiZoneUuid(v string) {
+	o.VenafiZoneUuid.Set(&v)
+}
+// SetVenafiZoneUuidNil sets the value for VenafiZoneUuid to be an explicit nil
+func (o *CertificateProfileListDto) SetVenafiZoneUuidNil() {
+	o.VenafiZoneUuid.Set(nil)
+}
+
+// UnsetVenafiZoneUuid ensures that no value is present for VenafiZoneUuid, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetVenafiZoneUuid() {
+	o.VenafiZoneUuid.Unset()
+}
+
+// GetVenafiAccessToken returns the VenafiAccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetVenafiAccessToken() string {
+	if o == nil || IsNil(o.VenafiAccessToken.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VenafiAccessToken.Get()
+}
+
+// GetVenafiAccessTokenOk returns a tuple with the VenafiAccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetVenafiAccessTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VenafiAccessToken.Get(), o.VenafiAccessToken.IsSet()
+}
+
+// HasVenafiAccessToken returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasVenafiAccessToken() bool {
+	if o != nil && o.VenafiAccessToken.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiAccessToken gets a reference to the given NullableString and assigns it to the VenafiAccessToken field.
+func (o *CertificateProfileListDto) SetVenafiAccessToken(v string) {
+	o.VenafiAccessToken.Set(&v)
+}
+// SetVenafiAccessTokenNil sets the value for VenafiAccessToken to be an explicit nil
+func (o *CertificateProfileListDto) SetVenafiAccessTokenNil() {
+	o.VenafiAccessToken.Set(nil)
+}
+
+// UnsetVenafiAccessToken ensures that no value is present for VenafiAccessToken, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetVenafiAccessToken() {
+	o.VenafiAccessToken.Unset()
+}
+
+// GetVenafiApiKey returns the VenafiApiKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetVenafiApiKey() string {
+	if o == nil || IsNil(o.VenafiApiKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VenafiApiKey.Get()
+}
+
+// GetVenafiApiKeyOk returns a tuple with the VenafiApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetVenafiApiKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VenafiApiKey.Get(), o.VenafiApiKey.IsSet()
+}
+
+// HasVenafiApiKey returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasVenafiApiKey() bool {
+	if o != nil && o.VenafiApiKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVenafiApiKey gets a reference to the given NullableString and assigns it to the VenafiApiKey field.
+func (o *CertificateProfileListDto) SetVenafiApiKey(v string) {
+	o.VenafiApiKey.Set(&v)
+}
+// SetVenafiApiKeyNil sets the value for VenafiApiKey to be an explicit nil
+func (o *CertificateProfileListDto) SetVenafiApiKeyNil() {
+	o.VenafiApiKey.Set(nil)
+}
+
+// UnsetVenafiApiKey ensures that no value is present for VenafiApiKey, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetVenafiApiKey() {
+	o.VenafiApiKey.Unset()
+}
+
+// GetCustomCaCert returns the CustomCaCert field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetCustomCaCert() string {
+	if o == nil || IsNil(o.CustomCaCert.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CustomCaCert.Get()
+}
+
+// GetCustomCaCertOk returns a tuple with the CustomCaCert field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetCustomCaCertOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomCaCert.Get(), o.CustomCaCert.IsSet()
+}
+
+// HasCustomCaCert returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasCustomCaCert() bool {
+	if o != nil && o.CustomCaCert.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomCaCert gets a reference to the given NullableString and assigns it to the CustomCaCert field.
+func (o *CertificateProfileListDto) SetCustomCaCert(v string) {
+	o.CustomCaCert.Set(&v)
+}
+// SetCustomCaCertNil sets the value for CustomCaCert to be an explicit nil
+func (o *CertificateProfileListDto) SetCustomCaCertNil() {
+	o.CustomCaCert.Set(nil)
+}
+
+// UnsetCustomCaCert ensures that no value is present for CustomCaCert, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetCustomCaCert() {
+	o.CustomCaCert.Unset()
+}
+
+// GetCustomCaPrivateKey returns the CustomCaPrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CertificateProfileListDto) GetCustomCaPrivateKey() string {
+	if o == nil || IsNil(o.CustomCaPrivateKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CustomCaPrivateKey.Get()
+}
+
+// GetCustomCaPrivateKeyOk returns a tuple with the CustomCaPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateProfileListDto) GetCustomCaPrivateKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomCaPrivateKey.Get(), o.CustomCaPrivateKey.IsSet()
+}
+
+// HasCustomCaPrivateKey returns a boolean if a field has been set.
+func (o *CertificateProfileListDto) HasCustomCaPrivateKey() bool {
+	if o != nil && o.CustomCaPrivateKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomCaPrivateKey gets a reference to the given NullableString and assigns it to the CustomCaPrivateKey field.
+func (o *CertificateProfileListDto) SetCustomCaPrivateKey(v string) {
+	o.CustomCaPrivateKey.Set(&v)
+}
+// SetCustomCaPrivateKeyNil sets the value for CustomCaPrivateKey to be an explicit nil
+func (o *CertificateProfileListDto) SetCustomCaPrivateKeyNil() {
+	o.CustomCaPrivateKey.Set(nil)
+}
+
+// UnsetCustomCaPrivateKey ensures that no value is present for CustomCaPrivateKey, not even an explicit nil
+func (o *CertificateProfileListDto) UnsetCustomCaPrivateKey() {
+	o.CustomCaPrivateKey.Unset()
 }
 
 // GetTrustBundleCount returns the TrustBundleCount field value if set, zero value otherwise.
@@ -873,8 +1286,38 @@ func (o CertificateProfileListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["inUseCount"] = o.InUseCount
 	toSerialize["associatedProjects"] = o.AssociatedProjects
-	if o.IssuerMode.IsSet() {
-		toSerialize["issuerMode"] = o.IssuerMode.Get()
+	if !IsNil(o.IssuerMode) {
+		toSerialize["issuerMode"] = o.IssuerMode
+	}
+	if o.AcmeEmail.IsSet() {
+		toSerialize["acmeEmail"] = o.AcmeEmail.Get()
+	}
+	if o.AcmeServer.IsSet() {
+		toSerialize["acmeServer"] = o.AcmeServer.Get()
+	}
+	if !IsNil(o.VenafiType) {
+		toSerialize["venafiType"] = o.VenafiType
+	}
+	if o.VenafiBaseUrl.IsSet() {
+		toSerialize["venafiBaseUrl"] = o.VenafiBaseUrl.Get()
+	}
+	if o.VenafiZone.IsSet() {
+		toSerialize["venafiZone"] = o.VenafiZone.Get()
+	}
+	if o.VenafiZoneUuid.IsSet() {
+		toSerialize["venafiZoneUuid"] = o.VenafiZoneUuid.Get()
+	}
+	if o.VenafiAccessToken.IsSet() {
+		toSerialize["venafiAccessToken"] = o.VenafiAccessToken.Get()
+	}
+	if o.VenafiApiKey.IsSet() {
+		toSerialize["venafiApiKey"] = o.VenafiApiKey.Get()
+	}
+	if o.CustomCaCert.IsSet() {
+		toSerialize["customCaCert"] = o.CustomCaCert.Get()
+	}
+	if o.CustomCaPrivateKey.IsSet() {
+		toSerialize["customCaPrivateKey"] = o.CustomCaPrivateKey.Get()
 	}
 	if !IsNil(o.TrustBundleCount) {
 		toSerialize["trustBundleCount"] = o.TrustBundleCount
@@ -958,6 +1401,16 @@ func (o *CertificateProfileListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "inUseCount")
 		delete(additionalProperties, "associatedProjects")
 		delete(additionalProperties, "issuerMode")
+		delete(additionalProperties, "acmeEmail")
+		delete(additionalProperties, "acmeServer")
+		delete(additionalProperties, "venafiType")
+		delete(additionalProperties, "venafiBaseUrl")
+		delete(additionalProperties, "venafiZone")
+		delete(additionalProperties, "venafiZoneUuid")
+		delete(additionalProperties, "venafiAccessToken")
+		delete(additionalProperties, "venafiApiKey")
+		delete(additionalProperties, "customCaCert")
+		delete(additionalProperties, "customCaPrivateKey")
 		delete(additionalProperties, "trustBundleCount")
 		delete(additionalProperties, "trustBundle")
 		o.AdditionalProperties = additionalProperties

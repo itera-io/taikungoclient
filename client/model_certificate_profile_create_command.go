@@ -23,11 +23,11 @@ type CertificateProfileCreateCommand struct {
 	Name *string `json:"name,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	IssuerMode NullableString `json:"issuerMode,omitempty"`
+	IssuerMode *CertificateProfileIssuerMode `json:"issuerMode,omitempty"`
 	TrustBundle []TrustBundleItem `json:"trustBundle,omitempty"`
 	AcmeEmail NullableString `json:"acmeEmail,omitempty"`
 	AcmeServer NullableString `json:"acmeServer,omitempty"`
-	VenafiType NullableString `json:"venafiType,omitempty"`
+	VenafiType *CertificateProfileVenafiType `json:"venafiType,omitempty"`
 	VenafiBaseUrl NullableString `json:"venafiBaseUrl,omitempty"`
 	VenafiZone NullableString `json:"venafiZone,omitempty"`
 	VenafiAccessToken NullableString `json:"venafiAccessToken,omitempty"`
@@ -180,46 +180,36 @@ func (o *CertificateProfileCreateCommand) UnsetDescription() {
 	o.Description.Unset()
 }
 
-// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateProfileCreateCommand) GetIssuerMode() string {
-	if o == nil || IsNil(o.IssuerMode.Get()) {
-		var ret string
+// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise.
+func (o *CertificateProfileCreateCommand) GetIssuerMode() CertificateProfileIssuerMode {
+	if o == nil || IsNil(o.IssuerMode) {
+		var ret CertificateProfileIssuerMode
 		return ret
 	}
-	return *o.IssuerMode.Get()
+	return *o.IssuerMode
 }
 
 // GetIssuerModeOk returns a tuple with the IssuerMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateProfileCreateCommand) GetIssuerModeOk() (*string, bool) {
-	if o == nil {
+func (o *CertificateProfileCreateCommand) GetIssuerModeOk() (*CertificateProfileIssuerMode, bool) {
+	if o == nil || IsNil(o.IssuerMode) {
 		return nil, false
 	}
-	return o.IssuerMode.Get(), o.IssuerMode.IsSet()
+	return o.IssuerMode, true
 }
 
 // HasIssuerMode returns a boolean if a field has been set.
 func (o *CertificateProfileCreateCommand) HasIssuerMode() bool {
-	if o != nil && o.IssuerMode.IsSet() {
+	if o != nil && !IsNil(o.IssuerMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetIssuerMode gets a reference to the given NullableString and assigns it to the IssuerMode field.
-func (o *CertificateProfileCreateCommand) SetIssuerMode(v string) {
-	o.IssuerMode.Set(&v)
-}
-// SetIssuerModeNil sets the value for IssuerMode to be an explicit nil
-func (o *CertificateProfileCreateCommand) SetIssuerModeNil() {
-	o.IssuerMode.Set(nil)
-}
-
-// UnsetIssuerMode ensures that no value is present for IssuerMode, not even an explicit nil
-func (o *CertificateProfileCreateCommand) UnsetIssuerMode() {
-	o.IssuerMode.Unset()
+// SetIssuerMode gets a reference to the given CertificateProfileIssuerMode and assigns it to the IssuerMode field.
+func (o *CertificateProfileCreateCommand) SetIssuerMode(v CertificateProfileIssuerMode) {
+	o.IssuerMode = &v
 }
 
 // GetTrustBundle returns the TrustBundle field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -339,46 +329,36 @@ func (o *CertificateProfileCreateCommand) UnsetAcmeServer() {
 	o.AcmeServer.Unset()
 }
 
-// GetVenafiType returns the VenafiType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateProfileCreateCommand) GetVenafiType() string {
-	if o == nil || IsNil(o.VenafiType.Get()) {
-		var ret string
+// GetVenafiType returns the VenafiType field value if set, zero value otherwise.
+func (o *CertificateProfileCreateCommand) GetVenafiType() CertificateProfileVenafiType {
+	if o == nil || IsNil(o.VenafiType) {
+		var ret CertificateProfileVenafiType
 		return ret
 	}
-	return *o.VenafiType.Get()
+	return *o.VenafiType
 }
 
 // GetVenafiTypeOk returns a tuple with the VenafiType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateProfileCreateCommand) GetVenafiTypeOk() (*string, bool) {
-	if o == nil {
+func (o *CertificateProfileCreateCommand) GetVenafiTypeOk() (*CertificateProfileVenafiType, bool) {
+	if o == nil || IsNil(o.VenafiType) {
 		return nil, false
 	}
-	return o.VenafiType.Get(), o.VenafiType.IsSet()
+	return o.VenafiType, true
 }
 
 // HasVenafiType returns a boolean if a field has been set.
 func (o *CertificateProfileCreateCommand) HasVenafiType() bool {
-	if o != nil && o.VenafiType.IsSet() {
+	if o != nil && !IsNil(o.VenafiType) {
 		return true
 	}
 
 	return false
 }
 
-// SetVenafiType gets a reference to the given NullableString and assigns it to the VenafiType field.
-func (o *CertificateProfileCreateCommand) SetVenafiType(v string) {
-	o.VenafiType.Set(&v)
-}
-// SetVenafiTypeNil sets the value for VenafiType to be an explicit nil
-func (o *CertificateProfileCreateCommand) SetVenafiTypeNil() {
-	o.VenafiType.Set(nil)
-}
-
-// UnsetVenafiType ensures that no value is present for VenafiType, not even an explicit nil
-func (o *CertificateProfileCreateCommand) UnsetVenafiType() {
-	o.VenafiType.Unset()
+// SetVenafiType gets a reference to the given CertificateProfileVenafiType and assigns it to the VenafiType field.
+func (o *CertificateProfileCreateCommand) SetVenafiType(v CertificateProfileVenafiType) {
+	o.VenafiType = &v
 }
 
 // GetVenafiBaseUrl returns the VenafiBaseUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -978,8 +958,8 @@ func (o CertificateProfileCreateCommand) ToMap() (map[string]interface{}, error)
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if o.IssuerMode.IsSet() {
-		toSerialize["issuerMode"] = o.IssuerMode.Get()
+	if !IsNil(o.IssuerMode) {
+		toSerialize["issuerMode"] = o.IssuerMode
 	}
 	if o.TrustBundle != nil {
 		toSerialize["trustBundle"] = o.TrustBundle
@@ -990,8 +970,8 @@ func (o CertificateProfileCreateCommand) ToMap() (map[string]interface{}, error)
 	if o.AcmeServer.IsSet() {
 		toSerialize["acmeServer"] = o.AcmeServer.Get()
 	}
-	if o.VenafiType.IsSet() {
-		toSerialize["venafiType"] = o.VenafiType.Get()
+	if !IsNil(o.VenafiType) {
+		toSerialize["venafiType"] = o.VenafiType
 	}
 	if o.VenafiBaseUrl.IsSet() {
 		toSerialize["venafiBaseUrl"] = o.VenafiBaseUrl.Get()

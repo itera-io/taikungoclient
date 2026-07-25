@@ -14979,6 +14979,58 @@ paths:
       summary: Delete DNS server
       tags:
       - Dns Servers
+  /api/v1/dns-cert/assign-certificate-profile:
+    post:
+      operationId: dns-cert-assign-certificate-profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AssignCertificateProfileCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Assign a signing certificate profile to a CA-issuer project
+      tags:
+      - DnsCert
   /api/v1/dns-cert/disable:
     post:
       operationId: dns-cert-disable
@@ -15445,6 +15497,58 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Sync DNS/Cert to cluster
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/unassign-certificate-profile:
+    post:
+      operationId: dns-cert-unassign-certificate-profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UnassignCertificateProfileCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Remove the signing certificate profile from a CA-issuer project
       tags:
       - DnsCert
   /api/v1/dns-cert/validate:
@@ -48444,6 +48548,18 @@ components:
           nullable: true
           type: integer
       type: object
+    AssignCertificateProfileCommand:
+      example:
+        projectId: 0
+        certificateProfileId: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        certificateProfileId:
+          format: int32
+          type: integer
+      type: object
     AttachDetachAlertingProfileCommand:
       example:
         projectId: 0
@@ -52210,7 +52326,7 @@ components:
         name: name
         organizationId: 0
         description: description
-        issuerMode: issuerMode
+        issuerMode: letsencrypt
         trustBundle:
         - certPem: certPem
           name: name
@@ -52222,7 +52338,7 @@ components:
           resolvedPem: resolvedPem
         acmeEmail: acmeEmail
         acmeServer: acmeServer
-        venafiType: venafiType
+        venafiType: TPP
         venafiBaseUrl: venafiBaseUrl
         venafiZone: venafiZone
         venafiAccessToken: venafiAccessToken
@@ -52248,8 +52364,7 @@ components:
           nullable: true
           type: string
         issuerMode:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/CertificateProfileIssuerMode"
         trustBundle:
           items:
             $ref: "#/components/schemas/TrustBundleItem"
@@ -52262,8 +52377,7 @@ components:
           nullable: true
           type: string
         venafiType:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/CertificateProfileVenafiType"
         venafiBaseUrl:
           nullable: true
           type: string
@@ -52340,6 +52454,14 @@ components:
       - isDefault
       - name
       type: object
+    CertificateProfileIssuerMode:
+      enum:
+      - letsencrypt
+      - venafi
+      - custom-ca
+      - self-signed
+      - none
+      type: string
     CertificateProfileListDto:
       example:
         id: 0
@@ -52375,7 +52497,17 @@ components:
           name: name
         - id: 5
           name: name
-        issuerMode: issuerMode
+        issuerMode: letsencrypt
+        acmeEmail: acmeEmail
+        acmeServer: acmeServer
+        venafiType: TPP
+        venafiBaseUrl: venafiBaseUrl
+        venafiZone: venafiZone
+        venafiZoneUuid: venafiZoneUuid
+        venafiAccessToken: venafiAccessToken
+        venafiApiKey: venafiApiKey
+        customCaCert: customCaCert
+        customCaPrivateKey: customCaPrivateKey
         trustBundleCount: 5
         trustBundle:
         - id: 2
@@ -52446,6 +52578,40 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         issuerMode:
+          $ref: "#/components/schemas/CertificateProfileIssuerMode"
+        acmeEmail:
+          nullable: true
+          type: string
+        acmeServer:
+          nullable: true
+          type: string
+        venafiType:
+          $ref: "#/components/schemas/CertificateProfileVenafiType"
+        venafiBaseUrl:
+          nullable: true
+          type: string
+        venafiZone:
+          nullable: true
+          type: string
+        venafiZoneUuid:
+          nullable: true
+          type: string
+        venafiAccessToken:
+          description: Redacted on list responses (`****` when stored). Omit or send
+            a new value on update to rotate.
+          nullable: true
+          type: string
+        venafiApiKey:
+          description: Redacted on list responses (`****` when stored). Omit or send
+            a new value on update to rotate.
+          nullable: true
+          type: string
+        customCaCert:
+          nullable: true
+          type: string
+        customCaPrivateKey:
+          description: Redacted on list responses (`****` when stored). Omit or send
+            a new value on update to rotate.
           nullable: true
           type: string
         trustBundleCount:
@@ -52507,7 +52673,17 @@ components:
             name: name
           - id: 5
             name: name
-          issuerMode: issuerMode
+          issuerMode: letsencrypt
+          acmeEmail: acmeEmail
+          acmeServer: acmeServer
+          venafiType: TPP
+          venafiBaseUrl: venafiBaseUrl
+          venafiZone: venafiZone
+          venafiZoneUuid: venafiZoneUuid
+          venafiAccessToken: venafiAccessToken
+          venafiApiKey: venafiApiKey
+          customCaCert: customCaCert
+          customCaPrivateKey: customCaPrivateKey
           trustBundleCount: 5
           trustBundle:
           - id: 2
@@ -52547,7 +52723,17 @@ components:
             name: name
           - id: 5
             name: name
-          issuerMode: issuerMode
+          issuerMode: letsencrypt
+          acmeEmail: acmeEmail
+          acmeServer: acmeServer
+          venafiType: TPP
+          venafiBaseUrl: venafiBaseUrl
+          venafiZone: venafiZone
+          venafiZoneUuid: venafiZoneUuid
+          venafiAccessToken: venafiAccessToken
+          venafiApiKey: venafiApiKey
+          customCaCert: customCaCert
+          customCaPrivateKey: customCaPrivateKey
           trustBundleCount: 5
           trustBundle:
           - id: 2
@@ -52652,7 +52838,7 @@ components:
         id: 0
         name: name
         description: description
-        issuerMode: issuerMode
+        issuerMode: letsencrypt
         trustBundle:
         - name: name
           pemBundle: pemBundle
@@ -52660,7 +52846,7 @@ components:
           pemBundle: pemBundle
         acmeEmail: acmeEmail
         acmeServer: acmeServer
-        venafiType: venafiType
+        venafiType: TPP
         venafiBaseUrl: venafiBaseUrl
         venafiZone: venafiZone
         venafiAccessToken: venafiAccessToken
@@ -52683,8 +52869,7 @@ components:
           nullable: true
           type: string
         issuerMode:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/CertificateProfileIssuerMode"
         trustBundle:
           items:
             $ref: "#/components/schemas/TrustBundleUpdateItem"
@@ -52697,8 +52882,7 @@ components:
           nullable: true
           type: string
         venafiType:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/CertificateProfileVenafiType"
         venafiBaseUrl:
           nullable: true
           type: string
@@ -52762,6 +52946,11 @@ components:
           nullable: true
           type: string
       type: object
+    CertificateProfileVenafiType:
+      enum:
+      - TPP
+      - Cloud
+      type: string
     ChangeCardCommand:
       example:
         paymentMethodId: paymentMethodId
@@ -54424,6 +54613,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
         vpcMode:
           $ref: "#/components/schemas/VpcMode"
         importedGcpProjectId:
@@ -68835,6 +69026,18 @@ components:
           - reasons
           - reasons
           hidden: true
+        enableCTProfiles:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        disableCTProfiles:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
       properties:
         commit:
           $ref: "#/components/schemas/ButtonStatusDto"
@@ -68914,6 +69117,10 @@ components:
           $ref: "#/components/schemas/ButtonStatusDto"
         disableTrustManager:
           $ref: "#/components/schemas/ButtonStatusDto"
+        enableCTProfiles:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        disableCTProfiles:
+          $ref: "#/components/schemas/ButtonStatusDto"
       required:
       - addServer
       - addVm
@@ -68924,6 +69131,7 @@ components:
       - disableAi
       - disableAutoscaler
       - disableBackup
+      - disableCTProfiles
       - disableCertManager
       - disableDnsCert
       - disableExternalDns
@@ -68937,6 +69145,7 @@ components:
       - enableAi
       - enableAutoscaler
       - enableBackup
+      - enableCTProfiles
       - enableCertManager
       - enableDnsCert
       - enableExternalDns
@@ -77963,6 +78172,14 @@ components:
             type: string
           nullable: true
           type: array
+      type: object
+    UnassignCertificateProfileCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
       type: object
     UnbindAppRepositoryCommand:
       example:

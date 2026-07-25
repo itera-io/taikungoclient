@@ -232,6 +232,7 @@ type ApiGooglecloudCreateRequest struct {
 	azCount *int32
 	region *string
 	organizationId *int32
+	ipMode *IpMode
 	vpcMode *VpcMode
 	importedGcpProjectId *string
 	importedVpcName *string
@@ -277,6 +278,11 @@ func (r ApiGooglecloudCreateRequest) Region(region string) ApiGooglecloudCreateR
 
 func (r ApiGooglecloudCreateRequest) OrganizationId(organizationId int32) ApiGooglecloudCreateRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiGooglecloudCreateRequest) IpMode(ipMode IpMode) ApiGooglecloudCreateRequest {
+	r.ipMode = &ipMode
 	return r
 }
 
@@ -400,6 +406,9 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "", "")
+	}
+	if r.ipMode != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "ipMode", r.ipMode, "", "")
 	}
 	if r.vpcMode != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "vpcMode", r.vpcMode, "", "")

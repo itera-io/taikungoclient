@@ -23255,6 +23255,92 @@
         }
       }
     },
+    "/api/v1/dns-cert/assign-certificate-profile": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Assign a signing certificate profile to a CA-issuer project",
+        "operationId": "dns-cert-assign-certificate-profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignCertificateProfileCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/dns-cert/disable": {
       "post": {
         "tags": [
@@ -23955,6 +24041,92 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DnsCertSyncCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dns-cert/unassign-certificate-profile": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Remove the signing certificate profile from a CA-issuer project",
+        "operationId": "dns-cert-unassign-certificate-profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnassignCertificateProfileCommand"
               }
             }
           }
@@ -73229,6 +73401,19 @@
           }
         }
       },
+      "AssignCertificateProfileCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "certificateProfileId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "AttachDetachAlertingProfileCommand": {
         "type": "object",
         "properties": {
@@ -75972,8 +76157,7 @@
             "nullable": true
           },
           "issuerMode": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/CertificateProfileIssuerMode"
           },
           "trustBundle": {
             "type": "array",
@@ -75991,8 +76175,7 @@
             "nullable": true
           },
           "venafiType": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/CertificateProfileVenafiType"
           },
           "venafiBaseUrl": {
             "type": "string",
@@ -76086,6 +76269,16 @@
             "nullable": true
           }
         }
+      },
+      "CertificateProfileIssuerMode": {
+        "enum": [
+          "letsencrypt",
+          "venafi",
+          "custom-ca",
+          "self-signed",
+          "none"
+        ],
+        "type": "string"
       },
       "CertificateProfileListDto": {
         "required": [
@@ -76191,7 +76384,48 @@
             }
           },
           "issuerMode": {
+            "$ref": "#/components/schemas/CertificateProfileIssuerMode"
+          },
+          "acmeEmail": {
             "type": "string",
+            "nullable": true
+          },
+          "acmeServer": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiType": {
+            "$ref": "#/components/schemas/CertificateProfileVenafiType"
+          },
+          "venafiBaseUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiZone": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiZoneUuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "venafiAccessToken": {
+            "type": "string",
+            "description": "Redacted on list responses (`****` when stored). Omit or send a new value on update to rotate.",
+            "nullable": true
+          },
+          "venafiApiKey": {
+            "type": "string",
+            "description": "Redacted on list responses (`****` when stored). Omit or send a new value on update to rotate.",
+            "nullable": true
+          },
+          "customCaCert": {
+            "type": "string",
+            "nullable": true
+          },
+          "customCaPrivateKey": {
+            "type": "string",
+            "description": "Redacted on list responses (`****` when stored). Omit or send a new value on update to rotate.",
             "nullable": true
           },
           "trustBundleCount": {
@@ -76320,8 +76554,7 @@
             "nullable": true
           },
           "issuerMode": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/CertificateProfileIssuerMode"
           },
           "trustBundle": {
             "type": "array",
@@ -76339,8 +76572,7 @@
             "nullable": true
           },
           "venafiType": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/CertificateProfileVenafiType"
           },
           "venafiBaseUrl": {
             "type": "string",
@@ -76418,6 +76650,13 @@
             "nullable": true
           }
         }
+      },
+      "CertificateProfileVenafiType": {
+        "enum": [
+          "TPP",
+          "Cloud"
+        ],
+        "type": "string"
       },
       "ChangeCardCommand": {
         "type": "object",
@@ -78050,6 +78289,9 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
           },
           "vpcMode": {
             "$ref": "#/components/schemas/VpcMode"
@@ -89162,6 +89404,7 @@
           "disableAi",
           "disableAutoscaler",
           "disableBackup",
+          "disableCTProfiles",
           "disableCertManager",
           "disableDnsCert",
           "disableExternalDns",
@@ -89175,6 +89418,7 @@
           "enableAi",
           "enableAutoscaler",
           "enableBackup",
+          "enableCTProfiles",
           "enableCertManager",
           "enableDnsCert",
           "enableExternalDns",
@@ -89310,6 +89554,12 @@
             "$ref": "#/components/schemas/ButtonStatusDto"
           },
           "disableTrustManager": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "enableCTProfiles": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "disableCTProfiles": {
             "$ref": "#/components/schemas/ButtonStatusDto"
           }
         }
@@ -95872,6 +96122,15 @@
               "type": "string"
             },
             "nullable": true
+          }
+        }
+      },
+      "UnassignCertificateProfileCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },

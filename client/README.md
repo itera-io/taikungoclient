@@ -312,6 +312,7 @@ Class | Method | HTTP request | Description
 *DNSCredentialsAPI* | [**DnscredentialsMakeDefault**](docs/DNSCredentialsAPI.md#dnscredentialsmakedefault) | **Post** /api/v1/dnscredentials/makedefault | Make default DNS credential
 *DNSCredentialsAPI* | [**DnscredentialsUpdate**](docs/DNSCredentialsAPI.md#dnscredentialsupdate) | **Put** /api/v1/dnscredentials | Update DNS credential
 *DNSCredentialsAPI* | [**DnscredentialsValidate**](docs/DNSCredentialsAPI.md#dnscredentialsvalidate) | **Post** /api/v1/dnscredentials/validate | Validate DNS provider credentials
+*DnsCertAPI* | [**DnsCertAssignCertificateProfile**](docs/DnsCertAPI.md#dnscertassigncertificateprofile) | **Post** /api/v1/dns-cert/assign-certificate-profile | Assign a signing certificate profile to a CA-issuer project
 *DnsCertAPI* | [**DnsCertCertManagerDisable**](docs/DnsCertAPI.md#dnscertcertmanagerdisable) | **Post** /api/v1/dns-cert/cert-manager/disable | Disable cert-manager for a project
 *DnsCertAPI* | [**DnsCertCertManagerEnable**](docs/DnsCertAPI.md#dnscertcertmanagerenable) | **Post** /api/v1/dns-cert/cert-manager/enable | Enable cert-manager for a project
 *DnsCertAPI* | [**DnsCertDisable**](docs/DnsCertAPI.md#dnscertdisable) | **Post** /api/v1/dns-cert/disable | Disable DNS/Cert automation
@@ -322,6 +323,7 @@ Class | Method | HTTP request | Description
 *DnsCertAPI* | [**DnsCertSync**](docs/DnsCertAPI.md#dnscertsync) | **Post** /api/v1/dns-cert/sync | Sync DNS/Cert to cluster
 *DnsCertAPI* | [**DnsCertTrustManagerDisable**](docs/DnsCertAPI.md#dnscerttrustmanagerdisable) | **Post** /api/v1/dns-cert/trust-manager/disable | Disable trust-manager for a project
 *DnsCertAPI* | [**DnsCertTrustManagerEnable**](docs/DnsCertAPI.md#dnscerttrustmanagerenable) | **Post** /api/v1/dns-cert/trust-manager/enable | Enable trust-manager for a project
+*DnsCertAPI* | [**DnsCertUnassignCertificateProfile**](docs/DnsCertAPI.md#dnscertunassigncertificateprofile) | **Post** /api/v1/dns-cert/unassign-certificate-profile | Remove the signing certificate profile from a CA-issuer project
 *DnsCertAPI* | [**DnsCertValidate**](docs/DnsCertAPI.md#dnscertvalidate) | **Post** /api/v1/dns-cert/validate | Validate DNS/Cert enablement inputs (provider credentials, signing CA reference, issuer rules)
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete DNS server
@@ -874,6 +876,7 @@ Class | Method | HTTP request | Description
  - [ApplicationSyncResponse](docs/ApplicationSyncResponse.md)
  - [ArtifactRepositoryDto](docs/ArtifactRepositoryDto.md)
  - [ArtifactUrlCheckerCommand](docs/ArtifactUrlCheckerCommand.md)
+ - [AssignCertificateProfileCommand](docs/AssignCertificateProfileCommand.md)
  - [AttachDetachAlertingProfileCommand](docs/AttachDetachAlertingProfileCommand.md)
  - [AttachDetachDnsCredentialCommand](docs/AttachDetachDnsCredentialCommand.md)
  - [AuditUserDto](docs/AuditUserDto.md)
@@ -966,6 +969,7 @@ Class | Method | HTTP request | Description
  - [CatalogsForProjectDto](docs/CatalogsForProjectDto.md)
  - [CertificateProfileCreateCommand](docs/CertificateProfileCreateCommand.md)
  - [CertificateProfileDropdownDto](docs/CertificateProfileDropdownDto.md)
+ - [CertificateProfileIssuerMode](docs/CertificateProfileIssuerMode.md)
  - [CertificateProfileListDto](docs/CertificateProfileListDto.md)
  - [CertificateProfileListResponse](docs/CertificateProfileListResponse.md)
  - [CertificateProfileLockCommand](docs/CertificateProfileLockCommand.md)
@@ -975,6 +979,7 @@ Class | Method | HTTP request | Description
  - [CertificateProfileTrustBundleSummaryDto](docs/CertificateProfileTrustBundleSummaryDto.md)
  - [CertificateProfileUpdateCommand](docs/CertificateProfileUpdateCommand.md)
  - [CertificateProfileValidateCommand](docs/CertificateProfileValidateCommand.md)
+ - [CertificateProfileVenafiType](docs/CertificateProfileVenafiType.md)
  - [ChangeCardCommand](docs/ChangeCardCommand.md)
  - [ChangePasswordCommand](docs/ChangePasswordCommand.md)
  - [ChatCompletionsCommand](docs/ChatCompletionsCommand.md)
@@ -1677,6 +1682,7 @@ Class | Method | HTTP request | Description
  - [TwoFactorAuthSetupResult](docs/TwoFactorAuthSetupResult.md)
  - [TwoFactorAuthVerifyCommand](docs/TwoFactorAuthVerifyCommand.md)
  - [TwoFactorAuthVerifyResult](docs/TwoFactorAuthVerifyResult.md)
+ - [UnassignCertificateProfileCommand](docs/UnassignCertificateProfileCommand.md)
  - [UnbindAppRepositoryCommand](docs/UnbindAppRepositoryCommand.md)
  - [UnbindFlavorFromProjectCommand](docs/UnbindFlavorFromProjectCommand.md)
  - [UninstallProjectAppResult](docs/UninstallProjectAppResult.md)

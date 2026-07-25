@@ -22,6 +22,17 @@ func Test_taikuncore_DnsCertAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test DnsCertAPIService DnsCertAssignCertificateProfile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DnsCertAPI.DnsCertAssignCertificateProfile(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DnsCertAPIService DnsCertCertManagerDisable", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -129,6 +140,17 @@ func Test_taikuncore_DnsCertAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DnsCertAPI.DnsCertTrustManagerEnable(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DnsCertAPIService DnsCertUnassignCertificateProfile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DnsCertAPI.DnsCertUnassignCertificateProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
