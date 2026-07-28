@@ -78815,6 +78815,17 @@
             "format": "int32",
             "nullable": true
           },
+          "isDnsEnabled": {
+            "type": "boolean"
+          },
+          "isCertTrustEnabled": {
+            "type": "boolean"
+          },
+          "certificateProfileId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "taikunLBFlavor": {
             "type": "string",
             "nullable": true
@@ -81872,6 +81883,12 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "enableTrustManager": {
+            "type": "boolean"
+          },
+          "stageIntentOnly": {
+            "type": "boolean"
           }
         }
       },
@@ -90419,6 +90436,15 @@
           },
           "dnsCredentialName": {
             "type": "string"
+          },
+          "ctProfileId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ctProfileName": {
+            "type": "string",
+            "nullable": true
           },
           "expiredAt": {
             "type": "string"

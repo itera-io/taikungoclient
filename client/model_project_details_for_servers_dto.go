@@ -70,6 +70,8 @@ type ProjectDetailsForServersDto struct {
 	AiCredentialId NullableInt32 `json:"aiCredentialId"`
 	DnsCredentialId NullableInt32 `json:"dnsCredentialId"`
 	DnsCredentialName string `json:"dnsCredentialName"`
+	CtProfileId NullableInt32 `json:"ctProfileId,omitempty"`
+	CtProfileName NullableString `json:"ctProfileName,omitempty"`
 	ExpiredAt string `json:"expiredAt"`
 	CertificationExpiredAt string `json:"certificationExpiredAt"`
 	OpaProfileId NullableInt32 `json:"opaProfileId"`
@@ -1380,6 +1382,90 @@ func (o *ProjectDetailsForServersDto) SetDnsCredentialName(v string) {
 	o.DnsCredentialName = v
 }
 
+// GetCtProfileId returns the CtProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForServersDto) GetCtProfileId() int32 {
+	if o == nil || IsNil(o.CtProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CtProfileId.Get()
+}
+
+// GetCtProfileIdOk returns a tuple with the CtProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetCtProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CtProfileId.Get(), o.CtProfileId.IsSet()
+}
+
+// HasCtProfileId returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasCtProfileId() bool {
+	if o != nil && o.CtProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCtProfileId gets a reference to the given NullableInt32 and assigns it to the CtProfileId field.
+func (o *ProjectDetailsForServersDto) SetCtProfileId(v int32) {
+	o.CtProfileId.Set(&v)
+}
+// SetCtProfileIdNil sets the value for CtProfileId to be an explicit nil
+func (o *ProjectDetailsForServersDto) SetCtProfileIdNil() {
+	o.CtProfileId.Set(nil)
+}
+
+// UnsetCtProfileId ensures that no value is present for CtProfileId, not even an explicit nil
+func (o *ProjectDetailsForServersDto) UnsetCtProfileId() {
+	o.CtProfileId.Unset()
+}
+
+// GetCtProfileName returns the CtProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForServersDto) GetCtProfileName() string {
+	if o == nil || IsNil(o.CtProfileName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CtProfileName.Get()
+}
+
+// GetCtProfileNameOk returns a tuple with the CtProfileName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetCtProfileNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CtProfileName.Get(), o.CtProfileName.IsSet()
+}
+
+// HasCtProfileName returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasCtProfileName() bool {
+	if o != nil && o.CtProfileName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCtProfileName gets a reference to the given NullableString and assigns it to the CtProfileName field.
+func (o *ProjectDetailsForServersDto) SetCtProfileName(v string) {
+	o.CtProfileName.Set(&v)
+}
+// SetCtProfileNameNil sets the value for CtProfileName to be an explicit nil
+func (o *ProjectDetailsForServersDto) SetCtProfileNameNil() {
+	o.CtProfileName.Set(nil)
+}
+
+// UnsetCtProfileName ensures that no value is present for CtProfileName, not even an explicit nil
+func (o *ProjectDetailsForServersDto) UnsetCtProfileName() {
+	o.CtProfileName.Unset()
+}
+
 // GetExpiredAt returns the ExpiredAt field value
 func (o *ProjectDetailsForServersDto) GetExpiredAt() string {
 	if o == nil {
@@ -2136,6 +2222,12 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
 	toSerialize["dnsCredentialId"] = o.DnsCredentialId.Get()
 	toSerialize["dnsCredentialName"] = o.DnsCredentialName
+	if o.CtProfileId.IsSet() {
+		toSerialize["ctProfileId"] = o.CtProfileId.Get()
+	}
+	if o.CtProfileName.IsSet() {
+		toSerialize["ctProfileName"] = o.CtProfileName.Get()
+	}
 	toSerialize["expiredAt"] = o.ExpiredAt
 	toSerialize["certificationExpiredAt"] = o.CertificationExpiredAt
 	toSerialize["opaProfileId"] = o.OpaProfileId.Get()
@@ -2333,6 +2425,8 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "aiCredentialId")
 		delete(additionalProperties, "dnsCredentialId")
 		delete(additionalProperties, "dnsCredentialName")
+		delete(additionalProperties, "ctProfileId")
+		delete(additionalProperties, "ctProfileName")
 		delete(additionalProperties, "expiredAt")
 		delete(additionalProperties, "certificationExpiredAt")
 		delete(additionalProperties, "opaProfileId")

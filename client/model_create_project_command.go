@@ -37,6 +37,9 @@ type CreateProjectCommand struct {
 	Flavors []string `json:"flavors,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 	DnsCredentialId NullableInt32 `json:"dnsCredentialId,omitempty"`
+	IsDnsEnabled *bool `json:"isDnsEnabled,omitempty"`
+	IsCertTrustEnabled *bool `json:"isCertTrustEnabled,omitempty"`
+	CertificateProfileId NullableInt32 `json:"certificateProfileId,omitempty"`
 	TaikunLBFlavor NullableString `json:"taikunLBFlavor,omitempty"`
 	RouterIdStartRange NullableInt32 `json:"routerIdStartRange,omitempty"`
 	RouterIdEndRange NullableInt32 `json:"routerIdEndRange,omitempty"`
@@ -678,6 +681,112 @@ func (o *CreateProjectCommand) SetDnsCredentialIdNil() {
 // UnsetDnsCredentialId ensures that no value is present for DnsCredentialId, not even an explicit nil
 func (o *CreateProjectCommand) UnsetDnsCredentialId() {
 	o.DnsCredentialId.Unset()
+}
+
+// GetIsDnsEnabled returns the IsDnsEnabled field value if set, zero value otherwise.
+func (o *CreateProjectCommand) GetIsDnsEnabled() bool {
+	if o == nil || IsNil(o.IsDnsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDnsEnabled
+}
+
+// GetIsDnsEnabledOk returns a tuple with the IsDnsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateProjectCommand) GetIsDnsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDnsEnabled) {
+		return nil, false
+	}
+	return o.IsDnsEnabled, true
+}
+
+// HasIsDnsEnabled returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasIsDnsEnabled() bool {
+	if o != nil && !IsNil(o.IsDnsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDnsEnabled gets a reference to the given bool and assigns it to the IsDnsEnabled field.
+func (o *CreateProjectCommand) SetIsDnsEnabled(v bool) {
+	o.IsDnsEnabled = &v
+}
+
+// GetIsCertTrustEnabled returns the IsCertTrustEnabled field value if set, zero value otherwise.
+func (o *CreateProjectCommand) GetIsCertTrustEnabled() bool {
+	if o == nil || IsNil(o.IsCertTrustEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsCertTrustEnabled
+}
+
+// GetIsCertTrustEnabledOk returns a tuple with the IsCertTrustEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateProjectCommand) GetIsCertTrustEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsCertTrustEnabled) {
+		return nil, false
+	}
+	return o.IsCertTrustEnabled, true
+}
+
+// HasIsCertTrustEnabled returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasIsCertTrustEnabled() bool {
+	if o != nil && !IsNil(o.IsCertTrustEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCertTrustEnabled gets a reference to the given bool and assigns it to the IsCertTrustEnabled field.
+func (o *CreateProjectCommand) SetIsCertTrustEnabled(v bool) {
+	o.IsCertTrustEnabled = &v
+}
+
+// GetCertificateProfileId returns the CertificateProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateProjectCommand) GetCertificateProfileId() int32 {
+	if o == nil || IsNil(o.CertificateProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CertificateProfileId.Get()
+}
+
+// GetCertificateProfileIdOk returns a tuple with the CertificateProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateProjectCommand) GetCertificateProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CertificateProfileId.Get(), o.CertificateProfileId.IsSet()
+}
+
+// HasCertificateProfileId returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasCertificateProfileId() bool {
+	if o != nil && o.CertificateProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateProfileId gets a reference to the given NullableInt32 and assigns it to the CertificateProfileId field.
+func (o *CreateProjectCommand) SetCertificateProfileId(v int32) {
+	o.CertificateProfileId.Set(&v)
+}
+// SetCertificateProfileIdNil sets the value for CertificateProfileId to be an explicit nil
+func (o *CreateProjectCommand) SetCertificateProfileIdNil() {
+	o.CertificateProfileId.Set(nil)
+}
+
+// UnsetCertificateProfileId ensures that no value is present for CertificateProfileId, not even an explicit nil
+func (o *CreateProjectCommand) UnsetCertificateProfileId() {
+	o.CertificateProfileId.Unset()
 }
 
 // GetTaikunLBFlavor returns the TaikunLBFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1394,6 +1503,15 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.DnsCredentialId.IsSet() {
 		toSerialize["dnsCredentialId"] = o.DnsCredentialId.Get()
 	}
+	if !IsNil(o.IsDnsEnabled) {
+		toSerialize["isDnsEnabled"] = o.IsDnsEnabled
+	}
+	if !IsNil(o.IsCertTrustEnabled) {
+		toSerialize["isCertTrustEnabled"] = o.IsCertTrustEnabled
+	}
+	if o.CertificateProfileId.IsSet() {
+		toSerialize["certificateProfileId"] = o.CertificateProfileId.Get()
+	}
 	if o.TaikunLBFlavor.IsSet() {
 		toSerialize["taikunLBFlavor"] = o.TaikunLBFlavor.Get()
 	}
@@ -1486,6 +1604,9 @@ func (o *CreateProjectCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "flavors")
 		delete(additionalProperties, "alertingProfileId")
 		delete(additionalProperties, "dnsCredentialId")
+		delete(additionalProperties, "isDnsEnabled")
+		delete(additionalProperties, "isCertTrustEnabled")
+		delete(additionalProperties, "certificateProfileId")
 		delete(additionalProperties, "taikunLBFlavor")
 		delete(additionalProperties, "routerIdStartRange")
 		delete(additionalProperties, "routerIdEndRange")

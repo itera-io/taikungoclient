@@ -53404,8 +53404,8 @@ components:
         zone: zone
         cidr: cidr
         ipv6Cidr: ipv6Cidr
-        availableIpCount: 4
-        nodeCount: 8
+        availableIpCount: 8
+        nodeCount: 7
         isDefault: true
         ownerId: ownerId
         vpcId: vpcId
@@ -55078,24 +55078,27 @@ components:
         - flavors
         alertingProfileId: 7
         dnsCredentialId: 9
+        isDnsEnabled: true
+        isCertTrustEnabled: true
+        certificateProfileId: 3
         taikunLBFlavor: taikunLBFlavor
-        routerIdStartRange: 3
-        routerIdEndRange: 2
+        routerIdStartRange: 2
+        routerIdEndRange: 4
         expiredAt: 2000-01-23T04:56:07.000+00:00
         deleteOnExpiration: true
         allowFullSpotKubernetes: true
         allowSpotWorkers: true
         allowSpotVMs: true
-        maxSpotPrice: 4.145608029883936
+        maxSpotPrice: 7.386281948385884
         autoscalingEnabled: true
-        minSize: 7
+        minSize: 1
         maxSize: 1
-        diskSize: 1.0246457001441578
+        diskSize: 1.4894159098541704
         autoscalingFlavor: autoscalingFlavor
         autoscalingSpotEnabled: true
         isCskEnabled: true
         cidr: cidr
-        netMask: 1
+        netMask: 6
       properties:
         name:
           nullable: true
@@ -55146,6 +55149,14 @@ components:
           nullable: true
           type: integer
         dnsCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        isDnsEnabled:
+          type: boolean
+        isCertTrustEnabled:
+          type: boolean
+        certificateProfileId:
           format: int32
           nullable: true
           type: integer
@@ -58854,6 +58865,8 @@ components:
         acmeEmail: acmeEmail
         domain: domain
         certificateProfileId: 1
+        enableTrustManager: true
+        stageIntentOnly: true
       properties:
         projectId:
           format: int32
@@ -58875,6 +58888,10 @@ components:
           format: int32
           nullable: true
           type: integer
+        enableTrustManager:
+          type: boolean
+        stageIntentOnly:
+          type: boolean
       type: object
     EnableExternalDnsCommand:
       example:
@@ -69889,18 +69906,20 @@ components:
         aiCredentialId: 6
         dnsCredentialId: 3
         dnsCredentialName: dnsCredentialName
+        ctProfileId: 3
+        ctProfileName: ctProfileName
         expiredAt: expiredAt
         certificationExpiredAt: certificationExpiredAt
-        opaProfileId: 3
+        opaProfileId: 7
         opaProfileName: opaProfileName
         allowFullSpotKubernetes: true
         allowSpotWorkers: true
         allowSpotVMs: true
-        totalHourlyCost: 7.143538047012306
+        totalHourlyCost: 0.8851374739011653
         autoscalingGroupName: autoscalingGroupName
-        minSize: 0
-        maxSize: 7
-        diskSize: 6.519180951018382
+        minSize: 7
+        maxSize: 6
+        diskSize: 0.10263654006109402
         flavor: flavor
         spotEnabled: true
         isAutoscalingEnabled: true
@@ -69916,7 +69935,7 @@ components:
         - hypervisors
         proxmoxStorage: NFS
         isDrsEnabled: true
-        maxSpotPrice: 0.10263654006109402
+        maxSpotPrice: 4.652396432933246
         vpcMode: Create
         cloudSubnets:
         - subnetId: subnetId
@@ -69925,8 +69944,8 @@ components:
           zone: zone
           cidr: cidr
           ipv6Cidr: ipv6Cidr
-          availableIpCount: 4
-          nodeCount: 8
+          availableIpCount: 8
+          nodeCount: 7
           isDefault: true
           ownerId: ownerId
           vpcId: vpcId
@@ -69936,8 +69955,8 @@ components:
           zone: zone
           cidr: cidr
           ipv6Cidr: ipv6Cidr
-          availableIpCount: 4
-          nodeCount: 8
+          availableIpCount: 8
+          nodeCount: 7
           isDefault: true
           ownerId: ownerId
           vpcId: vpcId
@@ -70072,6 +70091,13 @@ components:
           nullable: true
           type: integer
         dnsCredentialName:
+          type: string
+        ctProfileId:
+          format: int32
+          nullable: true
+          type: integer
+        ctProfileName:
+          nullable: true
           type: string
         expiredAt:
           type: string
@@ -70260,8 +70286,8 @@ components:
           zone: zone
           cidr: cidr
           ipv6Cidr: ipv6Cidr
-          availableIpCount: 4
-          nodeCount: 8
+          availableIpCount: 8
+          nodeCount: 7
           isDefault: true
           ownerId: ownerId
           vpcId: vpcId
@@ -70271,8 +70297,8 @@ components:
           zone: zone
           cidr: cidr
           ipv6Cidr: ipv6Cidr
-          availableIpCount: 4
-          nodeCount: 8
+          availableIpCount: 8
+          nodeCount: 7
           isDefault: true
           ownerId: ownerId
           vpcId: vpcId
@@ -75543,18 +75569,20 @@ components:
           aiCredentialId: 6
           dnsCredentialId: 3
           dnsCredentialName: dnsCredentialName
+          ctProfileId: 3
+          ctProfileName: ctProfileName
           expiredAt: expiredAt
           certificationExpiredAt: certificationExpiredAt
-          opaProfileId: 3
+          opaProfileId: 7
           opaProfileName: opaProfileName
           allowFullSpotKubernetes: true
           allowSpotWorkers: true
           allowSpotVMs: true
-          totalHourlyCost: 7.143538047012306
+          totalHourlyCost: 0.8851374739011653
           autoscalingGroupName: autoscalingGroupName
-          minSize: 0
-          maxSize: 7
-          diskSize: 6.519180951018382
+          minSize: 7
+          maxSize: 6
+          diskSize: 0.10263654006109402
           flavor: flavor
           spotEnabled: true
           isAutoscalingEnabled: true
@@ -75570,7 +75598,7 @@ components:
           - hypervisors
           proxmoxStorage: NFS
           isDrsEnabled: true
-          maxSpotPrice: 0.10263654006109402
+          maxSpotPrice: 4.652396432933246
           vpcMode: Create
           cloudSubnets:
           - subnetId: subnetId
@@ -75579,8 +75607,8 @@ components:
             zone: zone
             cidr: cidr
             ipv6Cidr: ipv6Cidr
-            availableIpCount: 4
-            nodeCount: 8
+            availableIpCount: 8
+            nodeCount: 7
             isDefault: true
             ownerId: ownerId
             vpcId: vpcId
@@ -75590,8 +75618,8 @@ components:
             zone: zone
             cidr: cidr
             ipv6Cidr: ipv6Cidr
-            availableIpCount: 4
-            nodeCount: 8
+            availableIpCount: 8
+            nodeCount: 7
             isDefault: true
             ownerId: ownerId
             vpcId: vpcId
@@ -76696,8 +76724,8 @@ components:
             zone: zone
             cidr: cidr
             ipv6Cidr: ipv6Cidr
-            availableIpCount: 4
-            nodeCount: 8
+            availableIpCount: 8
+            nodeCount: 7
             isDefault: true
             ownerId: ownerId
             vpcId: vpcId
@@ -76707,8 +76735,8 @@ components:
             zone: zone
             cidr: cidr
             ipv6Cidr: ipv6Cidr
-            availableIpCount: 4
-            nodeCount: 8
+            availableIpCount: 8
+            nodeCount: 7
             isDefault: true
             ownerId: ownerId
             vpcId: vpcId
@@ -79801,8 +79829,8 @@ components:
             zone: zone
             cidr: cidr
             ipv6Cidr: ipv6Cidr
-            availableIpCount: 4
-            nodeCount: 8
+            availableIpCount: 8
+            nodeCount: 7
             isDefault: true
             ownerId: ownerId
             vpcId: vpcId
@@ -79812,8 +79840,8 @@ components:
             zone: zone
             cidr: cidr
             ipv6Cidr: ipv6Cidr
-            availableIpCount: 4
-            nodeCount: 8
+            availableIpCount: 8
+            nodeCount: 7
             isDefault: true
             ownerId: ownerId
             vpcId: vpcId

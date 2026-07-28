@@ -26,6 +26,8 @@ type EnableDnsCertCommand struct {
 	AcmeEmail NullableString `json:"acmeEmail,omitempty"`
 	Domain NullableString `json:"domain,omitempty"`
 	CertificateProfileId NullableInt32 `json:"certificateProfileId,omitempty"`
+	EnableTrustManager *bool `json:"enableTrustManager,omitempty"`
+	StageIntentOnly *bool `json:"stageIntentOnly,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -290,6 +292,70 @@ func (o *EnableDnsCertCommand) UnsetCertificateProfileId() {
 	o.CertificateProfileId.Unset()
 }
 
+// GetEnableTrustManager returns the EnableTrustManager field value if set, zero value otherwise.
+func (o *EnableDnsCertCommand) GetEnableTrustManager() bool {
+	if o == nil || IsNil(o.EnableTrustManager) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableTrustManager
+}
+
+// GetEnableTrustManagerOk returns a tuple with the EnableTrustManager field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnableDnsCertCommand) GetEnableTrustManagerOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableTrustManager) {
+		return nil, false
+	}
+	return o.EnableTrustManager, true
+}
+
+// HasEnableTrustManager returns a boolean if a field has been set.
+func (o *EnableDnsCertCommand) HasEnableTrustManager() bool {
+	if o != nil && !IsNil(o.EnableTrustManager) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableTrustManager gets a reference to the given bool and assigns it to the EnableTrustManager field.
+func (o *EnableDnsCertCommand) SetEnableTrustManager(v bool) {
+	o.EnableTrustManager = &v
+}
+
+// GetStageIntentOnly returns the StageIntentOnly field value if set, zero value otherwise.
+func (o *EnableDnsCertCommand) GetStageIntentOnly() bool {
+	if o == nil || IsNil(o.StageIntentOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.StageIntentOnly
+}
+
+// GetStageIntentOnlyOk returns a tuple with the StageIntentOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnableDnsCertCommand) GetStageIntentOnlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.StageIntentOnly) {
+		return nil, false
+	}
+	return o.StageIntentOnly, true
+}
+
+// HasStageIntentOnly returns a boolean if a field has been set.
+func (o *EnableDnsCertCommand) HasStageIntentOnly() bool {
+	if o != nil && !IsNil(o.StageIntentOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetStageIntentOnly gets a reference to the given bool and assigns it to the StageIntentOnly field.
+func (o *EnableDnsCertCommand) SetStageIntentOnly(v bool) {
+	o.StageIntentOnly = &v
+}
+
 func (o EnableDnsCertCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -317,6 +383,12 @@ func (o EnableDnsCertCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CertificateProfileId.IsSet() {
 		toSerialize["certificateProfileId"] = o.CertificateProfileId.Get()
+	}
+	if !IsNil(o.EnableTrustManager) {
+		toSerialize["enableTrustManager"] = o.EnableTrustManager
+	}
+	if !IsNil(o.StageIntentOnly) {
+		toSerialize["stageIntentOnly"] = o.StageIntentOnly
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -346,6 +418,8 @@ func (o *EnableDnsCertCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "acmeEmail")
 		delete(additionalProperties, "domain")
 		delete(additionalProperties, "certificateProfileId")
+		delete(additionalProperties, "enableTrustManager")
+		delete(additionalProperties, "stageIntentOnly")
 		o.AdditionalProperties = additionalProperties
 	}
 
