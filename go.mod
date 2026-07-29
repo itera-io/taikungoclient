@@ -1,8 +1,11 @@
 module github.com/itera-io/taikungoclient
 
-go 1.23
+go 1.26
 
-require github.com/stretchr/testify v1.8.3
+require (
+	github.com/itera-io/taikungoclient/client v0.0.0-20231123134401-608df4431280
+	github.com/stretchr/testify v1.8.3
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
