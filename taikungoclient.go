@@ -88,9 +88,8 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 		if c.Client.token == "" {
 			// No token yet: login with email + password
 			loginCmd := taikuncore.LoginCommand{
-				AccountName: *taikuncore.NewNullableString(&c.Client.accountName),
-				Email:       *taikuncore.NewNullableString(&c.Client.email),
-				Password:    *taikuncore.NewNullableString(&c.Client.password),
+				Email:    *taikuncore.NewNullableString(&c.Client.email),
+				Password: *taikuncore.NewNullableString(&c.Client.password),
 			}
 			if c.Client.authMode != "" {
 				loginCmd.Mode = *taikuncore.NewNullableString(&c.Client.authMode)
