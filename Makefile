@@ -1,10 +1,12 @@
 BINARY=taikun
 
+all: help
+
 generate: generate-swagger generate-showback ## Generates Go bindings out of Swagger definition
 
 generate-swagger: ## Generates Go binding out of core Swagger API definition
 	rm -rf ./client
-	openapi-generator generate -i ./swagger-taikun.json -g go \
+	openapi-generator generate -i ./current-swagger.json -g go \
 	--additional-properties=packageName=taikuncore \
 	--additional-properties=enumClassPrefix=true \
 	--additional-properties=disallowAdditionalPropertiesIfNotPresent=false \
@@ -18,7 +20,7 @@ generate-swagger: ## Generates Go binding out of core Swagger API definition
 
 generate-showback: ## Generates Go binding out of showback Swagger API definition
 	rm -rf ./showbackclient
-	openapi-generator generate -i ./swagger-showback.json -g go \
+	openapi-generator generate -i ./current-swagger-showback.json -g go \
 	--additional-properties=packageName=taikunshowback  \
 	--additional-properties=enumClassPrefix=true \
     --additional-properties=disallowAdditionalPropertiesIfNotPresent=false \
