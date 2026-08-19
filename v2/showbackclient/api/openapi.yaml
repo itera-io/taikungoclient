@@ -1,0 +1,2081 @@
+openapi: 3.0.4
+info:
+  contact:
+    email: noreply@taikun.cloud
+    name: Itera Technologies
+    url: http://taikun.cloud/
+  description: This Api will be responsible for overall data distribution and authorization.
+  title: Taikun - Showback API
+  version: v1
+servers:
+- url: /
+security:
+- Bearer: []
+paths:
+  /showback/v1/projects:
+    get:
+      operationId: projects-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShowbackProjectsList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve all projects
+      tags:
+      - Projects
+  /showback/v1/showbackcredentials/create:
+    post:
+      operationId: showbackcredentials-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateShowbackCredentialCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create showback credential
+      tags:
+      - Showback Credentials
+  /showback/v1/showbackcredentials/lockmanager:
+    post:
+      operationId: showbackcredentials-lock-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShowbackCredentialLockCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Lock management for showback credential
+      tags:
+      - Showback Credentials
+  /showback/v1/showbackcredentials/list:
+    get:
+      operationId: showbackcredentials-dropdown
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/ShowbackCredentialsDetailsDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve showback credentials by organization id
+      tags:
+      - Showback Credentials
+  /showback/v1/showbackcredentials:
+    get:
+      operationId: showbackcredentials-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShowbackCredentialsList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve all showback credentials
+      tags:
+      - Showback Credentials
+  /showback/v1/showbackcredentials/{id}:
+    delete:
+      operationId: showbackcredentials-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete showback credential
+      tags:
+      - Showback Credentials
+  /showback/v1/showbackrules/create:
+    post:
+      operationId: showbackrules-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateShowbackRuleCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create showback rule
+      tags:
+      - Showback Rules
+  /showback/v1/showbackrules/delete:
+    post:
+      operationId: showbackrules-delete-all
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteRulesCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete multiple showback rule
+      tags:
+      - Showback Rules
+  /showback/v1/showbackrules/update:
+    post:
+      operationId: showbackrules-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateShowbackRuleCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create showback rule
+      tags:
+      - Showback Rules
+  /showback/v1/showbackrules:
+    get:
+      operationId: showbackrules-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShowbackRuleList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve all showback rules
+      tags:
+      - Showback Rules
+  /showback/v1/showbackrules/{id}:
+    delete:
+      operationId: showbackrules-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete showback rule
+      tags:
+      - Showback Rules
+  /showback/v1/showbacksummaries/create:
+    post:
+      operationId: showbacksummaries-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateShowbackSummaryCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create showback summary
+      tags:
+      - Showback Summaries
+  /showback/v1/showbacksummaries/export:
+    get:
+      operationId: showbacksummaries-export-csv
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: IsEmailEnabled
+        required: true
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CsvExporter"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Export Csv
+      tags:
+      - Showback Summaries
+  /showback/v1/showbacksummaries/grouped/byLabel:
+    get:
+      operationId: showbacksummaries-by-label
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: FromDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ToDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupedShowbackByLabelList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Grouped showback summary by label
+      tags:
+      - Showback Summaries
+  /showback/v1/showbacksummaries/grouped/byProject:
+    get:
+      operationId: showbacksummaries-by-project
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: IsDeleted
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: FromDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ToDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupedShowbackByProjectList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Grouped showback summary by project
+      tags:
+      - Showback Summaries
+  /showback/v1/showbacksummaries/grouped:
+    get:
+      operationId: showbacksummaries-grouped-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: PeriodDuration
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: IsDeleted
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: FromDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ToDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupedShowbackList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Grouped list of showback summary
+      tags:
+      - Showback Summaries
+  /showback/v1/showbacksummaries/grouped/list:
+    get:
+      operationId: showbacksummaries-grouped
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: FromDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ToDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: IsDeleted
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GroupedShowbackSummaryListDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Grouped showback summary
+      tags:
+      - Showback Summaries
+components:
+  schemas:
+    ApiResponse:
+      additionalProperties: false
+      example:
+        id: id
+        status: 0
+        message: message
+        isError: true
+        result: ""
+      properties:
+        id:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          type: integer
+        message:
+          nullable: true
+          type: string
+        isError:
+          type: boolean
+        result:
+          nullable: true
+      type: object
+    CreateShowbackCredentialCommand:
+      additionalProperties: false
+      example:
+        name: name
+        url: url
+        username: username
+        password: password
+        organizationId: 0
+      properties:
+        name:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+      type: object
+    CreateShowbackRuleCommand:
+      additionalProperties: false
+      example:
+        name: name
+        metricName: metricName
+        byLabel: byLabel
+        kind: General
+        type: Count
+        price: 0.8008281904610115
+        projectAlertLimit: 6
+        globalAlertLimit: 1
+        organizationId: 5
+        labels:
+        - label: label
+          value: value
+        - label: label
+          value: value
+        showbackCredentialId: 5
+      properties:
+        name:
+          nullable: true
+          type: string
+        metricName:
+          nullable: true
+          type: string
+        byLabel:
+          nullable: true
+          type: string
+        kind:
+          $ref: "#/components/schemas/EShowbackType"
+        type:
+          $ref: "#/components/schemas/EPrometheusType"
+        price:
+          format: double
+          nullable: true
+          type: number
+        projectAlertLimit:
+          format: int32
+          nullable: true
+          type: integer
+        globalAlertLimit:
+          format: int32
+          nullable: true
+          type: integer
+        organizationId:
+          format: int32
+          type: integer
+        labels:
+          items:
+            $ref: "#/components/schemas/ShowbackLabelCreateDto"
+          nullable: true
+          type: array
+        showbackCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    CreateShowbackSummaryCommand:
+      additionalProperties: false
+      example:
+        beginApply: 2000-01-23T04:56:07.000+00:00
+        price: 0.8008281904610115
+        showbackRuleId: 6
+        projectId: 1
+        byLabelValue: byLabelValue
+      properties:
+        beginApply:
+          format: date-time
+          type: string
+        price:
+          format: double
+          type: number
+        showbackRuleId:
+          format: int32
+          type: integer
+        projectId:
+          format: int32
+          nullable: true
+          type: integer
+        byLabelValue:
+          nullable: true
+          type: string
+      type: object
+    CsvExporter:
+      additionalProperties: false
+      example:
+        fileName: fileName
+        contentType: contentType
+        content: content
+      properties:
+        fileName:
+          nullable: true
+          type: string
+        contentType:
+          nullable: true
+          type: string
+        content:
+          format: byte
+          nullable: true
+          type: string
+      type: object
+    DeleteRulesCommand:
+      additionalProperties: false
+      example:
+        ids:
+        - 0
+        - 0
+      properties:
+        ids:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+      type: object
+    EPrometheusType:
+      enum:
+      - Count
+      - Sum
+      type: string
+    EShowbackType:
+      enum:
+      - General
+      - External
+      type: string
+    GroupedCredentialForShowbackSummary:
+      additionalProperties: false
+      example:
+        id: 5
+        projectId: 2
+        name: name
+      properties:
+        id:
+          format: int32
+          nullable: true
+          type: integer
+        projectId:
+          format: int32
+          nullable: true
+          type: integer
+        name:
+          nullable: true
+          type: string
+      type: object
+    GroupedProjectForShowbackSummary:
+      additionalProperties: false
+      example:
+        id: 1
+        name: name
+        totalPrice: 5.962133916683182
+        isDeleted: true
+      properties:
+        id:
+          format: int32
+          nullable: true
+          type: integer
+        name:
+          nullable: true
+          type: string
+        totalPrice:
+          format: double
+          type: number
+        isDeleted:
+          nullable: true
+          type: boolean
+      type: object
+    GroupedShowbackByLabelList:
+      additionalProperties: false
+      example:
+        byLabelValues:
+        - ruleName: ruleName
+          credentialName: credentialName
+          totalPrice: 0.8008281904610115
+          labelName: labelName
+          labelValue: labelValue
+          metricName: metricName
+          data:
+          - byLabel: byLabel
+            totalPrice: 6.027456183070403
+          - byLabel: byLabel
+            totalPrice: 6.027456183070403
+        - ruleName: ruleName
+          credentialName: credentialName
+          totalPrice: 0.8008281904610115
+          labelName: labelName
+          labelValue: labelValue
+          metricName: metricName
+          data:
+          - byLabel: byLabel
+            totalPrice: 6.027456183070403
+          - byLabel: byLabel
+            totalPrice: 6.027456183070403
+      properties:
+        byLabelValues:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummaryByLabelInfo"
+          nullable: true
+          type: array
+      type: object
+    GroupedShowbackByProjectList:
+      additionalProperties: false
+      example:
+        byProjects:
+        - data:
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
+          ruleName: ruleName
+          credentialName: credentialName
+          totalPrice: 6.027456183070403
+        - data:
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
+          ruleName: ruleName
+          credentialName: credentialName
+          totalPrice: 6.027456183070403
+      properties:
+        byProjects:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummaryByProjectInfos"
+          nullable: true
+          type: array
+      type: object
+    GroupedShowbackList:
+      additionalProperties: false
+      example:
+        projects:
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+        credentials:
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+        byLabelValues:
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+      properties:
+        projects:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummaryInfos"
+          nullable: true
+          type: array
+        credentials:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummaryInfos"
+          nullable: true
+          type: array
+        byLabelValues:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummaryInfos"
+          nullable: true
+          type: array
+      type: object
+    GroupedShowbackSummaries:
+      additionalProperties: false
+      example:
+        startDate: startDate
+        price: 0.8008281904610115
+      properties:
+        startDate:
+          nullable: true
+          type: string
+        price:
+          format: double
+          type: number
+      type: object
+    GroupedShowbackSummariesByLabelDto:
+      additionalProperties: false
+      example:
+        byLabel: byLabel
+        totalPrice: 6.027456183070403
+      properties:
+        byLabel:
+          nullable: true
+          type: string
+        totalPrice:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    GroupedShowbackSummariesByProjectDto:
+      additionalProperties: false
+      example:
+        projectName: projectName
+        totalPrice: 0.8008281904610115
+      properties:
+        projectName:
+          nullable: true
+          type: string
+        totalPrice:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    GroupedShowbackSummaryByLabelInfo:
+      additionalProperties: false
+      example:
+        ruleName: ruleName
+        credentialName: credentialName
+        totalPrice: 0.8008281904610115
+        labelName: labelName
+        labelValue: labelValue
+        metricName: metricName
+        data:
+        - byLabel: byLabel
+          totalPrice: 6.027456183070403
+        - byLabel: byLabel
+          totalPrice: 6.027456183070403
+      properties:
+        ruleName:
+          nullable: true
+          type: string
+        credentialName:
+          nullable: true
+          type: string
+        totalPrice:
+          format: double
+          nullable: true
+          type: number
+        labelName:
+          nullable: true
+          type: string
+        labelValue:
+          nullable: true
+          type: string
+        metricName:
+          nullable: true
+          type: string
+        data:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummariesByLabelDto"
+          nullable: true
+          type: array
+      type: object
+    GroupedShowbackSummaryByProjectInfos:
+      additionalProperties: false
+      example:
+        data:
+        - projectName: projectName
+          totalPrice: 0.8008281904610115
+        - projectName: projectName
+          totalPrice: 0.8008281904610115
+        ruleName: ruleName
+        credentialName: credentialName
+        totalPrice: 6.027456183070403
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummariesByProjectDto"
+          nullable: true
+          type: array
+        ruleName:
+          nullable: true
+          type: string
+        credentialName:
+          nullable: true
+          type: string
+        totalPrice:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    GroupedShowbackSummaryInfos:
+      additionalProperties: false
+      example:
+        data:
+        - startDate: startDate
+          price: 0.8008281904610115
+        - startDate: startDate
+          price: 0.8008281904610115
+        id: 6
+        name: name
+        totalPrice: 1.4658129805029452
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/GroupedShowbackSummaries"
+          nullable: true
+          type: array
+        id:
+          format: int32
+          nullable: true
+          type: integer
+        name:
+          nullable: true
+          type: string
+        totalPrice:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    GroupedShowbackSummaryListDto:
+      additionalProperties: false
+      example:
+        ruleId: 0
+        ruleName: ruleName
+        totalPrice: 6.027456183070403
+        projects:
+        - id: 1
+          name: name
+          totalPrice: 5.962133916683182
+          isDeleted: true
+        - id: 1
+          name: name
+          totalPrice: 5.962133916683182
+          isDeleted: true
+        credential:
+          id: 5
+          projectId: 2
+          name: name
+      properties:
+        ruleId:
+          format: int32
+          type: integer
+        ruleName:
+          nullable: true
+          type: string
+        totalPrice:
+          format: double
+          type: number
+        projects:
+          items:
+            $ref: "#/components/schemas/GroupedProjectForShowbackSummary"
+          nullable: true
+          type: array
+        credential:
+          $ref: "#/components/schemas/GroupedCredentialForShowbackSummary"
+      type: object
+    ProblemDetails:
+      additionalProperties: {}
+      example:
+        type: type
+        title: title
+        status: 1
+        detail: detail
+        instance: instance
+      properties:
+        type:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
+        detail:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+      type: object
+    ShowbackCredentialLockCommand:
+      additionalProperties: false
+      example:
+        id: 0
+        mode: mode
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
+    ShowbackCredentialsDetailsDto:
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+      type: object
+    ShowbackCredentialsList:
+      additionalProperties: false
+      example:
+        data:
+        - id: 0
+          name: name
+          url: url
+          createdAt: createdAt
+          username: username
+          password: password
+          isLocked: true
+          organizationName: organizationName
+          organizationId: 6
+          createdBy: createdBy
+          lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
+          rules:
+          - id: 1
+            name: name
+          - id: 1
+            name: name
+        - id: 0
+          name: name
+          url: url
+          createdAt: createdAt
+          username: username
+          password: password
+          isLocked: true
+          organizationName: organizationName
+          organizationId: 6
+          createdBy: createdBy
+          lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
+          rules:
+          - id: 1
+            name: name
+          - id: 1
+            name: name
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/ShowbackCredentialsListDto"
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    ShowbackCredentialsListDto:
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+        url: url
+        createdAt: createdAt
+        username: username
+        password: password
+        isLocked: true
+        organizationName: organizationName
+        organizationId: 6
+        createdBy: createdBy
+        lastModified: lastModified
+        lastModifiedBy: lastModifiedBy
+        rules:
+        - id: 1
+          name: name
+        - id: 1
+          name: name
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        isLocked:
+          type: boolean
+        organizationName:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        rules:
+          items:
+            $ref: "#/components/schemas/ShowbackRuleEntityDto"
+          nullable: true
+          type: array
+      type: object
+    ShowbackLabelCreateDto:
+      additionalProperties: false
+      example:
+        label: label
+        value: value
+      properties:
+        label:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    ShowbackProjectsList:
+      additionalProperties: false
+      example:
+        data:
+        - id: 0
+          name: name
+          monitoringUrl: monitoringUrl
+          monitoringUrlHeader: monitoringUrlHeader
+          monitoringUsername: monitoringUsername
+          monitoringPassword: monitoringPassword
+          kubernetesCurrentVersion: kubernetesCurrentVersion
+        - id: 0
+          name: name
+          monitoringUrl: monitoringUrl
+          monitoringUrlHeader: monitoringUrlHeader
+          monitoringUsername: monitoringUsername
+          monitoringPassword: monitoringPassword
+          kubernetesCurrentVersion: kubernetesCurrentVersion
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/ShowbackProjectsListDto"
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    ShowbackProjectsListDto:
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+        monitoringUrl: monitoringUrl
+        monitoringUrlHeader: monitoringUrlHeader
+        monitoringUsername: monitoringUsername
+        monitoringPassword: monitoringPassword
+        kubernetesCurrentVersion: kubernetesCurrentVersion
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        monitoringUrl:
+          nullable: true
+          type: string
+        monitoringUrlHeader:
+          nullable: true
+          type: string
+        monitoringUsername:
+          nullable: true
+          type: string
+        monitoringPassword:
+          nullable: true
+          type: string
+        kubernetesCurrentVersion:
+          nullable: true
+          type: string
+      type: object
+    ShowbackRuleEntityDto:
+      additionalProperties: false
+      example:
+        id: 1
+        name: name
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+      type: object
+    ShowbackRuleList:
+      additionalProperties: false
+      example:
+        data:
+        - id: 0
+          name: name
+          byLabel: byLabel
+          metricName: metricName
+          createdAt: createdAt
+          kind: kind
+          type: type
+          price: 6.027456183070403
+          projectAlertLimit: 1
+          globalAlertLimit: 5
+          organizationName: organizationName
+          organizationId: 5
+          billingStartDate: billingStartDate
+          labels:
+          - label: label
+            value: value
+          - label: label
+            value: value
+          showbackCredentialName: showbackCredentialName
+          showbackCredentialId: 2
+          createdBy: createdBy
+          lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
+        - id: 0
+          name: name
+          byLabel: byLabel
+          metricName: metricName
+          createdAt: createdAt
+          kind: kind
+          type: type
+          price: 6.027456183070403
+          projectAlertLimit: 1
+          globalAlertLimit: 5
+          organizationName: organizationName
+          organizationId: 5
+          billingStartDate: billingStartDate
+          labels:
+          - label: label
+            value: value
+          - label: label
+            value: value
+          showbackCredentialName: showbackCredentialName
+          showbackCredentialId: 2
+          createdBy: createdBy
+          lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
+        totalCount: 7
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/ShowbackRulesListDto"
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    ShowbackRulesListDto:
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+        byLabel: byLabel
+        metricName: metricName
+        createdAt: createdAt
+        kind: kind
+        type: type
+        price: 6.027456183070403
+        projectAlertLimit: 1
+        globalAlertLimit: 5
+        organizationName: organizationName
+        organizationId: 5
+        billingStartDate: billingStartDate
+        labels:
+        - label: label
+          value: value
+        - label: label
+          value: value
+        showbackCredentialName: showbackCredentialName
+        showbackCredentialId: 2
+        createdBy: createdBy
+        lastModified: lastModified
+        lastModifiedBy: lastModifiedBy
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        byLabel:
+          nullable: true
+          type: string
+        metricName:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        kind:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+        price:
+          format: double
+          type: number
+        projectAlertLimit:
+          format: int32
+          type: integer
+        globalAlertLimit:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        billingStartDate:
+          nullable: true
+          type: string
+        labels:
+          items:
+            $ref: "#/components/schemas/ShowbackLabelCreateDto"
+          nullable: true
+          type: array
+        showbackCredentialName:
+          nullable: true
+          type: string
+        showbackCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+      type: object
+    UpdateShowbackRuleCommand:
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+        byLabel: byLabel
+        metricName: metricName
+        kind: General
+        type: Count
+        price: 6.027456183070403
+        projectAlertLimit: 1
+        globalAlertLimit: 5
+        labels:
+        - label: label
+          value: value
+        - label: label
+          value: value
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        byLabel:
+          nullable: true
+          type: string
+        metricName:
+          nullable: true
+          type: string
+        kind:
+          $ref: "#/components/schemas/EShowbackType"
+        type:
+          $ref: "#/components/schemas/EPrometheusType"
+        price:
+          format: double
+          nullable: true
+          type: number
+        projectAlertLimit:
+          format: int32
+          nullable: true
+          type: integer
+        globalAlertLimit:
+          format: int32
+          nullable: true
+          type: integer
+        labels:
+          items:
+            $ref: "#/components/schemas/ShowbackLabelCreateDto"
+          nullable: true
+          type: array
+      type: object
+  securitySchemes:
+    Bearer:
+      description: "Input your Bearer token in this format - Bearer {your token here}\
+        \ to access this API"
+      in: header
+      name: Authorization
+      type: apiKey
